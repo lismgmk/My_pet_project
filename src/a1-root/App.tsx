@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, Redirect, NavLink} from 'react-router-dom';
 import style from './App.module.css'
 import Main from "./v1-Main/Main";
 import Login from "./v2-Login/Login";
@@ -8,11 +8,21 @@ import Profile from "./v4-Profile/Profile";
 import Page_404 from "./v5-Page_404/Page_404";
 import Rebild_password from "./v6-Rebild_password/Rebild_password";
 import New_password from "./v7-New_password/New_password";
-import {Redirect} from "react-router/ts4.0";
+
 
 function App() {
     return (
         <>
+            <div className={style.App}>
+                <NavLink to={PATH.PET_MAIN} activeClassName={style.activeLink}>Main</NavLink>
+                <NavLink to={PATH.PET_LOGIN} activeClassName={style.activeLink}>Login</NavLink>
+                <NavLink to={PATH.PET_REISTRATION} activeClassName={style.activeLink}>Registration</NavLink>
+                <NavLink to={PATH.PET_PROFILE} activeClassName={style.activeLink}>Profile</NavLink>
+                <NavLink to={PATH.PET_PAGE404} activeClassName={style.activeLink}>Page_404</NavLink>
+                <NavLink to={PATH.PET_REBILD_PASSWORD} activeClassName={style.activeLink}>Rebild_password</NavLink>
+                <NavLink to={PATH.PET_NEW_PASSWORD} activeClassName={style.activeLink}>New_password</NavLink>
+
+            </div>
             <Switch>
                 <Route path={PATH.PET_NULL} exact render={() => <Redirect to={PATH.PET_MAIN}/>}/>
 
