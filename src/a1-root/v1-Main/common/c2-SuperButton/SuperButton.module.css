@@ -1,0 +1,54 @@
+.default {
+    color: brown;
+    font-size: 15px;
+    background-color: aqua;
+}
+
+
+.mainStyle{
+    color: brown;
+    font-size: 15px;
+    background-color: aqua;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.mainStyle::after{
+    position: absolute;
+    content: '';
+    display: block;
+    width: 10%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
+    top: 0;
+    left: -130%;
+    transform: skew(45deg);
+    z-index: 7;
+
+}
+.mainStyle:hover::after{
+    animation: move 1s infinite;
+    animation-iteration-count: 1;
+    animation-fill-mode: none;
+/*z-index: 7;*/
+}
+
+@keyframes move {
+    0% {
+        left: -130%
+    }
+    100% {
+        left: 130%
+
+    }
+}
+.red {
+    background: red;
+}
+
+.mainStyle:disabled::after{
+    z-index: -1;
+}
+
