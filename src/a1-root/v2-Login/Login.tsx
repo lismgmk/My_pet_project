@@ -5,6 +5,7 @@ function Login() {
   return (
     <div className={style.App}>
       <h1>Login</h1>
+      <h1 style={{color: "red"}}>Logout</h1>
     </div>
   );
 }
