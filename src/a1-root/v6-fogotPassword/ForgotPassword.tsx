@@ -6,7 +6,8 @@ import {PATH} from '../../app/App';
 import {StatusType} from '../../app/appReducer';
 import {AppRootStateType} from '../../app/store';
 import {login} from '../v2-Login/loginReduser';
-import {forgotPassword} from "./forgotPasswordReduser";
+import {actionsForPassword, forgotPassword} from "./forgotPasswordReduser";
+import preloader from "../../image/preloader.gif";
 
 
 export const ForgotPassword: React.FC = React.memo(() => {
@@ -20,23 +21,31 @@ export const ForgotPassword: React.FC = React.memo(() => {
   </a></div>`
     });
 
-    const isSendEmail = useSelector<AppRootStateType, boolean>(state => state.forgotPassword.isSendEmail);
+    // const isSendEmail = useSelector<AppRootStateType, boolean>(state => state.forgotPassword.isSendEmail);
     const status = useSelector<AppRootStateType, StatusType>(state => state.app.status)
-    const error = useSelector<AppRootStateType, string | null>(state => state.app.error);
+    const error = useSelector<AppRootStateType, string>(state => state.forgotPassword.forgotPasswordError);
 
     const dispatch: Dispatch<any> = useDispatch();
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        // console.log(data)
         dispatch(forgotPassword(data));
         e.preventDefault();
+        // dispatch(actionsForPassword.forgotPassword(true))
     };
-
-    // if (isLoggedIn) {
-    //   return <Redirect to={PATH.PET_PROFILE}/>
-    // }
-
-
-    // @ts-ignore
+    if(status === "succeeded") {
+      return  <Redirect to={{
+            pathname: PATH.PET_CHECK_EMAIL,
+            state: {email: data.email}
+        }}
+        />
+    }
+    if (status === "loading"){
+      return  <div
+            style={{position: 'fixed', top: '30%', textAlign: 'center', width: '100%'}}>
+            <img src={preloader} alt=""/>
+        </div>
+    }
     return (
         <div>
             <h2>It-incubator</h2>
@@ -56,18 +65,12 @@ export const ForgotPassword: React.FC = React.memo(() => {
                 </div>
 
 
-                <button type={"submit"} disabled={status === "loading"}>Send Instructions</button>
+                <button type={"submit"} >Send Instructions</button>
                 <span style={{color: "red"}}>{error ? error : null}</span>
             </form>
 
             <NavLink to={PATH.PET_LOGIN}>Did you remember your password?</NavLink>
-            {isSendEmail &&
-            <Redirect to={{
-                pathname: PATH.PET_CHECK_EMAIL,
-                state: {email: data.email}
-            }}
-            />
-            }
+
 
         </div>
 

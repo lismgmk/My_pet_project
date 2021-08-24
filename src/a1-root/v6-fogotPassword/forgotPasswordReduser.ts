@@ -6,7 +6,7 @@ import {actionsForApp, ThunkDispatchType, ThunkType} from "../../app/appReducer"
 
 
 const initialState = {
-    isSendEmail: false,
+    forgotPasswordError: '',
     isGetPassworword: false
 };
 
@@ -14,8 +14,8 @@ const initialState = {
 export const forgotPasswordReduser =
     (state: forgotPasswordType = initialState, action: CommonActionTypeForApp): forgotPasswordType => {
         switch (action.type) {
-            case "PET-PROJECT/ROOT/FORGOT-PASSWORD/FORGOT-PASSWORD":
-                return {...state, isSendEmail: action.value};
+            case "PET-PROJECT/ROOT/FORGOT-PASSWORD/FORGOT-ERROR":
+                return {...state, forgotPasswordError: action.value};
                 case "PET-PROJECT/ROOT/FORGOT-PASSWORD/GET-PASSWORD":
                 return {...state, isGetPassworword: action.value};
             default:
@@ -26,7 +26,7 @@ export const forgotPasswordReduser =
 
 // actions
 export const actionsForPassword = {
-    forgotPassword: (value: boolean) => ({type: "PET-PROJECT/ROOT/FORGOT-PASSWORD/FORGOT-PASSWORD", value} as const),
+    forgotPasswordError: (value: string) => ({type: "PET-PROJECT/ROOT/FORGOT-PASSWORD/FORGOT-ERROR", value} as const),
     getPassword: (value: boolean) => ({type: "PET-PROJECT/ROOT/FORGOT-PASSWORD/GET-PASSWORD", value} as const),
 
 };
@@ -39,14 +39,14 @@ export const forgotPassword = (data: ForgotType): ThunkType => async (dispatch: 
         let res = await forgotAPI.forgot(data);
         if (res.status === 200) {
             dispatch(actionsForApp.setAppStatus("succeeded"));
-           dispatch(actionsForPassword.forgotPassword(true))
         }
     } catch (e) {
         dispatch(actionsForApp.setAppStatus("failed"));
         const error = e.response
             ? e.response.data.error
             : (e.message + ', more details in the console');
-        dispatch(actionsForApp.setAppError(error))
+        console.log(error)
+        dispatch(actionsForPassword.forgotPasswordError(error))
     }
 };
 
