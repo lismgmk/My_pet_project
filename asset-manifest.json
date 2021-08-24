@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/My-pet-Project/static/css/main.ecd7ba65.chunk.css",
-    "main.js": "/My-pet-Project/static/js/main.7d372852.chunk.js",
-    "main.js.map": "/My-pet-Project/static/js/main.7d372852.chunk.js.map",
-    "runtime-main.js": "/My-pet-Project/static/js/runtime-main.6a619396.js",
-    "runtime-main.js.map": "/My-pet-Project/static/js/runtime-main.6a619396.js.map",
-    "static/js/2.41e2803b.chunk.js": "/My-pet-Project/static/js/2.41e2803b.chunk.js",
-    "static/js/2.41e2803b.chunk.js.map": "/My-pet-Project/static/js/2.41e2803b.chunk.js.map",
-    "static/js/3.0a98b9c8.chunk.js": "/My-pet-Project/static/js/3.0a98b9c8.chunk.js",
-    "static/js/3.0a98b9c8.chunk.js.map": "/My-pet-Project/static/js/3.0a98b9c8.chunk.js.map",
-    "index.html": "/My-pet-Project/index.html",
-    "static/css/main.ecd7ba65.chunk.css.map": "/My-pet-Project/static/css/main.ecd7ba65.chunk.css.map",
-    "static/js/2.41e2803b.chunk.js.LICENSE.txt": "/My-pet-Project/static/js/2.41e2803b.chunk.js.LICENSE.txt",
-    "static/media/preloader.ba1ee69b.gif": "/My-pet-Project/static/media/preloader.ba1ee69b.gif"
+    "main.css": "/My-pet-project/static/css/main.ecd7ba65.chunk.css",
+    "main.js": "/My-pet-project/static/js/main.7d372852.chunk.js",
+    "main.js.map": "/My-pet-project/static/js/main.7d372852.chunk.js.map",
+    "runtime-main.js": "/My-pet-project/static/js/runtime-main.92381fc9.js",
+    "runtime-main.js.map": "/My-pet-project/static/js/runtime-main.92381fc9.js.map",
+    "static/js/2.41e2803b.chunk.js": "/My-pet-project/static/js/2.41e2803b.chunk.js",
+    "static/js/2.41e2803b.chunk.js.map": "/My-pet-project/static/js/2.41e2803b.chunk.js.map",
+    "static/js/3.0a98b9c8.chunk.js": "/My-pet-project/static/js/3.0a98b9c8.chunk.js",
+    "static/js/3.0a98b9c8.chunk.js.map": "/My-pet-project/static/js/3.0a98b9c8.chunk.js.map",
+    "index.html": "/My-pet-project/index.html",
+    "static/css/main.ecd7ba65.chunk.css.map": "/My-pet-project/static/css/main.ecd7ba65.chunk.css.map",
+    "static/js/2.41e2803b.chunk.js.LICENSE.txt": "/My-pet-project/static/js/2.41e2803b.chunk.js.LICENSE.txt",
+    "static/media/preloader.ba1ee69b.gif": "/My-pet-project/static/media/preloader.ba1ee69b.gif"
   },
   "entrypoints": [
-    "static/js/runtime-main.6a619396.js",
+    "static/js/runtime-main.92381fc9.js",
     "static/js/2.41e2803b.chunk.js",
     "static/css/main.ecd7ba65.chunk.css",
     "static/js/main.7d372852.chunk.js"
