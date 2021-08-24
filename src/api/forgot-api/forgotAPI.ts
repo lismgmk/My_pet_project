@@ -4,10 +4,10 @@ import {instance} from "../login-api/loginAPI";
 // api
 export const forgotAPI = {
     forgot(data: ForgotType) {
-        return instance.post<ForgotResponseType>("forgot", data);
+        return instance.post<ForgotResponseType>("auth/forgot", data);
     },
     setNewPassword(data: SetType) {
-        return instance.post<ForgotResponseType>("set-new-password", {});
+        return instance.post<ForgotResponseType>("auth/set-new-password", data);
     },
 };
 
