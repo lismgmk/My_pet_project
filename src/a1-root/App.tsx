@@ -1,13 +1,13 @@
 import React from "react";
 import { Switch, Route, Redirect, NavLink } from "react-router-dom";
-import style from "./App.module.css";
+import style from "../app/App.module.css";
 import Main from "./v1-Main/Main";
-import Login from "./v2-Login/Login";
 import Registration from "./v3-Registration/Registration";
-import Profile from "./v4-Profile/Profile";
-import Page_404 from "./v5-Page_404/Page_404";
-import Rebild_password from "./v6-Rebild_password/Rebild_password";
-import New_password from "./v7-New_password/New_password";
+import {Login} from "./v2-Login/Login";
+import RebildPassword from "./v6-Rebild_password/RebildPassword";
+import Page404 from "./v5-Page_404/Page404";
+import NewPassword from "./v7-New_password/NewPassword";
+import {Profile} from "./v4-Profile/Profile";
 
 function App() {
   return (
@@ -53,16 +53,16 @@ function App() {
           render={() => <Registration />}
         />
         <Route exact path={PATH.PET_PROFILE} render={() => <Profile />} />
-        <Route exact path={PATH.PET_PAGE404} render={() => <Page_404 />} />
+        <Route exact path={PATH.PET_PAGE404} render={() => <Page404 />} />
         <Route
           exact
           path={PATH.PET_REBILD_PASSWORD}
-          render={() => <Rebild_password />}
+          render={() => <RebildPassword />}
         />
         <Route
           exact
           path={PATH.PET_NEW_PASSWORD}
-          render={() => <New_password />}
+          render={() => <NewPassword />}
         />
 
         <Redirect from={"*"} to={PATH.PET_PAGE404} />
