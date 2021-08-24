@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f033f3bf-aea1-4d89-9df0-41b7ef2cccf9" name="Default Changelist" comment="lergns fix url" />
+    <list default="true" id="f033f3bf-aea1-4d89-9df0-41b7ef2cccf9" name="Default Changelist" comment="lergns fix url">
+      <change beforePath="$PROJECT_DIR$/src/a1-root/v6-Rebild_password/RebildPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/RebildPassword.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/a1-root/v6-Rebild_password/Rebild_passwoed.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/Rebild_passwoed.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/a1-root/v6-Rebild_password/rebildPasswordReduser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/rebildPasswordReduser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/a1-root/v7-New_password/NewPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v7-setPassword/NewPassword.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/a1-root/v7-New_password/New_password.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v7-setPassword/New_password.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/a1-root/v7-New_password/newPasswordReduser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v7-setPassword/newPasswordReduser.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +33,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="lis" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

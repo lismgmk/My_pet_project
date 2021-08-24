@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './New_password.module.css'
 
-function New_password() {
+function NewPassword() {
   return (
     <div className={style.App}>
       <h1>New password</h1>
@@ -9,4 +9,4 @@ function New_password() {
   );
 }
 
-export default New_password;
+export default NewPassword;

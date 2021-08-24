@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Page_404.module.css'
 
-function Page_404() {
+function Page404() {
   return (
     <div className={style.App}>
       <h1>Page 404</h1>
@@ -9,4 +9,4 @@ function Page_404() {
   );
 }
 
-export default Page_404;
+export default Page404;
