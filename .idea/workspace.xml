@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b50a0812-1693-41d8-82ae-af3a60040e6d" name="Default Changelist" comment="before deploy">
+    <list default="true" id="1d9312d9-f337-4d70-85b7-42e7d7e1ef40" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/ForgotPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/ForgotPassword.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/forgotPasswordReduser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/forgotPasswordReduser.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/a1-root/v7-setPassword/SetPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v7-setPassword/SetPassword.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,10 +15,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
-  </component>
-  <component name="ProjectId" id="1xAfq4jFSane0iwYCL66fd11PFi" />
+  <component name="ProjectId" id="1xBe3ufePrWVJ166KtXgmBOb4Xu" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -27,18 +24,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../progects/ignat" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="ts.external.directory.path" value="D:\kamasutra\Pet\My_pet_project\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\kamasutra\Pet\My_pet_project\src\a1-root\v6-fogotPassword" />
-    </key>
   </component>
   <component name="RunManager" selected="npm.deploy">
     <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -71,39 +61,16 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b50a0812-1693-41d8-82ae-af3a60040e6d" name="Default Changelist" comment="" />
-      <created>1629803007076</created>
+      <changelist id="1d9312d9-f337-4d70-85b7-42e7d7e1ef40" name="Default Changelist" comment="" />
+      <created>1629832727845</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1629803007076</updated>
-      <workItem from="1629803013256" duration="15122000" />
+      <updated>1629832727845</updated>
+      <workItem from="1629832734130" duration="656000" />
     </task>
-    <task id="LOCAL-00001" summary="before deploy">
-      <created>1629822258540</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1629822258540</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="before deploy" />
-    <option name="LAST_COMMIT_MESSAGE" value="before deploy" />
   </component>
 </project>

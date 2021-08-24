@@ -51,20 +51,20 @@ export const forgotPassword = (data: ForgotType): ThunkType => async (dispatch: 
 };
 
 export const getPassword = (data: SetType): ThunkType => async (dispatch: ThunkDispatchType) => {
-    try {
-        dispatch(actionsForApp.setAppStatus("loading"));
-        let res = await forgotAPI.forgot(data);
-        if (res.status === 200) {
-            dispatch(actionsForApp.setAppStatus("succeeded"));
-           dispatch(actionsForPassword.forgotPassword(true))
-        }
-    } catch (e) {
-        dispatch(actionsForApp.setAppStatus("failed"));
-        const error = e.response
-            ? e.response.data.error
-            : (e.message + ', more details in the console');
-        dispatch(actionsForApp.setAppError(error))
-    }
+    // try {
+    //     dispatch(actionsForApp.setAppStatus("loading"));
+    //     // let res = await forgotAPI.forgot(data);
+    //     // if (res.status === 200) {
+    //     //     dispatch(actionsForApp.setAppStatus("succeeded"));
+    //     //    dispatch(actionsForPassword.forgotPassword(true))
+    //     }
+    // } catch (e) {
+    //     // dispatch(actionsForApp.setAppStatus("failed"));
+    //     // const error = e.response
+    //     //     ? e.response.data.error
+    //     //     : (e.message + ', more details in the console');
+    //     // dispatch(actionsForApp.setAppError(error))
+    // }
 };
 
 

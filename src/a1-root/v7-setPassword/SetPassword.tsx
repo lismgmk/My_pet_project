@@ -11,7 +11,7 @@ import {SetType} from "../../api/forgot-api/forgotAPI";
 
 export const SetPassword: React.FC = React.memo(() => {
 
-    const [password, setPassword] = useState({});
+    const [password, setPassword] = useState('');
 
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn);
     const status = useSelector<AppRootStateType, StatusType>(state => state.app.status)
@@ -20,7 +20,7 @@ export const SetPassword: React.FC = React.memo(() => {
     const dispatch: Dispatch<any> = useDispatch();
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        dispatch(getPassword(data:SetType));
+        // dispatch(getPassword(data:SetType));
         e.preventDefault();
     };
 

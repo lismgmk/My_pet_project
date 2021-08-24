@@ -12,9 +12,9 @@ import {AppInitialStateType, initializeApp} from "./appReducer";
 import {AppRootStateType} from "./store";
 import preloader from "../image/preloader.gif";
 import {logout} from "../a1-root/v2-Login/loginReduser";
-import SetPassword from "../a1-root/v7-setPassword/SetPassword";
 import {ForgotPassword} from "../a1-root/v6-fogotPassword/ForgotPassword";
 import {CheckEmail} from "../a1-root/v6-fogotPassword/CheckEmail";
+import {SetPassword} from "../a1-root/v7-setPassword/SetPassword";
 
 
 function App() {
