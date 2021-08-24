@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b50a0812-1693-41d8-82ae-af3a60040e6d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/CheckEmail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+    <list default="true" id="b50a0812-1693-41d8-82ae-af3a60040e6d" name="Default Changelist" comment="before deploy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v2-Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v2-Login/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/ForgotPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/ForgotPassword.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/forgotPasswordReduser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/forgotPasswordReduser.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/a1-root/v7-setPassword/SetPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v7-setPassword/SetPassword.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/forgot-api/forgotAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/forgot-api/forgotAPI.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +14,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1xAfq4jFSane0iwYCL66fd11PFi" />
   <component name="ProjectViewState">
@@ -44,7 +40,7 @@
       <recent name="D:\kamasutra\Pet\My_pet_project\src\a1-root\v6-fogotPassword" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.deploy">
     <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -67,8 +63,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.deploy" />
+        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
@@ -80,8 +76,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1629803007076</updated>
-      <workItem from="1629803013256" duration="10772000" />
+      <workItem from="1629803013256" duration="15122000" />
     </task>
+    <task id="LOCAL-00001" summary="before deploy">
+      <created>1629822258540</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1629822258540</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -97,5 +101,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="before deploy" />
+    <option name="LAST_COMMIT_MESSAGE" value="before deploy" />
   </component>
 </project>
