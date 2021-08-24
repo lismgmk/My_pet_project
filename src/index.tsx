@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './a1-root/App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
-import {store} from "./a1-root/store";
+import {store} from "./app/store";
+import App from "./app/App";
 
 ReactDOM.render(
     <BrowserRouter>
