@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f033f3bf-aea1-4d89-9df0-41b7ef2cccf9" name="Default Changelist" comment="lergns fix url">
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v6-Rebild_password/RebildPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/RebildPassword.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v6-Rebild_password/Rebild_passwoed.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/Rebild_passwoed.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v6-Rebild_password/rebildPasswordReduser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/rebildPasswordReduser.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v7-New_password/NewPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v7-setPassword/NewPassword.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v7-New_password/New_password.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v7-setPassword/New_password.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v7-New_password/newPasswordReduser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v7-setPassword/newPasswordReduser.ts" afterDir="false" />
+    <list default="true" id="f033f3bf-aea1-4d89-9df0-41b7ef2cccf9" name="Default Changelist" comment="Merge branch 'Ihor_Vasylenko' into lis">
+      <change afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/forgotPasswordReduser.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/forgot-api/forgotAPI.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/RebildPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/ForgotPassword.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/Rebild_passwoed.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/ForgotPasswoed.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/rebildPasswordReduser.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/a1-root/v7-setPassword/NewPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v7-setPassword/SetPassword.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/a1-root/v7-setPassword/New_password.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v7-setPassword/SetPassword.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/a1-root/v7-setPassword/newPasswordReduser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v7-setPassword/setPasswordReduser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +44,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1x90T8KkLvkCWoH6rGgdXd5soLM" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -48,7 +56,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/api" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -105,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629760226639</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Merge branch 'Ihor_Vasylenko' into lis">
+      <created>1629798707853</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1629798707853</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,7 +137,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/Ihor_Vasylenko" />
+                        <option value="origin/lis" />
                       </list>
                     </value>
                   </entry>
@@ -140,6 +155,8 @@
     <MESSAGE value="lesson 1/1 Register Page" />
     <MESSAGE value="Merge remote-tracking branch 'origin/lergns'" />
     <MESSAGE value="lergns fix url" />
-    <option name="LAST_COMMIT_MESSAGE" value="lergns fix url" />
+    <MESSAGE value="second commit" />
+    <MESSAGE value="Merge branch 'Ihor_Vasylenko' into lis" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'Ihor_Vasylenko' into lis" />
   </component>
 </project>

@@ -7,13 +7,13 @@ import {Login} from "../a1-root/v2-Login/Login";
 import {Profile} from "../a1-root/v4-Profile/Profile";
 import Registration from "../a1-root/v3-Registration/Registration";
 import Page404 from "../a1-root/v5-Page_404/Page404";
-import RebildPassword from "../a1-root/v6-Rebild_password/RebildPassword";
-import NewPassword from "../a1-root/v7-New_password/NewPassword";
 import {useDispatch, useSelector} from "react-redux";
 import {AppInitialStateType, initializeApp} from "./appReducer";
 import {AppRootStateType} from "./store";
 import preloader from "../image/preloader.gif";
 import {logout} from "../a1-root/v2-Login/loginReduser";
+import SetPassword from "../a1-root/v7-setPassword/SetPassword";
+import {ForgotPassword} from "../a1-root/v6-fogotPassword/ForgotPassword";
 
 
 function App() {
@@ -63,8 +63,8 @@ function App() {
                 <NavLink to={PATH.PET_REGISTRATION} activeClassName={style.activeLink}>Registration</NavLink>
                 <NavLink to={PATH.PET_PROFILE} activeClassName={style.activeLink}>Profile</NavLink>
                 <NavLink to={PATH.PET_PAGE404} activeClassName={style.activeLink}>Page_404</NavLink>
-                <NavLink to={PATH.PET_REBILD_PASSWORD} activeClassName={style.activeLink}>Rebild_password</NavLink>
-                <NavLink to={PATH.PET_NEW_PASSWORD} activeClassName={style.activeLink}>New_password</NavLink>
+                <NavLink to={PATH.PET_FORGOT_PASSWORD} activeClassName={style.activeLink}>Forgot_password</NavLink>
+                <NavLink to={PATH.PET_SET_PASSWORD} activeClassName={style.activeLink}>Set_password</NavLink>
             </div>
             <Switch>
                 <Route path={PATH.PET_NULL} exact render={() => <Redirect to={PATH.PET_MAIN}/>}/>
@@ -74,8 +74,8 @@ function App() {
                 <Route exact path={PATH.PET_REGISTRATION} render={() => <Registration/>}/>
                 <Route exact path={PATH.PET_PROFILE} render={() => <Profile/>}/>
                 <Route exact path={PATH.PET_PAGE404} render={() => <Page404/>}/>
-                <Route exact path={PATH.PET_REBILD_PASSWORD} render={() => <RebildPassword/>}/>
-                <Route exact path={PATH.PET_NEW_PASSWORD} render={() => <NewPassword/>}/>
+                <Route exact path={PATH.PET_FORGOT_PASSWORD} render={() => <ForgotPassword/>}/>
+                <Route exact path={PATH.PET_SET_PASSWORD} render={() => <SetPassword/>}/>
 
                 <Redirect from={'*'} to={PATH.PET_PAGE404}/>
             </Switch>
@@ -92,7 +92,7 @@ export const PATH = {
     PET_REGISTRATION: '/My-pet-project/registration',
     PET_PROFILE: '/My-pet-project/profile',
     PET_PAGE404: '/My-pet-project/page404',
-    PET_REBILD_PASSWORD: '/My-pet-project/rebild-password',
-    PET_NEW_PASSWORD: '/My-pet-project/new-password',
+    PET_FORGOT_PASSWORD: '/My-pet-project/forgot-password',
+    PET_SET_PASSWORD: '/My-pet-project/set-password',
     PET_NULL: '/'
 }
