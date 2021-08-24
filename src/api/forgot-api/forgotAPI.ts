@@ -1,31 +1,32 @@
-import {instance, LoginResponseType, UserDataType} from "../login-api/loginAPI";
+import {instance} from "../login-api/loginAPI";
 
 
 // api
 export const forgotAPI = {
-    me() {
-        return instance.post<LoginResponseType>("auth/me", {});
+    forgot(data: ForgotType) {
+        return instance.post<ForgotResponseType>("forgot", {});
     },
-    logout() {
-        return instance.delete<LogoutType>("auth/me", {});
-    },
-    updateUserData(data: UpdateUserDataType) {
-        return instance.put<UpdateUserDataResponseType>("auth/me", data);
+    setNewPassword(data: SetType) {
+        return instance.post<ForgotResponseType>("set-new-password", {});
     },
 };
 
 
 // types
-export type LogoutType = {
+export type ForgotType = {
+    email: string
+    from: string
+    message: string
+};
+
+export type ForgotResponseType = {
     info: string
     error: string
 };
-export type UpdateUserDataType = {
-    name: string
-    avatar: string
+export type SetType = {
+    password: string
+    resetPasswordToken: string
 };
-type UpdateUserDataResponseType = {
-    updatedUser: UserDataType
-    error?: string
-};
+
+
 

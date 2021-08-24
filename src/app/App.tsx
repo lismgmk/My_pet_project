@@ -14,6 +14,7 @@ import preloader from "../image/preloader.gif";
 import {logout} from "../a1-root/v2-Login/loginReduser";
 import SetPassword from "../a1-root/v7-setPassword/SetPassword";
 import {ForgotPassword} from "../a1-root/v6-fogotPassword/ForgotPassword";
+import {CheckEmail} from "../a1-root/v6-fogotPassword/CheckEmail";
 
 
 function App() {
@@ -76,6 +77,7 @@ function App() {
                 <Route exact path={PATH.PET_PAGE404} render={() => <Page404/>}/>
                 <Route exact path={PATH.PET_FORGOT_PASSWORD} render={() => <ForgotPassword/>}/>
                 <Route exact path={PATH.PET_SET_PASSWORD} render={() => <SetPassword/>}/>
+                <Route exact path={PATH.PET_CHECK_EMAIL} render={() => <CheckEmail/>}/>
 
                 <Redirect from={'*'} to={PATH.PET_PAGE404}/>
             </Switch>
@@ -94,5 +96,6 @@ export const PATH = {
     PET_PAGE404: '/My-pet-project/page404',
     PET_FORGOT_PASSWORD: '/My-pet-project/forgot-password',
     PET_SET_PASSWORD: '/My-pet-project/set-password',
+    PET_CHECK_EMAIL: '/My-pet-project/check-email',
     PET_NULL: '/'
 }

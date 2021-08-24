@@ -14,7 +14,7 @@ export const Login: React.FC = React.memo(() => {
     const [data, setData] = useState({email: '', password: '', rememberMe: false});
 
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn);
-    const status = useSelector<AppRootStateType, StatusType>(state => state.app.status)
+    const status = useSelector<AppRootStateType, StatusType>(state => state.app.status);
     const error = useSelector<AppRootStateType, string | null>(state => state.app.error);
 
     const dispatch: Dispatch<any> = useDispatch();

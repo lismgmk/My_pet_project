@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f033f3bf-aea1-4d89-9df0-41b7ef2cccf9" name="Default Changelist" comment="Merge branch 'Ihor_Vasylenko' into lis">
-      <change afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/forgotPasswordReduser.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/forgot-api/forgotAPI.ts" afterDir="false" />
+    <list default="true" id="b50a0812-1693-41d8-82ae-af3a60040e6d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/CheckEmail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/RebildPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/ForgotPassword.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/Rebild_passwoed.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/ForgotPasswoed.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/rebildPasswordReduser.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v7-setPassword/NewPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v7-setPassword/SetPassword.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v7-setPassword/New_password.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v7-setPassword/SetPassword.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v7-setPassword/newPasswordReduser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v7-setPassword/setPasswordReduser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/a1-root/v2-Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v2-Login/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/ForgotPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/ForgotPassword.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/forgotPasswordReduser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/forgotPasswordReduser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/a1-root/v7-setPassword/SetPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v7-setPassword/SetPassword.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/forgot-api/forgotAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/forgot-api/forgotAPI.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.ts" afterDir="false" />
     </list>
@@ -19,52 +19,42 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/lergns" />
-  </component>
   <component name="Git.Settings">
-    <favorite-branches>
-      <branch-storage>
-        <map>
-          <entry type="LOCAL">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="main" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </favorite-branches>
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="lis" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1x90T8KkLvkCWoH6rGgdXd5soLM" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1xAfq4jFSane0iwYCL66fd11PFi" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../progects/ignat" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.3.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="D:\kamasutra\Pet\My_pet_project\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\kamasutra\Pet\My_pet_project\src\a1-root\v6-fogotPassword" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.start">
+    <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="deploy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -78,49 +68,20 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.deploy" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f033f3bf-aea1-4d89-9df0-41b7ef2cccf9" name="Default Changelist" comment="" />
-      <created>1629752002276</created>
+      <changelist id="b50a0812-1693-41d8-82ae-af3a60040e6d" name="Default Changelist" comment="" />
+      <created>1629803007076</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1629752002276</updated>
-      <workItem from="1629752004397" duration="7914000" />
-      <workItem from="1629788300077" duration="408000" />
+      <updated>1629803007076</updated>
+      <workItem from="1629803013256" duration="10772000" />
     </task>
-    <task id="LOCAL-00001" summary="First main commit">
-      <created>1629754249855</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1629754249856</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Merge remote-tracking branch 'origin/lergns'">
-      <created>1629754424478</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1629754424478</updated>
-    </task>
-    <task id="LOCAL-00003" summary="lergns fix url">
-      <created>1629760226638</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1629760226639</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Merge branch 'Ihor_Vasylenko' into lis">
-      <created>1629798707853</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1629798707853</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,32 +92,10 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="origin/lis" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="First main commit" />
-    <MESSAGE value="lesson 1/1 Register Page" />
-    <MESSAGE value="Merge remote-tracking branch 'origin/lergns'" />
-    <MESSAGE value="lergns fix url" />
-    <MESSAGE value="second commit" />
-    <MESSAGE value="Merge branch 'Ihor_Vasylenko' into lis" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'Ihor_Vasylenko' into lis" />
   </component>
 </project>
