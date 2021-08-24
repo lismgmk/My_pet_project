@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/My_pet_project/static/css/main.41cc83ea.chunk.css",
-    "main.js": "/My_pet_project/static/js/main.e8017383.chunk.js",
-    "main.js.map": "/My_pet_project/static/js/main.e8017383.chunk.js.map",
-    "runtime-main.js": "/My_pet_project/static/js/runtime-main.5c852e59.js",
-    "runtime-main.js.map": "/My_pet_project/static/js/runtime-main.5c852e59.js.map",
-    "static/js/2.8634c8da.chunk.js": "/My_pet_project/static/js/2.8634c8da.chunk.js",
-    "static/js/2.8634c8da.chunk.js.map": "/My_pet_project/static/js/2.8634c8da.chunk.js.map",
-    "static/js/3.de0226bb.chunk.js": "/My_pet_project/static/js/3.de0226bb.chunk.js",
-    "static/js/3.de0226bb.chunk.js.map": "/My_pet_project/static/js/3.de0226bb.chunk.js.map",
-    "index.html": "/My_pet_project/index.html",
-    "static/css/main.41cc83ea.chunk.css.map": "/My_pet_project/static/css/main.41cc83ea.chunk.css.map",
-    "static/js/2.8634c8da.chunk.js.LICENSE.txt": "/My_pet_project/static/js/2.8634c8da.chunk.js.LICENSE.txt"
+    "main.css": "/My-Pet-Project/static/css/main.477f503e.chunk.css",
+    "main.js": "/My-Pet-Project/static/js/main.a34e8aeb.chunk.js",
+    "main.js.map": "/My-Pet-Project/static/js/main.a34e8aeb.chunk.js.map",
+    "runtime-main.js": "/My-Pet-Project/static/js/runtime-main.2bc14366.js",
+    "runtime-main.js.map": "/My-Pet-Project/static/js/runtime-main.2bc14366.js.map",
+    "static/js/2.7c0e5aaf.chunk.js": "/My-Pet-Project/static/js/2.7c0e5aaf.chunk.js",
+    "static/js/2.7c0e5aaf.chunk.js.map": "/My-Pet-Project/static/js/2.7c0e5aaf.chunk.js.map",
+    "static/js/3.ad60cdde.chunk.js": "/My-Pet-Project/static/js/3.ad60cdde.chunk.js",
+    "static/js/3.ad60cdde.chunk.js.map": "/My-Pet-Project/static/js/3.ad60cdde.chunk.js.map",
+    "index.html": "/My-Pet-Project/index.html",
+    "static/css/main.477f503e.chunk.css.map": "/My-Pet-Project/static/css/main.477f503e.chunk.css.map",
+    "static/js/2.7c0e5aaf.chunk.js.LICENSE.txt": "/My-Pet-Project/static/js/2.7c0e5aaf.chunk.js.LICENSE.txt",
+    "static/media/preloader.ba1ee69b.gif": "/My-Pet-Project/static/media/preloader.ba1ee69b.gif"
   },
   "entrypoints": [
-    "static/js/runtime-main.5c852e59.js",
-    "static/js/2.8634c8da.chunk.js",
-    "static/css/main.41cc83ea.chunk.css",
-    "static/js/main.e8017383.chunk.js"
+    "static/js/runtime-main.2bc14366.js",
+    "static/js/2.7c0e5aaf.chunk.js",
+    "static/css/main.477f503e.chunk.css",
+    "static/js/main.a34e8aeb.chunk.js"
   ]
 }
