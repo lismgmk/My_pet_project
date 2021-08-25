@@ -3,9 +3,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {NavLink, Redirect} from 'react-router-dom';
 import {Dispatch} from 'redux';
 import {PATH} from '../../app/App';
-import {actionsForApp, StatusType} from '../../app/appReducer';
 import {AppRootStateType} from '../../app/store';
-import {actionsForPassword, forgotPassword} from "./forgotPasswordReduser";
+import {actionsForPassword, forgotPassword, forgotStatusType} from "./forgotPasswordReduser";
 import preloader from "../../image/preloader.gif";
 
 
@@ -15,12 +14,13 @@ export const ForgotPassword: React.FC = React.memo(() => {
         email: '',
         from: 'test-front-admin <ai73a@yandex.by>',
         message: `<div style="background-color: lime; padding: 15px;">
-  <a href='https://lismgmk.github.io/My-Pet-Project/set-password/$token$'>
+  <a href='https://lismgmk.github.io/My-pet-project/set-password/$token$'>
   password recower link
   </a></div>`
     });
 
-    const status = useSelector<AppRootStateType, StatusType>(state => state.app.status)
+    // @ts-ignore
+    const status = useSelector<AppRootStateType, forgotStatusType>(state => state.forgotPassword.status)
     const error = useSelector<AppRootStateType, string>(state => state.forgotPassword.forgotPasswordError);
 
     const dispatch: Dispatch<any> = useDispatch();
@@ -30,8 +30,8 @@ export const ForgotPassword: React.FC = React.memo(() => {
         e.preventDefault();
     };
     if (status === "succeeded") {
+
         dispatch(actionsForPassword.forgotPasswordError(''))
-        dispatch(actionsForApp.setAppStatus('idle'))
         return <Redirect to={{
             pathname: PATH.PET_CHECK_EMAIL,
             state: {email: data.email}

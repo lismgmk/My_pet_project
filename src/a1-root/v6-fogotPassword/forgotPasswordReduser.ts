@@ -3,7 +3,8 @@ import {forgotAPI, ForgotType, SetType} from "../../api/forgot-api/forgotAPI";
 import {actionsForApp, ThunkDispatchType, ThunkType} from "../../app/appReducer";
 
 const initialState = {
-    forgotPasswordError: ''
+    forgotPasswordError: '',
+    status: 'idle'
 };
 
 export const forgotPasswordReduser =
@@ -11,6 +12,8 @@ export const forgotPasswordReduser =
         switch (action.type) {
             case "PET-PROJECT/ROOT/FORGOT-PASSWORD/FORGOT-ERROR":
                 return {...state, forgotPasswordError: action.value};
+                case "PET-PROJECT/ROOT/FORGOT-PASSWORD/FORGOT-STATUS":
+                return {...state, status: action.value};
             default:
                 return state;
         }
@@ -20,19 +23,20 @@ export const forgotPasswordReduser =
 // actions
 export const actionsForPassword = {
     forgotPasswordError: (value: string) => ({type: "PET-PROJECT/ROOT/FORGOT-PASSWORD/FORGOT-ERROR", value} as const),
+    forgotStatus: (value: forgotStatusType) => ({type: "PET-PROJECT/ROOT/FORGOT-PASSWORD/FORGOT-STATUS", value} as const),
 };
 
 
 // thunks
 export const forgotPassword = (data: ForgotType): ThunkType => async (dispatch: ThunkDispatchType) => {
     try {
-        dispatch(actionsForApp.setAppStatus("loading"));
+        dispatch(actionsForPassword.forgotStatus("loading"));
         let res = await forgotAPI.forgot(data);
         if (res.status === 200) {
-            dispatch(actionsForApp.setAppStatus("succeeded"));
+            dispatch(actionsForPassword.forgotStatus("succeeded"));
         }
     } catch (e) {
-        dispatch(actionsForApp.setAppStatus("failed"));
+        dispatch(actionsForPassword.forgotStatus("failed"));
         const error = e.response
             ? e.response.data.error
             : (e.message + ', more details in the console');
@@ -63,3 +67,4 @@ export const getPassword = (data: SetType): ThunkType => async (dispatch: ThunkD
 // types
 export type forgotPasswordType = typeof initialState;
 export type ActionsForLoginType = InferActionType<typeof actionsForPassword>;
+export type forgotStatusType = "idle" | "loading" | "succeeded" | "failed";
