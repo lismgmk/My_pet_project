@@ -41,17 +41,3 @@ export const Header: React.FC<HeaderPropsType> = () => {
         </header>
     )
 }
-
-//
-// <NavLink to={PATH.PET_MAIN} activeClassName={style.activeLink}>Main</NavLink>
-// {
-//     isLoggedIn
-//     && <form onSubmit={handleSubmit}>
-//         <button type={"submit"} disabled={appState.status === "loading"}>Logout</button>
-//     </form>
-// }
-// <NavLink to={PATH.PET_REGISTRATION} activeClassName={style.activeLink}>Registration</NavLink>
-// <NavLink to={PATH.PET_PROFILE} activeClassName={style.activeLink}>Profile</NavLink>
-// <NavLink to={PATH.PET_PAGE404} activeClassName={style.activeLink}>Page_404</NavLink>
-// <NavLink to={PATH.PET_REBILD_PASSWORD} activeClassName={style.activeLink}>Rebild_password</NavLink>
-// <NavLink to={PATH.PET_NEW_PASSWORD} activeClassName={style.activeLink}>New_password</NavLink>
