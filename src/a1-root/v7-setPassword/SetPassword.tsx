@@ -16,7 +16,7 @@ export const SetPassword: React.FC = React.memo(() => {
         resetPasswordToken: ''
     });
 
-    const status = useSelector<AppRootStateType,StatusType>(state => state.setPassword.status);
+    const status = useSelector<AppRootStateType, StatusType>(state => state.setPassword.status);
     const error = useSelector<AppRootStateType, string | null>(state => state.setPassword.setPasswordError);
 
     const dispatch: Dispatch<any> = useDispatch();
@@ -50,7 +50,11 @@ export const SetPassword: React.FC = React.memo(() => {
                         value={data.password}
                         placeholder='password'
                         onChange={
-                            (e) => setData({resetPasswordToken: token, password: e.target.value})
+                            (e) => setData({
+                                    resetPasswordToken: token,
+                                    password: e.target.value
+                                }
+                            )
                         }
                     />
                 </div>
