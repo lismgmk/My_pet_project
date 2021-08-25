@@ -3,8 +3,8 @@ import style from "./Registration.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { registerTC, setRegistrationErrorAC } from "./registrationReduser";
-import {AppRootStateType} from "../../app/store";
 import {PATH} from "../../app/App";
+import {AppRootStateType} from "../../app/store";
 
 function Registration() {
   useEffect(() => {
