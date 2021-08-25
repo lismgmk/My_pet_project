@@ -4,28 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce0dd49d-8f7e-4bb5-84c9-3388fe39b3fb" name="Default Changelist" comment="Merge branch 'Ihor_Vasylenko'&#10;&#10;# Conflicts:&#10;#&#9;src/a1-root/App.tsx&#10;#&#9;src/a1-root/store.ts">
-      <change afterPath="$PROJECT_DIR$/src/a1-root/common/AuthModal /AuthModal.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a1-root/common/AuthModal /AuthModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a1-root/common/Preloader/Preloader.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a1-root/common/Preloader/Preloader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a1-root/v0-Header/Header.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a1-root/v0-Header/Header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a1-root/v8-Card/Card.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/CardSVG.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/UserSVG.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="ce0dd49d-8f7e-4bb5-84c9-3388fe39b3fb" name="Default Changelist" comment="lastest commit3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/App.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/store.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v3-Registration/Registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v3-Registration/Registration.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/preloader.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +29,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1xBbCOGHst7tsJh3X4Fv9S9ZTjJ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -85,6 +67,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
@@ -127,6 +110,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'Ihor_Vasylenko'&#10;&#10;# Conflicts:&#10;#&#9;src/a1-root/App.tsx&#10;#&#9;src/a1-root/store.ts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'Ihor_Vasylenko'&#10;&#10;# Conflicts:&#10;#&#9;src/a1-root/App.tsx&#10;#&#9;src/a1-root/store.ts" />
+    <MESSAGE value="loader" />
+    <option name="LAST_COMMIT_MESSAGE" value="loader" />
   </component>
 </project>
