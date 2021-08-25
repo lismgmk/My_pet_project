@@ -8,11 +8,12 @@ import {store} from "./app/store";
 import App from "./app/App";
 
 ReactDOM.render(
-    <HashRouter>
-        <Provider store={store}>
+    <Provider store={store}>
+        <HashRouter >
             <App/>
-        </Provider>
-    </HashRouter>,
+        </HashRouter>
+    </Provider>
+    ,
     document.getElementById('root')
 );
 
