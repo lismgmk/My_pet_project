@@ -1,4 +1,4 @@
-import React, {FormEvent, useState} from "react";
+import React, {FormEvent, FocusEvent, useState} from "react";
 import style from "./Login.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import {Dispatch} from "redux";
@@ -12,12 +12,56 @@ import {StatusType} from "../../app/appReducer";
 export const Login: React.FC = React.memo(() => {
 
     const [data, setData] = useState({email: '', password: '', rememberMe: false});
+    const [errors, setErrors] = useState({
+        emailValid: false,
+        passwordValid: false,
+        formErrors: {
+            email: '',
+            password: '',
+        },
+    });
 
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn);
     const status = useSelector<AppRootStateType, StatusType>(state => state.app.status);
     const error = useSelector<AppRootStateType, string | null>(state => state.app.error);
-
     const dispatch: Dispatch<any> = useDispatch();
+
+    const validate = (e: FocusEvent<HTMLInputElement>) => {
+        debugger
+        switch (e.currentTarget.type) {
+            case "email":
+                if (!e.currentTarget.value) {
+                    setErrors({...errors, emailValid: true, formErrors: {...errors.formErrors, email: "Required"}});
+                } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(e.currentTarget.value)) {
+                    setErrors({...errors, emailValid: true, formErrors: {...errors.formErrors, email: "Invalid email address"}});
+                }
+                break;
+            case "password":
+                if (!e.currentTarget.value) {
+                    setErrors({
+                        ...errors,
+                        passwordValid: true,
+                        formErrors: {...errors.formErrors, password: "Required"},
+                    });
+                } else if (e.currentTarget.value.length < 6) {
+                    setErrors({
+                        ...errors,
+                        passwordValid: true,
+                        formErrors: {...errors.formErrors, password: "Invalid password, minimum length 6 characters"},
+                    });
+                } else if (e.currentTarget.value.length > 16) {
+                    setErrors({
+                        ...errors,
+                        passwordValid: true,
+                        formErrors: {...errors.formErrors,
+                            password: "Invalid password, maximum length 16 characters"},
+                    });
+                }
+                break;
+            default:
+                break;
+        }
+    };
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         dispatch(login(data));
@@ -31,8 +75,9 @@ export const Login: React.FC = React.memo(() => {
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email" aria-required={true}>Email</label>
                 <input
+                    onBlur={(e) => validate(e)}
                     type="email"
                     id="email"
                     value={data.email}
@@ -40,11 +85,13 @@ export const Login: React.FC = React.memo(() => {
                         (e) => setData({...data, email: e.target.value})
                     }
                 />
+                {errors.emailValid ? <div style={{color: "red"}}>{errors.formErrors.email}</div> : null}
             </div>
 
             <div>
                 <label htmlFor="password">Password</label>
                 <input
+                    onBlur={(e) => validate(e)}
                     type="password"
                     id="password"
                     value={data.password}
@@ -52,6 +99,7 @@ export const Login: React.FC = React.memo(() => {
                         (e) => setData({...data, password: e.target.value})
                     }
                 />
+                {errors.passwordValid ? <div style={{color: "red"}}>{errors.formErrors.password}</div> : null}
             </div>
 
             <div>
