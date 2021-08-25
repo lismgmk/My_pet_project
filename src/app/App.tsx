@@ -1,7 +1,7 @@
-import React, {FormEvent, useEffect} from "react";
-import {Switch, Route, Redirect, NavLink} from "react-router-dom";
+import React, {useEffect} from "react";
+import {Redirect, Route, Switch} from "react-router-dom";
 import {Dispatch} from "redux";
-import style from "./App.module.css";
+import style from "./App.module.scss";
 import Main from "../a1-root/v1-Main/Main";
 import {Login} from "../a1-root/v2-Login/Login";
 import {Profile} from "../a1-root/v4-Profile/Profile";
@@ -10,65 +10,32 @@ import Page404 from "../a1-root/v5-Page_404/Page404";
 import RebildPassword from "../a1-root/v6-Rebild_password/RebildPassword";
 import NewPassword from "../a1-root/v7-New_password/NewPassword";
 import {useDispatch, useSelector} from "react-redux";
-import {AppInitialStateType, initializeApp} from "./appReducer";
+import {initializeApp} from "./appReducer";
 import {AppRootStateType} from "./store";
-import preloader from "../image/preloader.gif";
-import {logout} from "../a1-root/v2-Login/loginReduser";
+import {Preloader} from "../a1-root/common/Preloader/Preloader";
+import {Header} from "../a1-root/v0-Header/Header";
+import {Card} from "../a1-root/v8-Card/Card";
 
 
 function App() {
 
-    const appState = useSelector<AppRootStateType, AppInitialStateType>(state => state.app);
-    const isInitialized = useSelector<AppRootStateType, boolean>(state => state.app.isInitialized);
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn);
+    const isInitialized = useSelector<AppRootStateType, boolean>(state => state.app.isInitialized);
     const dispatch: Dispatch<any> = useDispatch();
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        dispatch(logout())
-        e.preventDefault()
-    };
 
     useEffect(() => {
         dispatch(initializeApp())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    if (!isInitialized) {
-        return (
-            <div
-                style={{position: 'fixed', top: '30%', textAlign: 'center', width: '100%'}}>
-                <img src={preloader} alt=""/>
-            </div>
-        );
-    }
 
     return (
-        <>
-            {
-                appState.status === "loading"
-                && <div
-                    style={{position: 'fixed', top: '30%', textAlign: 'center', width: '100%'}}>
-                    <img src={preloader} alt=""/>
-                </div>
-            }
-            <div className={style.App}>
-                <NavLink to={PATH.PET_MAIN} activeClassName={style.activeLink}>Main</NavLink>
-                {
-                    isLoggedIn
-                        ? <form onSubmit={handleSubmit}>
-                            <button type={"submit"} disabled={appState.status === "loading"}>Logout</button>
-                        </form>
-                        : <NavLink to={PATH.PET_LOGIN} activeClassName={style.activeLink}>Login</NavLink>
-                }
-                <NavLink to={PATH.PET_REGISTRATION} activeClassName={style.activeLink}>Registration</NavLink>
-                <NavLink to={PATH.PET_PROFILE} activeClassName={style.activeLink}>Profile</NavLink>
-                <NavLink to={PATH.PET_PAGE404} activeClassName={style.activeLink}>Page_404</NavLink>
-                <NavLink to={PATH.PET_REBILD_PASSWORD} activeClassName={style.activeLink}>Rebild_password</NavLink>
-                <NavLink to={PATH.PET_NEW_PASSWORD} activeClassName={style.activeLink}>New_password</NavLink>
-            </div>
+        <div className={style.App}>
+            {!isInitialized && <Preloader/>}
+            {isLoggedIn && <Header/>}
             <Switch>
-                <Route path={PATH.PET_NULL} exact render={() => <Redirect to={PATH.PET_MAIN}/>}/>
-
+                <Route path={PATH.PET_NULL} exact render={() => <Redirect to={PATH.PET_PROFILE}/>}/>
                 <Route exact path={PATH.PET_MAIN} render={() => <Main/>}/>
                 <Route exact path={PATH.PET_LOGIN} render={() => <Login/>}/>
                 <Route exact path={PATH.PET_REGISTRATION} render={() => <Registration/>}/>
@@ -76,10 +43,10 @@ function App() {
                 <Route exact path={PATH.PET_PAGE404} render={() => <Page404/>}/>
                 <Route exact path={PATH.PET_REBILD_PASSWORD} render={() => <RebildPassword/>}/>
                 <Route exact path={PATH.PET_NEW_PASSWORD} render={() => <NewPassword/>}/>
-
+                <Route exact path={PATH.PET_CARD} render={() => <Card/>}/>
                 <Redirect from={'*'} to={PATH.PET_PAGE404}/>
             </Switch>
-        </>
+        </div>
     )
 }
 
@@ -94,5 +61,6 @@ export const PATH = {
     PET_PAGE404: '/My-pet-project/page404',
     PET_REBILD_PASSWORD: '/My-pet-project/rebild-password',
     PET_NEW_PASSWORD: '/My-pet-project/new-password',
-    PET_NULL: '/'
+    PET_NULL: '/',
+    PET_CARD: '/My-pet-project/card'
 }
