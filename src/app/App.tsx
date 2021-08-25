@@ -95,7 +95,7 @@ export const PATH = {
     PET_PROFILE: '/My-pet-project/profile',
     PET_PAGE404: '/My-pet-project/page404',
     PET_FORGOT_PASSWORD: '/My-pet-project/forgot-password',
-    PET_SET_PASSWORD: '/My-pet-project/set-password/:token',
+    PET_SET_PASSWORD: '/My-pet-project/set-password/',
     PET_CHECK_EMAIL: '/My-pet-project/check-email',
     PET_NULL: '/'
 }
