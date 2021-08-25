@@ -1,33 +1,44 @@
 import React, {FormEvent, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {NavLink, Redirect} from 'react-router-dom';
+import {Redirect, useParams} from 'react-router-dom';
 import {Dispatch} from 'redux';
 import {PATH} from '../../app/App';
-import {StatusType} from '../../app/appReducer';
+import {actionsForApp, StatusType} from '../../app/appReducer';
 import {AppRootStateType} from '../../app/store';
-import {getPassword} from "../v6-fogotPassword/forgotPasswordReduser";
-import {SetType} from "../../api/forgot-api/forgotAPI";
+import {actionsForPassword, getPassword} from "../v6-fogotPassword/forgotPasswordReduser";
+import preloader from "../../image/preloader.gif";
 
 
 export const SetPassword: React.FC = React.memo(() => {
 
-    const [password, setPassword] = useState('');
+    const [data, setData] = useState({
+        password: '',
+        resetPasswordToken: ''
+    });
 
-    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn);
     const status = useSelector<AppRootStateType, StatusType>(state => state.app.status)
-    const error = useSelector<AppRootStateType, string | null>(state => state.app.error);
+    const error = useSelector<AppRootStateType, string | null>(state => state.forgotPassword.forgotPasswordError);
 
     const dispatch: Dispatch<any> = useDispatch();
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        // dispatch(getPassword(data:SetType));
         e.preventDefault();
+        dispatch(getPassword(data))
+
     };
+    const {token} = useParams<{ token: string }>();
 
-    if (isLoggedIn) {
-        <Redirect to={PATH.PET_PROFILE}/>
+    if (status === "succeeded") {
+        dispatch(actionsForPassword.forgotPasswordError(''))
+        dispatch(actionsForApp.setAppStatus('idle'))
+        return <Redirect to={PATH.PET_LOGIN}/>
     }
-
+    if (status === "loading") {
+        return <div
+            style={{position: 'fixed', top: '30%', textAlign: 'center', width: '100%'}}>
+            <img src={preloader} alt=""/>
+        </div>
+    }
     return (
         <div>
             <h2>It-incubator</h2>
@@ -37,23 +48,16 @@ export const SetPassword: React.FC = React.memo(() => {
                     <input
                         type="password"
                         id="password"
-                        value={password}
+                        value={data.password}
                         placeholder='password'
                         onChange={
-                            (e) => setPassword(e.target.value)
+                            (e) => setData({resetPasswordToken: token, password: e.target.value})
                         }
                     />
-                    <label htmlFor="email">Create new password and we will send you further instructions to
-                        email </label>
                 </div>
-
-
-                <button type={"submit"} disabled={status === "loading"}>Create new password</button>
+                <button type={"submit"}>Create new password</button>
                 <span style={{color: "red"}}>{error ? error : null}</span>
             </form>
-
-            <NavLink to={PATH.PET_LOGIN}>Did you remember your password?</NavLink>
-
 
         </div>
 

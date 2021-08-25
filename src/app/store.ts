@@ -7,7 +7,6 @@ import {registrationReduser} from "../a1-root/v3-Registration/registrationReduse
 import {LoginActionType, loginReducer} from "../a1-root/v2-Login/loginReduser";
 import {AppActionType, appReducer} from "./appReducer";
 import {ActionsForLoginType, forgotPasswordReduser} from "../a1-root/v6-fogotPassword/forgotPasswordReduser";
-import { setPasswordReduser } from "../a1-root/v7-setPassword/setPasswordReduser";
 
 
 const rootReducer = combineReducers({
@@ -17,8 +16,7 @@ const rootReducer = combineReducers({
     registration: registrationReduser,
     profile: profileReduser,
     page404: page404Reduser,
-    forgotPassword: forgotPasswordReduser,
-    setPassword: setPasswordReduser,
+    forgotPassword: forgotPasswordReduser
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));

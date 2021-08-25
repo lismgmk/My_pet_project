@@ -1,11 +1,10 @@
 import React, {FormEvent, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {Link, NavLink, Redirect} from 'react-router-dom';
+import {NavLink, Redirect} from 'react-router-dom';
 import {Dispatch} from 'redux';
 import {PATH} from '../../app/App';
-import {StatusType} from '../../app/appReducer';
+import {actionsForApp, StatusType} from '../../app/appReducer';
 import {AppRootStateType} from '../../app/store';
-import {login} from '../v2-Login/loginReduser';
 import {actionsForPassword, forgotPassword} from "./forgotPasswordReduser";
 import preloader from "../../image/preloader.gif";
 
@@ -15,33 +14,32 @@ export const ForgotPassword: React.FC = React.memo(() => {
     const [data, setData] = useState({
         email: '',
         from: 'test-front-admin <ai73a@yandex.by>',
-        message: `<div style="background-color: lime; padding: 15px; error: string;">
+        message: `<div style="background-color: lime; padding: 15px;">
   <a href='https://lismgmk.github.io/My-Pet-Project/set-password/$token$'>
   password recower link
   </a></div>`
     });
 
-    // const isSendEmail = useSelector<AppRootStateType, boolean>(state => state.forgotPassword.isSendEmail);
     const status = useSelector<AppRootStateType, StatusType>(state => state.app.status)
     const error = useSelector<AppRootStateType, string>(state => state.forgotPassword.forgotPasswordError);
 
     const dispatch: Dispatch<any> = useDispatch();
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        // console.log(data)
         dispatch(forgotPassword(data));
         e.preventDefault();
-        // dispatch(actionsForPassword.forgotPassword(true))
     };
-    if(status === "succeeded") {
-      return  <Redirect to={{
+    if (status === "succeeded") {
+        dispatch(actionsForPassword.forgotPasswordError(''))
+        dispatch(actionsForApp.setAppStatus('idle'))
+        return <Redirect to={{
             pathname: PATH.PET_CHECK_EMAIL,
             state: {email: data.email}
         }}
         />
     }
-    if (status === "loading"){
-      return  <div
+    if (status === "loading") {
+        return <div
             style={{position: 'fixed', top: '30%', textAlign: 'center', width: '100%'}}>
             <img src={preloader} alt=""/>
         </div>
@@ -63,15 +61,10 @@ export const ForgotPassword: React.FC = React.memo(() => {
                     />
                     <label htmlFor="email">Enter your email address and we will send you further instructions </label>
                 </div>
-
-
-                <button type={"submit"} >Send Instructions</button>
+                <button type={"submit"}>Send Instructions</button>
                 <span style={{color: "red"}}>{error ? error : null}</span>
             </form>
-
             <NavLink to={PATH.PET_LOGIN}>Did you remember your password?</NavLink>
-
-
         </div>
 
     );

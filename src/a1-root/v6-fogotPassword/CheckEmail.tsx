@@ -1,7 +1,5 @@
-import React, {FormEvent, useState } from 'react';
+import React from 'react';
 import {useLocation} from "react-router";
-
-
 
 export const CheckEmail: React.FC = React.memo(() => {
 
