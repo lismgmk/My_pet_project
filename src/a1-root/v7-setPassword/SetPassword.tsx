@@ -5,8 +5,8 @@ import {Dispatch} from 'redux';
 import {PATH} from '../../app/App';
 import {StatusType} from '../../app/appReducer';
 import {AppRootStateType} from '../../app/store';
-import {actionsForPassword, getPassword} from "../v6-fogotPassword/forgotPasswordReduser";
 import preloader from "../../image/preloader.gif";
+import {actionsForSetPassword, getPassword} from "./setPasswordReduser";
 
 
 export const SetPassword: React.FC = React.memo(() => {
@@ -16,8 +16,8 @@ export const SetPassword: React.FC = React.memo(() => {
         resetPasswordToken: ''
     });
 
-    const status = useSelector<AppRootStateType, StatusType>(state => state.app.status)
-    const error = useSelector<AppRootStateType, string | null>(state => state.forgotPassword.forgotPasswordError);
+    const status = useSelector<AppRootStateType,StatusType>(state => state.setPassword.status);
+    const error = useSelector<AppRootStateType, string | null>(state => state.setPassword.setPasswordError);
 
     const dispatch: Dispatch<any> = useDispatch();
 
@@ -29,7 +29,7 @@ export const SetPassword: React.FC = React.memo(() => {
     const {token} = useParams<{ token: string }>();
 
     if (status === "succeeded") {
-        dispatch(actionsForPassword.forgotPasswordError(''))
+        dispatch(actionsForSetPassword.setPasswordError(''))
         return <Redirect to={PATH.PET_LOGIN}/>
     }
     if (status === "loading") {
