@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Redirect, useParams} from 'react-router-dom';
 import {Dispatch} from 'redux';
 import {PATH} from '../../app/App';
-import {actionsForApp, StatusType} from '../../app/appReducer';
+import {StatusType} from '../../app/appReducer';
 import {AppRootStateType} from '../../app/store';
 import {actionsForPassword, getPassword} from "../v6-fogotPassword/forgotPasswordReduser";
 import preloader from "../../image/preloader.gif";
@@ -30,7 +30,6 @@ export const SetPassword: React.FC = React.memo(() => {
 
     if (status === "succeeded") {
         dispatch(actionsForPassword.forgotPasswordError(''))
-        dispatch(actionsForApp.setAppStatus('idle'))
         return <Redirect to={PATH.PET_LOGIN}/>
     }
     if (status === "loading") {
