@@ -1,10 +1,10 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import style from "./Registration.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { AppRootStateType } from "../store";
 import { Redirect, useHistory } from "react-router-dom";
-import { PATH } from "../App";
 import { registerTC, setRegistrationErrorAC } from "./registrationReduser";
+import {PATH} from "../../app/App";
+import {AppRootStateType} from "../../app/store";
 
 function Registration() {
   useEffect(() => {
