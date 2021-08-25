@@ -1,6 +1,6 @@
 import {CommonActionTypeForApp, InferActionType} from "../../app/store";
 import {forgotAPI, SetType} from "../../api/forgot-api/forgotAPI";
-import {actionsForApp, ThunkDispatchType, ThunkType} from "../../app/appReducer";
+import {ThunkDispatchType, ThunkType} from "../../app/appReducer";
 
 const initialState = {
     setPasswordError: '',
@@ -31,14 +31,13 @@ export const actionsForSetPassword = {
 
 export const getPassword = (data: SetType): ThunkType => async (dispatch: ThunkDispatchType) => {
     try {
-        dispatch(actionsForApp.setAppStatus("loading"));
+        dispatch(actionsForSetPassword.setStatus("loading"));
         let res = await forgotAPI.setNewPassword(data);
         if (res.status === 200) {
-            dispatch(actionsForApp.setAppStatus("succeeded"));
+            dispatch(actionsForSetPassword.setStatus("succeeded"));
         }
     } catch (e) {
-        console.log(e.response)
-        dispatch(actionsForApp.setAppStatus("failed"));
+        dispatch(actionsForSetPassword.setStatus("failed"));
         const error = e.response
             ? e.response.data.error
             : (e.message + ', more details in the console');
