@@ -7,7 +7,7 @@ import {AppRootStateType} from "../../app/store";
 import {PATH} from "../../app/App";
 import {login} from "./loginReduser";
 import {StatusType} from "../../app/appReducer";
-import {AuthModal} from "../common/AuthModal /AuthModal";
+import {AuthModal} from "../common/AuthModal/AuthModal";
 import {InputField} from "../common/InputField/InputField";
 import Checkbox from "../common/Checkbox/Checkbox";
 import {Button} from "../common/Button/Button";
