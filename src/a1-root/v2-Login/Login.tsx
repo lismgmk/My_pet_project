@@ -1,12 +1,17 @@
 import React, {FormEvent, FocusEvent, useState} from "react";
-import style from "./Login.module.css";
+import style from "./Login.module.scss";
 import {useDispatch, useSelector} from "react-redux";
 import {Dispatch} from "redux";
-import {Redirect} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import {AppRootStateType} from "../../app/store";
 import {PATH} from "../../app/App";
 import {login} from "./loginReduser";
 import {StatusType} from "../../app/appReducer";
+import {AuthModal} from "../common/AuthModal /AuthModal";
+import {InputField} from "../common/InputField/InputField";
+import Checkbox from "../common/Checkbox/Checkbox";
+import {Button} from "../common/Button/Button";
+import {Error} from "../common/Error/Error";
 
 
 export const Login: React.FC = React.memo(() => {
@@ -27,13 +32,16 @@ export const Login: React.FC = React.memo(() => {
     const dispatch: Dispatch<any> = useDispatch();
 
     const validate = (e: FocusEvent<HTMLInputElement>) => {
-        debugger
         switch (e.currentTarget.type) {
             case "email":
                 if (!e.currentTarget.value) {
                     setErrors({...errors, emailValid: true, formErrors: {...errors.formErrors, email: "Required"}});
                 } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(e.currentTarget.value)) {
-                    setErrors({...errors, emailValid: true, formErrors: {...errors.formErrors, email: "Invalid email address"}});
+                    setErrors({
+                        ...errors,
+                        emailValid: true,
+                        formErrors: {...errors.formErrors, email: "Invalid email address"}
+                    });
                 }
                 break;
             case "password":
@@ -53,8 +61,10 @@ export const Login: React.FC = React.memo(() => {
                     setErrors({
                         ...errors,
                         passwordValid: true,
-                        formErrors: {...errors.formErrors,
-                            password: "Invalid password, maximum length 16 characters"},
+                        formErrors: {
+                            ...errors.formErrors,
+                            password: "Invalid password, maximum length 16 characters"
+                        },
                     });
                 }
                 break;
@@ -73,48 +83,47 @@ export const Login: React.FC = React.memo(() => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="email" aria-required={true}>Email</label>
-                <input
-                    onBlur={(e) => validate(e)}
-                    type="email"
-                    id="email"
+        <AuthModal subtitle={'Sign In'}>
+            <form onSubmit={handleSubmit}>
+                <InputField
+                    label={'Email'}
+                    type={'email'}
                     value={data.email}
-                    onChange={
-                        (e) => setData({...data, email: e.target.value})
-                    }
+                    onBlur={e => validate(e)}
+                    onChange={e => setData({...data, email: e.target.value})}
+                    error={errors.emailValid ? errors.formErrors.email : null}
                 />
-                {errors.emailValid ? <div style={{color: "red"}}>{errors.formErrors.email}</div> : null}
-            </div>
 
-            <div>
-                <label htmlFor="password">Password</label>
-                <input
-                    onBlur={(e) => validate(e)}
+                <InputField
+                    label={'Password'}
                     type="password"
-                    id="password"
+                    onBlur={e => validate(e)}
                     value={data.password}
-                    onChange={
-                        (e) => setData({...data, password: e.target.value})
-                    }
+                    onChange={e => setData({...data, password: e.target.value})}
+                    error={errors.passwordValid ? errors.formErrors.password : null}
                 />
-                {errors.passwordValid ? <div style={{color: "red"}}>{errors.formErrors.password}</div> : null}
-            </div>
 
-            <div>
-                <label htmlFor="rememberMe">rememberMe</label>
-                <input
-                    type="checkBox"
-                    id="checkBox"
-                    checked={data.rememberMe}
-                    onChange={
-                        (e) => setData({...data, rememberMe: e.target.checked})
-                    }
-                />
+                <div className={style.checkbox_block}>
+                    <Checkbox
+                        checked={data.rememberMe}
+                        onChange={e => setData({...data, rememberMe: e.target.checked})}
+                    >Remember Me</Checkbox>
+                    <NavLink to={PATH.PET_FORGOT_PASSWORD}>Forgot Password</NavLink>
+                </div>
+                <Error error={error}/>
+                <div className={style.button_block}>
+                    <Button
+                        color='dark-blue'
+                        rounded
+                        type={"submit"}
+                        disabled={status === "loading"}
+                    >Login</Button>
+                </div>
+            </form>
+            <div className={style.bottom}>
+                <p>Don’t have an account?</p>
+                <NavLink to={PATH.PET_REGISTRATION}>Sign Up</NavLink>
             </div>
-            <button type={"submit"} disabled={status === "loading"}>Login</button>
-            <span style={{color: "red"}}>{ error ? error : null }</span>
-        </form>
+        </AuthModal>
     );
 })

@@ -5,7 +5,12 @@ import {Dispatch} from 'redux';
 import {PATH} from '../../app/App';
 import {AppRootStateType} from '../../app/store';
 import {actionsForPassword, forgotPassword, forgotStatusType} from "./forgotPasswordReduser";
-import preloader from "../../image/preloader.gif";
+import {Preloader} from "../common/Preloader/Preloader";
+import {AuthModal} from "../common/AuthModal /AuthModal";
+import {InputField} from "../common/InputField/InputField";
+import style from "./ForgotPasswoed.module.scss";
+import {Button} from "../common/Button/Button";
+import {Error} from "../common/Error/Error";
 
 
 export const ForgotPassword: React.FC = React.memo(() => {
@@ -38,33 +43,32 @@ export const ForgotPassword: React.FC = React.memo(() => {
         />
     }
     if (status === "loading") {
-        return <div
-            style={{position: 'fixed', top: '30%', textAlign: 'center', width: '100%'}}>
-            <img src={preloader} alt=""/>
-        </div>
+        return <Preloader/>
     }
     return (
-        <div>
-            <h2>It-incubator</h2>
-            <h3>Forgot your password?</h3>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <input
-                        type="email"
-                        id="email"
-                        value={data.email}
-                        placeholder='Email'
-                        onChange={
-                            (e) => setData({...data, email: e.target.value})
-                        }
-                    />
-                    <label htmlFor="email">Enter your email address and we will send you further instructions </label>
-                </div>
-                <button type={"submit"}>Send Instructions</button>
-                <span style={{color: "red"}}>{error ? error : null}</span>
+        <AuthModal subtitle='Forgot your password?'>
+            <form onSubmit={handleSubmit} className={style.forgot}>
+                <InputField
+                    label='Email'
+                    type="email"
+                    id="email"
+                    value={data.email}
+                    onChange={e => setData({...data, email: e.target.value})}
+                />
+                <p>Enter your email address and we will send you further instructions</p>
+                <Error error={error}/>
+                <Button
+                    rounded
+                    color='dark-blue'
+                    type={"submit"}
+                >Send Instructions</Button>
+
             </form>
-            <NavLink to={PATH.PET_LOGIN}>Did you remember your password?</NavLink>
-        </div>
+            <div className={style.forgotBottom}>
+                <p>Did you remember your password?</p>
+                <NavLink to={PATH.PET_LOGIN}>Try logging in</NavLink>
+            </div>
+        </AuthModal>
 
     );
 })
