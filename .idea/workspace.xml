@@ -5,38 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce0dd49d-8f7e-4bb5-84c9-3388fe39b3fb" name="Default Changelist" comment="Layout all pages">
-      <change afterPath="$PROJECT_DIR$/src/a1-root/common/Button/Button.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a1-root/common/Button/Button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a1-root/common/Checkbox/Checkbox.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a1-root/common/Checkbox/Checkbox.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a1-root/common/Checkbox/check.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a1-root/common/Error/Error.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a1-root/common/Error/Error.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a1-root/common/Headings/H1.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a1-root/common/Headings/H2.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a1-root/common/Headings/Headings.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a1-root/common/InputField/InputField.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a1-root/common/InputField/InputField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icon/EmailSVG.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/common/AuthModal /AuthModal.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/common/AuthModal /AuthModal.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/common/AuthModal /AuthModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/common/AuthModal /AuthModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v0-Header/Header.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v0-Header/Header.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v0-Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v0-Header/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v1-Main/common/c1-SuperInputText/AlternativeSuperInputText.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v1-Main/common/c1-SuperInputText/SuperInputText.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v1-Main/common/c1-SuperInputText/SuperInputText.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v2-Login/Login.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v2-Login/Login.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v2-Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v2-Login/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v3-Registration/Registration.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v3-Registration/Registration.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v3-Registration/Registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v3-Registration/Registration.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/CheckEmail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/CheckEmail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/ForgotPasswoed.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/ForgotPasswoed.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/ForgotPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v6-fogotPassword/ForgotPassword.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v7-setPassword/SetPassword.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v7-setPassword/SetPassword.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/a1-root/v7-setPassword/SetPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/v7-setPassword/SetPassword.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/a1-root/common/Button/Button.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/a1-root/common/Button/Button.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +35,14 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="lismgmk" />
+        <option name="repository" value="My_pet_project" />
+      </RepoCoordinatesHolder>
+    </option>
   </component>
   <component name="ProjectId" id="1xBbCOGHst7tsJh3X4Fv9S9ZTjJ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -132,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629831622515</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Layout all pages">
+      <created>1629913752547</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1629913752547</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,5 +139,17 @@
     <MESSAGE value="Merge branch 'Ihor_Vasylenko'&#10;&#10;# Conflicts:&#10;#&#9;src/a1-root/App.tsx&#10;#&#9;src/a1-root/store.ts" />
     <MESSAGE value="Layout all pages" />
     <option name="LAST_COMMIT_MESSAGE" value="Layout all pages" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/a1-root/v2-Login/Login.tsx</url>
+          <line>82</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

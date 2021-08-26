@@ -2,6 +2,10 @@
   border: none;
   width: 100%;
 
+  &:disabled {
+    opacity: 0.6;
+  }
+
   &__rounded {
     height: 35px;
     border-radius: 30px;
