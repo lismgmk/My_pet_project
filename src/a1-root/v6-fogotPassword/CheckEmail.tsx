@@ -1,5 +1,9 @@
 import React from 'react';
 import {useLocation} from "react-router";
+import {AuthModal} from "../common/AuthModal/AuthModal";
+import {EmailSvg} from "../../assets/icon/EmailSVG";
+import style from "./ForgotPasswoed.module.scss";
+
 
 export const CheckEmail: React.FC = React.memo(() => {
 
@@ -8,11 +12,11 @@ export const CheckEmail: React.FC = React.memo(() => {
     let mail = location.state.email
 
     return (
-      <div>
-          <h2>It-incubator</h2>
-          <h3>Check Email</h3>
-          <div>{`We’ve sent an Email with instructions to ${mail}`}</div>
-      </div>
+        <AuthModal subtitle='Check Email'>
+            <div className={style.check}><EmailSvg/>
+                <div className={style.check__email}>{`We’ve sent an Email with instructions to ${mail}`}</div>
+            </div>
+        </AuthModal>
 
-  );
+    );
 })

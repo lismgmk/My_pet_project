@@ -5,8 +5,13 @@ import {Dispatch} from 'redux';
 import {PATH} from '../../app/App';
 import {StatusType} from '../../app/appReducer';
 import {AppRootStateType} from '../../app/store';
-import preloader from "../../image/preloader.gif";
 import {actionsForSetPassword, getPassword} from "./setPasswordReduser";
+import {Preloader} from "../common/Preloader/Preloader";
+import {AuthModal} from "../common/AuthModal/AuthModal";
+import {InputField} from "../common/InputField/InputField";
+import {Error} from "../common/Error/Error";
+import style from "./SetPassword.module.scss";
+import {Button} from "../common/Button/Button";
 
 
 export const SetPassword: React.FC = React.memo(() => {
@@ -33,36 +38,28 @@ export const SetPassword: React.FC = React.memo(() => {
         return <Redirect to={PATH.PET_LOGIN}/>
     }
     if (status === "loading") {
-        return <div
-            style={{position: 'fixed', top: '30%', textAlign: 'center', width: '100%'}}>
-            <img src={preloader} alt=""/>
-        </div>
+        return <Preloader/>
     }
     return (
-        <div>
-            <h2>It-incubator</h2>
-            <h3>Create new password</h3>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <input
-                        type="password"
-                        id="password"
-                        value={data.password}
-                        placeholder='password'
-                        onChange={
-                            (e) => setData({
-                                    resetPasswordToken: token,
-                                    password: e.target.value
-                                }
-                            )
-                        }
-                    />
-                </div>
-                <button type={"submit"}>Create new password</button>
-                <span style={{color: "red"}}>{error ? error : null}</span>
-            </form>
+        <AuthModal subtitle='Create new password'>
+            <form onSubmit={handleSubmit} className={style.setPassword}>
+                <InputField
+                    label='New password'
+                    type="password"
+                    id="password"
+                    value={data.password}
+                    onChange={e => setData({resetPasswordToken: token, password: e.target.value})}
+                />
 
-        </div>
+                <p>Create new password and we will send you further instructions to email</p>
+                <Error error={error}/>
+                <Button
+                    type={"submit"}
+                    rounded
+                    color='dark-blue'
+                >Create new password</Button>
+            </form>
+        </AuthModal>
 
     );
 })
