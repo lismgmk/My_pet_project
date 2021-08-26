@@ -14,12 +14,11 @@ export const ForgotPassword: React.FC = React.memo(() => {
         email: '',
         from: 'test-front-admin <ai73a@yandex.by>',
         message: `<div style="background-color: lime; padding: 15px;">
-  <a href='https://lismgmk.github.io/My-pet-project/set-password/$token$'>
-  password recower link
+  <a href='lismgmk.github.io/My_pet_project/#/set-password/$token$'>
+  Password recower link
   </a></div>`
     });
 
-    // @ts-ignore
     const status = useSelector<AppRootStateType, forgotStatusType>(state => state.forgotPassword.status)
     const error = useSelector<AppRootStateType, string>(state => state.forgotPassword.forgotPasswordError);
 
