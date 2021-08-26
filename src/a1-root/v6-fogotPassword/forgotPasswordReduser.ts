@@ -1,11 +1,11 @@
 import {CommonActionTypeForApp, InferActionType} from "../../app/store";
-import {forgotAPI, ForgotType, SetType} from "../../api/forgot-api/forgotAPI";
-import {actionsForApp, ThunkDispatchType, ThunkType} from "../../app/appReducer";
+import {forgotAPI, ForgotType} from "../../api/forgot-api/forgotAPI";
+import {ThunkDispatchType, ThunkType} from "../../app/appReducer";
 
 const initialState = {
     forgotPasswordError: '',
     status: 'idle'
-};
+} as forgotPasswordType
 
 export const forgotPasswordReduser =
     (state: forgotPasswordType = initialState, action: CommonActionTypeForApp): forgotPasswordType => {
@@ -45,26 +45,10 @@ export const forgotPassword = (data: ForgotType): ThunkType => async (dispatch: 
     }
 };
 
-
-export const getPassword = (data: SetType): ThunkType => async (dispatch: ThunkDispatchType) => {
-    try {
-        dispatch(actionsForApp.setAppStatus("loading"));
-        let res = await forgotAPI.setNewPassword(data);
-        if (res.status === 200) {
-            dispatch(actionsForApp.setAppStatus("succeeded"));
-        }
-    } catch (e) {
-        console.log(e.response)
-        dispatch(actionsForApp.setAppStatus("failed"));
-        const error = e.response
-            ? e.response.data.error
-            : (e.message + ', more details in the console');
-        dispatch(actionsForPassword.forgotPasswordError(error))
-    }
-};
-
-
 // types
-export type forgotPasswordType = typeof initialState;
-export type ActionsForLoginType = InferActionType<typeof actionsForPassword>;
+export type forgotPasswordType =  {
+    forgotPasswordError: string
+    status: forgotStatusType
+}
+export type ActionsForFogotPasswordType = InferActionType<typeof actionsForPassword>;
 export type forgotStatusType = "idle" | "loading" | "succeeded" | "failed";

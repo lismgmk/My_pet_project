@@ -36,7 +36,6 @@ function App() {
             {!isInitialized && <Preloader/>}
             {isLoggedIn && <Header/>}
             <Switch>
-                <Route path={PATH.PET_NULL} exact render={() => <Redirect to={PATH.PET_PROFILE}/>}/>
                 <Route exact path={PATH.PET_MAIN} render={() => <Main/>}/>
                 <Route exact path={PATH.PET_LOGIN} render={() => <Login/>}/>
                 <Route exact path={PATH.PET_REGISTRATION} render={() => <Registration/>}/>
@@ -56,15 +55,13 @@ function App() {
 export default App;
 
 export const PATH = {
-    PET: '/',
-    PET_MAIN: '/My-pet-project/main',
-    PET_LOGIN: '/My-pet-project/login',
-    PET_REGISTRATION: '/My-pet-project/registration',
-    PET_PROFILE: '/My-pet-project/profile',
-    PET_PAGE404: '/My-pet-project/page404',
-    PET_FORGOT_PASSWORD: '/My-pet-project/forgot-password',
-    PET_SET_PASSWORD: '/My-pet-project/set-password/:token',
-    PET_CHECK_EMAIL: '/My-pet-project/check-email',
-    PET_NULL: '/',
+    PET_MAIN: '/main',
+    PET_LOGIN: '/login',
+    PET_REGISTRATION: '/registration',
+    PET_PROFILE: '/profile',
+    PET_PAGE404: '/page404',
+    PET_FORGOT_PASSWORD: '/forgot-password',
+    PET_SET_PASSWORD: '/set-password/:token',
+    PET_CHECK_EMAIL: '/check-email',
     PET_CARD: '/My-pet-project/card'
 }
