@@ -55,16 +55,7 @@ export const Login: React.FC = React.memo(() => {
                     setErrors({
                         ...errors,
                         passwordValid: true,
-                        formErrors: {...errors.formErrors, password: "Invalid password, minimum length 6 characters"},
-                    });
-                } else if (e.currentTarget.value.length > 16) {
-                    setErrors({
-                        ...errors,
-                        passwordValid: true,
-                        formErrors: {
-                            ...errors.formErrors,
-                            password: "Invalid password, maximum length 16 characters"
-                        },
+                        formErrors: {...errors.formErrors, password: "Invalid password, minimum length 8 characters"},
                     });
                 }
                 break;

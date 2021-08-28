@@ -7,7 +7,7 @@ export const forgotAPI = {
         return instance.post<ForgotResponseType>("auth/forgot", data);
     },
     setNewPassword(data: SetType) {
-        return instance.post<ForgotResponseType>("auth/set-new-password", data);
+        return instance.post<ResponseType>("auth/set-new-password", data);
     },
 };
 
@@ -18,10 +18,15 @@ export type ForgotType = {
     from: string
     message: string
 };
-
-export type ForgotResponseType = {
+export type ResponseType = {
     info: string
     error: string
+}
+
+export type ForgotResponseType =ResponseType & {
+    answer: boolean
+    html: boolean
+    success: boolean
 };
 export type SetType = {
     password: string
