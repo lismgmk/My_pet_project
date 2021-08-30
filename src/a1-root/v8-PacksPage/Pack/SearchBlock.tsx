@@ -15,7 +15,7 @@ export const SearchBlock: React.FC<SearchBlockPropsType> = () => {
             <input type="text" placeholder='Search'/>
          </div>
          <div className={s.pack__btn}>
-            <Button rounded={true} color='dark-blue'>Add new pack</Button>
+            <Button rounded color='dark-blue'>Add new pack</Button>
          </div>
       </div>
    )

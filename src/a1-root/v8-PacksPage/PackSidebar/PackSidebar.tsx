@@ -8,7 +8,7 @@ type PackSidebarPropsType = {
 
 export const PackSidebar: React.FC<PackSidebarPropsType> = () => {
 
-   const [active, setActive] = useState(true);
+   const [active, setActive] = useState(false);
 
    const btnMyClassName = active ? `${s.sidebar__btnItem} ${s.active}` : s.sidebar__btnItem
    const btnAllClassName = !active ? `${s.sidebar__btnItem} ${s.active}` : s.sidebar__btnItem
