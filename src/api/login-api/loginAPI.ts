@@ -34,6 +34,9 @@ export type UserDataType = {
     isAdmin: boolean
     verified: boolean
     rememberMe: boolean
+    token: string
+    tokenDeathTime: Date
+    __v: number
 };
 type ErrorType = { error?: string };
 export type LoginResponseType = UserDataType & ErrorType;

@@ -14,6 +14,7 @@ import style from "./SetPassword.module.scss";
 import {Button} from "../common/Button/Button";
 
 
+
 export const SetPassword: React.FC = React.memo(() => {
 
     const [data, setData] = useState({

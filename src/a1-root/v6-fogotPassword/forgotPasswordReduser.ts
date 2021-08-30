@@ -31,10 +31,8 @@ export const actionsForPassword = {
 export const forgotPassword = (data: ForgotType): ThunkType => async (dispatch: ThunkDispatchType) => {
     try {
         dispatch(actionsForPassword.forgotStatus("loading"));
-        let res = await forgotAPI.forgot(data);
-        if (res.status === 200) {
-            dispatch(actionsForPassword.forgotStatus("succeeded"));
-        }
+        await forgotAPI.forgot(data);
+        dispatch(actionsForPassword.forgotStatus("succeeded"));
     } catch (e) {
         dispatch(actionsForPassword.forgotStatus("failed"));
         const error = e.response
