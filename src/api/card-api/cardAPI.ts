@@ -32,7 +32,7 @@ export const cardAPI = {
 
 
 // types
-type NewlyCreatedCardType = {
+export type NewlyCreatedCardType = {
     cardsPack_id: string
     question?: string
     answer?: string
@@ -45,12 +45,12 @@ type NewlyCreatedCardType = {
     answerVideo?: string
     type: string
 };
-type UpdatedCardDataType = {
+export type UpdatedCardDataType = {
     _id: string
-    question?: string
-    comments?: string
+    question?: any
+    comments?: any
 };
-type RequestGetCardType = {
+export type RequestGetCardType = {
     cardAnswer?: string
     cardQuestion?: string
     cardsPack_id: string
@@ -60,7 +60,7 @@ type RequestGetCardType = {
     page?: string
     pageCount?: string
 };
-type CardType = {
+export type CardType = {
     _id: string
     user_id: string
     name: string
@@ -73,14 +73,27 @@ type CardType = {
     created: string
     updated: string
     __v: number
+    answer: string
+    answerImg: string
+    answerVideo: string
+    cardsPack_id: string
+    comments: string
+    more_id: string
+    question: string
+    questionImg: string
+    questionVideo: string
+
 };
 type CardResponseType = {
     cardPacks: CardType[]
-    cardPacksTotalCount: number
-    maxCardsCount: number
-    minCardsCount: number
+    cardsTotalCount: number
+    maxGrade: number
+    minGrade: number
+    packUserId: string
     page: number
     pageCount: number
+    token: string
+    tokenDeathTime: number
 };
 
 

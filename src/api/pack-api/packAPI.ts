@@ -3,7 +3,7 @@ import {instance} from "../login-api/loginAPI";
 
 // api
 export const packAPI = {
-    createNewCardsPack(data: CardsPackType) {
+    createNewCardsPack(data: NewCardsPackType) {
         return instance.post<{}>("cards/pack", {data});
     },
     removeCardsPack(id: string) {
@@ -13,7 +13,7 @@ export const packAPI = {
         return instance.put<{}>("cards/pack", {_id: data._id, name: data.name});
     },
     getCardsPack(data: RequestGetCardsPackType) {
-        return instance.get<CardsPackResponseType>("cards/pack", {
+        return instance.get<ResponseCardsPackType>("cards/pack", {
             params: {
                 packName: data.packName,
                 min: data.min,
@@ -29,7 +29,7 @@ export const packAPI = {
 
 
 // types
-type CardsPackType = {
+export type NewCardsPackType = {
     name?: string
     path?: string
     grade?: number
@@ -39,11 +39,11 @@ type CardsPackType = {
     private?: boolean
     type?: "pack" | "folder"
 };
-type UpdatedPackDataType = {
+export type UpdatedPackDataType = {
     _id: string
     name?: string
 };
-type RequestGetCardsPackType = {
+export type RequestGetCardsPackType = {
     packName?: string
     min?: number
     max?: number
@@ -52,7 +52,7 @@ type RequestGetCardsPackType = {
     pageCount?: number
     user_id?: string
 };
-type CardsPackResponseType = {
+export type CardsPackType = {
     "_id": string
     "user_id": string
     "user_name": string
@@ -69,5 +69,13 @@ type CardsPackResponseType = {
     "more_id": string
     "__v": number
 };
+type ResponseCardsPackType = {
+    cardPacks: CardsPackType[]
+    cardPacksTotalCount: number
+    maxCardsCount: number
+    minCardsCount: number
+    page: number
+    pageCount: number
+}
 
 
