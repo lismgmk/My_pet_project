@@ -1,6 +1,5 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunk from "redux-thunk";
-import {mainReduser} from "../a1-root/v1-Main/mainReduser";
 import {profileReduser} from "../a1-root/v4-Profile/profileReduser";
 import {page404Reduser} from "../a1-root/v5-Page_404/pag404Reduser";
 import {
@@ -14,13 +13,12 @@ import {
     forgotPasswordReduser
 } from "../a1-root/v6-fogotPassword/forgotPasswordReduser";
 import {ActionsForSetPasswordType, setPasswordReduser} from "../a1-root/v7-setPassword/setPasswordReduser";
-import {PackActionType, packReducer} from "../a1-root/v1-Main/packReduser";
-import {CardsActionType, cardsReducer} from "../a1-root/v1-Main/cardsReduser";
+import {PackActionType, packReducer} from "../a1-root/v8-Pack/packReduser";
+import {CardsActionType, cardsReducer} from "../a1-root/v8-Pack/cardsReduser";
 
 
 const rootReducer = combineReducers({
     app: appReducer,
-    main: mainReduser,
     login: loginReducer,
     registration: registrationReducer,
     profile: profileReduser,

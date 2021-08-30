@@ -3,7 +3,7 @@ import {AppRootStateType, CommonActionTypeForApp, InferActionType} from "../../a
 import {
     cardAPI, CardType, NewlyCreatedCardType, RequestGetCardType, UpdatedCardDataType
 } from "../../api/card-api/cardAPI";
-import {handleError} from "../utills/error-utils/ErrorUtils";
+import {ErrorType, handleError} from "../utills/error-utils/ErrorUtils";
 
 
 const initialState = {} as CardsStateType;
@@ -13,11 +13,6 @@ export const cardsReducer =
         switch (action.type) {
             case "PET-PROJECT/ROOT/CARD/REMOVE-CARD":
                 return {...state, [action.packId]: state[action.packId].filter(c => c._id !== action.cardId)};
-            // case "PET-PROJECT/ROOT/CARD/CREATE-CARD":
-            //     return {
-            //         ...state,
-            //         [action.packId]: [{...action.card, firstProperty: 1, secondProperty: 2}, ...state[action.packId]]
-            //     };
             case "PET-PROJECT/ROOT/CARD/UPDATE-CARD":
                 return {
                     ...state,
@@ -70,11 +65,6 @@ export const actionsForCards = {
         packId,
         cardId,
     } as const),
-    // createCard: (packId: string, card: CardType) => ({
-    //     type: "PET-PROJECT/ROOT/CARD/CREATE-CARD",
-    //     packId,
-    //     card,
-    // } as const),
     updateCard: (packId: string, cardId: string, model: UpdateCardModelType) => ({
         type: "PET-PROJECT/ROOT/CARD/UPDATE-CARD",
         packId,
@@ -108,7 +98,7 @@ export const fetchCard = (data: RequestGetCardType): ThunkType => async (dispatc
         let res = await cardAPI.getCard(data);
         dispatch(actionsForCards.setCards(data.cardsPack_id, res.data.cardPacks));
         dispatch(actionsForApp.setAppStatus("succeeded"));
-    } catch(e) {
+    } catch(e: any) {
         handleError(e, dispatch);
     }
 };
@@ -119,7 +109,7 @@ export const removeCard = (packId: string, cardId: string): ThunkType => async (
         await cardAPI.removeCard(cardId);
         dispatch(actionsForCards.removeCard(packId, cardId));
         dispatch(actionsForApp.setAppStatus("idle"));
-    } catch(e) {
+    } catch(e: any) {
         handleError(e, dispatch);
     }
 };
@@ -129,11 +119,10 @@ export const createCard = (dataForNewCard: NewlyCreatedCardType, dataForRequest:
     try {
         dispatch(actionsForApp.setAppStatus("loading"));
         await cardAPI.createCard(dataForNewCard);
-        // dispatch(actionsForCards.createCard());
         let res = await cardAPI.getCard(dataForRequest);
         dispatch(actionsForCards.setCards(dataForRequest.cardsPack_id, res.data.cardPacks));
         dispatch(actionsForApp.setAppStatus("succeeded"));
-    } catch(e) {
+    } catch(e: any) {
         handleError(e, dispatch);
     }
 };
@@ -157,7 +146,7 @@ export const updateCard = (packId: string, cardId: string, domainModel: UpdateCa
             await  cardAPI.updateCardData(apiModel);
             dispatch(actionsForCards.updateCard(packId, cardId, apiModel));
             dispatch(actionsForApp.setAppStatus("idle"));
-        } catch(e) {
+        } catch(e: any) {
             handleError(e, dispatch);
         }
     };
