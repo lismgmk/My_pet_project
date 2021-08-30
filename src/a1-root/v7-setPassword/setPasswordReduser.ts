@@ -34,7 +34,7 @@ export const getPassword = (data: SetType): ThunkType => async (dispatch: ThunkD
         dispatch(actionsForSetPassword.setStatus("loading"));
         let res = await forgotAPI.setNewPassword(data);
         dispatch(actionsForSetPassword.setStatus("succeeded"));
-    } catch (e) {
+    } catch (e: any) {
         dispatch(actionsForSetPassword.setStatus("failed"));
         const error = e.response
             ? e.response.data.error

@@ -9,7 +9,7 @@ export const handleError = (error: ErrorType, dispatch: Dispatch<CommonActionTyp
         ? error.response.data.error
         : (error.message + ', more details in the console')));
 };
-type ErrorType = {
+export type ErrorType = {
     response: {
         data: {
             error: string
