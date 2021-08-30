@@ -16,6 +16,9 @@ const initialState = {
     updated: {},
     created: {},
     isLoggedIn: false,
+    token: '',
+    tokenDeathTime: {},
+    __v: 0,
 } as UserDataDomainType;
 
 export const loginReducer =
@@ -26,7 +29,22 @@ export const loginReducer =
             case "PET-PROJECT/ROOT/LOGIN/UPDATE-USER-DATA":
                 return {...state,};
             case "PET-PROJECT/ROOT/LOGIN/GET-USER":
-                return {...state, name: action.data.name, avatar: action.data.avatar};
+                return {
+                    ...state,
+                    name: action.data.name,
+                    avatar: action.data.avatar,
+                    email: action.data.email,
+                    _id: '',
+                    isAdmin: action.data.isAdmin,
+                    publicCardPacksCount: action.data.publicCardPacksCount,
+                    rememberMe: action.data.rememberMe,
+                    verified: action.data.verified,
+                    updated: action.data.updated,
+                    created: action.data.created,
+                    token: action.data.token,
+                    __v: 0,
+                    isLoggedIn: true,
+                };
             default:
                 return state;
         }
@@ -46,11 +64,9 @@ export const login = (data: LoginType): ThunkType => async (dispatch: ThunkDispa
     try {
         dispatch(actionsForApp.setAppStatus("loading"));
         let res = await loginAPI.login(data);
-        if (res.status === 200) {
-            dispatch(actionsForLogin.setIsLoggedIn(true))
-            dispatch(actionsForApp.setAppStatus("succeeded"));
-            dispatch(actionsForLogin.getUser(res.data))
-        }
+        dispatch(actionsForLogin.setIsLoggedIn(true));
+        dispatch(actionsForApp.setAppStatus("succeeded"));
+        dispatch(actionsForLogin.getUser(res.data));
     } catch (e) {
         dispatch(actionsForApp.setAppStatus("failed"));
         const error = e.response
@@ -62,12 +78,10 @@ export const login = (data: LoginType): ThunkType => async (dispatch: ThunkDispa
 export const logout = (): ThunkType => async (dispatch: ThunkDispatchType) => {
     try {
         dispatch(actionsForApp.setAppStatus("loading"));
-        let res = await authAPI.logout();
-        if (res.status === 200) {
-            dispatch(actionsForApp.setAppStatus("succeeded"));
-            dispatch(actionsForLogin.setIsLoggedIn(false))
-            dispatch(actionsForApp.setIsInitialized(true));
-        }
+        await authAPI.logout();
+        dispatch(actionsForApp.setAppStatus("succeeded"));
+        dispatch(actionsForLogin.setIsLoggedIn(false));
+        dispatch(actionsForApp.setIsInitialized(true));
     } catch (e) {
         dispatch(actionsForApp.setAppStatus("failed"));
         const error = e.response

@@ -2,7 +2,7 @@ import React, {ChangeEvent, useEffect, useState} from "react";
 import style from "./Registration.module.scss";
 import {useDispatch, useSelector} from "react-redux";
 import {Redirect, useHistory} from "react-router-dom";
-import {registerTC, setRegistrationErrorAC} from "./registrationReduser";
+import {actionsForRegister, register} from "./registrationReducer";
 import {PATH} from "../../app/App";
 import {AppRootStateType} from "../../app/store";
 import {AuthModal} from "../common/AuthModal/AuthModal";
@@ -11,13 +11,6 @@ import {Button} from "../common/Button/Button";
 import {Error} from "../common/Error/Error";
 
 function Registration() {
-    useEffect(() => {
-        return () => {
-            dispatch(setRegistrationErrorAC(""));
-        };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
     const isRegistered = useSelector<AppRootStateType, boolean>(
         (state) => state.registration.isRegistered
     );
@@ -27,8 +20,14 @@ function Registration() {
     const error = useSelector<AppRootStateType, string>(
         (state) => state.registration.error
     );
-
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        return () => {
+            dispatch(actionsForRegister.setRegistrationError(""));
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -38,15 +37,15 @@ function Registration() {
 
     const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value);
-        dispatch(setRegistrationErrorAC(""));
+        dispatch(actionsForRegister.setRegistrationError(""));
     };
     const onPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
         setPassword(e.currentTarget.value);
-        dispatch(setRegistrationErrorAC(""));
+        dispatch(actionsForRegister.setRegistrationError(""));
     };
     const onConfirmedPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
         setConfirmedPassword(e.currentTarget.value);
-        dispatch(setRegistrationErrorAC(""));
+        dispatch(actionsForRegister.setRegistrationError(""));
     };
     const onCancelBtnClick = () => history.push(PATH.PET_LOGIN);
     const onRegisterBtnClick = () => {
@@ -56,11 +55,11 @@ function Registration() {
             confirmedPassword &&
             password === confirmedPassword
         ) {
-            dispatch(registerTC(email, confirmedPassword));
+            dispatch(register({email, password: confirmedPassword}));
         } else {
-            dispatch(setRegistrationErrorAC("not valid email/password /ᐠ-ꞈ-ᐟ\\"));
+            dispatch(actionsForRegister.setRegistrationError("not valid email/password /ᐠ-ꞈ-ᐟ\\"));
         }
-        setEmail("");
+        // setEmail("");
         setPassword("");
         setConfirmedPassword("");
     };

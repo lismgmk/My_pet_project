@@ -3,7 +3,10 @@ import thunk from "redux-thunk";
 import {mainReduser} from "../a1-root/v1-Main/mainReduser";
 import {profileReduser} from "../a1-root/v4-Profile/profileReduser";
 import {page404Reduser} from "../a1-root/v5-Page_404/pag404Reduser";
-import {registrationReduser} from "../a1-root/v3-Registration/registrationReduser";
+import {
+    RegisterActionType,
+    registrationReducer
+} from "../a1-root/v3-Registration/registrationReducer";
 import {LoginActionType, loginReducer} from "../a1-root/v2-Login/loginReduser";
 import {AppActionType, appReducer} from "./appReducer";
 import {
@@ -11,24 +14,31 @@ import {
     forgotPasswordReduser
 } from "../a1-root/v6-fogotPassword/forgotPasswordReduser";
 import {ActionsForSetPasswordType, setPasswordReduser} from "../a1-root/v7-setPassword/setPasswordReduser";
+import {PackActionType, packReducer} from "../a1-root/v1-Main/packReduser";
+import {CardsActionType, cardsReducer} from "../a1-root/v1-Main/cardsReduser";
 
 
 const rootReducer = combineReducers({
     app: appReducer,
     main: mainReduser,
     login: loginReducer,
-    registration: registrationReduser,
+    registration: registrationReducer,
     profile: profileReduser,
     page404: page404Reduser,
     forgotPassword: forgotPasswordReduser,
-    setPassword: setPasswordReduser
+    setPassword: setPasswordReduser,
+    pack: packReducer,
+    cards: cardsReducer,
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export type AppRootStateType = ReturnType<typeof rootReducer>;
 
-export type CommonActionTypeForApp = LoginActionType | AppActionType | ActionsForFogotPasswordType | ActionsForSetPasswordType;
+export type CommonActionTypeForApp = LoginActionType | AppActionType
+    | ActionsForFogotPasswordType | ActionsForSetPasswordType
+    | RegisterActionType | PackActionType
+    | CardsActionType ;
 
 export type InferActionType<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never;
 
