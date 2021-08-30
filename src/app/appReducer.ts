@@ -39,7 +39,7 @@ export const initializeApp = (): ThunkType => async (dispatch: ThunkDispatchType
         await authAPI.me();
         dispatch(actionsForLogin.setIsLoggedIn(true));
         dispatch(actionsForApp.setIsInitialized(true));
-    } catch (e) {
+    } catch (e: any) {
         dispatch(actionsForApp.setIsInitialized(true));
         dispatch(actionsForApp.setAppStatus("failed"));
         const error = e.response.data.error === 'you are not authorized /ᐠ-ꞈ-ᐟ\\'
@@ -47,11 +47,6 @@ export const initializeApp = (): ThunkType => async (dispatch: ThunkDispatchType
             : e.response.data.error
                 ? e.response.data.error
                 : (e.message + ', more details in the console');
-        // const error = e.response
-        //     ? e.response.data.error
-        //     : e.response.data.error === 'you are not authorized /ᐠ-ꞈ-ᐟ\\'
-        //         ? null
-        //         : (e.message + ', more details in the console');
         dispatch(actionsForApp.setAppError(error));
     }
 };
