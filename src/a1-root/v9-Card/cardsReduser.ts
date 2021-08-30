@@ -1,9 +1,13 @@
 import {actionsForApp, ThunkDispatchType, ThunkType} from "../../app/appReducer";
 import {AppRootStateType, CommonActionTypeForApp, InferActionType} from "../../app/store";
 import {
-    cardAPI, CardType, NewlyCreatedCardType, RequestGetCardType, UpdatedCardDataType
+    cardAPI,
+    CardType,
+    NewlyCreatedCardType,
+    RequestGetCardType,
+    UpdatedCardDataType
 } from "../../api/card-api/cardAPI";
-import {ErrorType, handleError} from "../utills/error-utils/ErrorUtils";
+import {handleError} from "../utills/error-utils/ErrorUtils";
 
 
 const initialState = {} as CardsStateType;

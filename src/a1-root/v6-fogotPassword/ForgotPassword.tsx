@@ -6,7 +6,7 @@ import {PATH} from '../../app/App';
 import {AppRootStateType} from '../../app/store';
 import {actionsForPassword, forgotPassword, forgotStatusType} from "./forgotPasswordReduser";
 import {Preloader} from "../common/Preloader/Preloader";
-import {AuthModal} from "../common/AuthModal/AuthModal";
+import {AuthModal} from "../common/StylizedСomponents/AuthModal/AuthModal";
 import {InputField} from "../common/InputField/InputField";
 import style from "./ForgotPasswoed.module.scss";
 import {Button} from "../common/Button/Button";

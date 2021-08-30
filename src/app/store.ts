@@ -13,8 +13,8 @@ import {
     forgotPasswordReduser
 } from "../a1-root/v6-fogotPassword/forgotPasswordReduser";
 import {ActionsForSetPasswordType, setPasswordReduser} from "../a1-root/v7-setPassword/setPasswordReduser";
-import {PackActionType, packReducer} from "../a1-root/v8-Pack/packReduser";
-import {CardsActionType, cardsReducer} from "../a1-root/v8-Pack/cardsReduser";
+import {PackActionType, packReducer} from "../a1-root/v8-PacksPage/packReduser";
+import {CardsActionType, cardsReducer} from "../a1-root/v9-Card/cardsReduser";
 
 
 const rootReducer = combineReducers({
