@@ -46,7 +46,6 @@ function App() {
                 <Route exact path={PATH.PET_CHECK_EMAIL} render={() => <CheckEmail/>}/>
                 <Route exact path={PATH.PET_CARD} render={() => <Card/>}/>
                 <Redirect to={PATH.PET_PROFILE}/>
-                <Redirect from={'*'} to={PATH.PET_PAGE404}/>
             </Switch>
         </div>
     )
