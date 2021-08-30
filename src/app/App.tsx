@@ -2,7 +2,6 @@ import React, {useEffect} from "react";
 import {Redirect, Route, Switch} from "react-router-dom";
 import {Dispatch} from "redux";
 import style from "./App.module.scss";
-import Main from "../a1-root/v1-Main/Main";
 import {Login} from "../a1-root/v2-Login/Login";
 import {Profile} from "../a1-root/v4-Profile/Profile";
 import Registration from "../a1-root/v3-Registration/Registration";
@@ -12,7 +11,7 @@ import {initializeApp} from "./appReducer";
 import {AppRootStateType} from "./store";
 import {Preloader} from "../a1-root/common/Preloader/Preloader";
 import {Header} from "../a1-root/v0-Header/Header";
-import {Card} from "../a1-root/v8-Card/Card";
+import {Card} from "../a1-root/v8-Pack/Card";
 import {ForgotPassword} from "../a1-root/v6-fogotPassword/ForgotPassword";
 import {CheckEmail} from "../a1-root/v6-fogotPassword/CheckEmail";
 import {SetPassword} from "../a1-root/v7-setPassword/SetPassword";
@@ -36,7 +35,6 @@ function App() {
             {!isInitialized && <Preloader/>}
             {isLoggedIn && <Header/>}
             <Switch>
-                <Route exact path={PATH.PET_MAIN} render={() => <Main/>}/>
                 <Route exact path={PATH.PET_LOGIN} render={() => <Login/>}/>
                 <Route exact path={PATH.PET_REGISTRATION} render={() => <Registration/>}/>
                 <Route exact path={PATH.PET_PROFILE} render={() => <Profile/>}/>
@@ -54,7 +52,6 @@ function App() {
 export default App;
 
 export const PATH = {
-    PET_MAIN: '/main',
     PET_LOGIN: '/login',
     PET_REGISTRATION: '/registration',
     PET_PROFILE: '/profile',

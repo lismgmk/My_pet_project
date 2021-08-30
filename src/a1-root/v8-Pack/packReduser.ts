@@ -77,7 +77,7 @@ export const fetchPack = (data: RequestGetCardsPackType): ThunkType => async (di
         let res = await packAPI.getCardsPack(data);
         dispatch(actionsForPack.setPackLists(res.data.cardPacks));
         dispatch(actionsForApp.setAppStatus("succeeded"));
-    } catch(e) {
+    } catch(e: any) {
         handleError(e, dispatch);
     }
 };
@@ -88,7 +88,7 @@ export const removePack = (packId: string): ThunkType => async (dispatch: ThunkD
         await packAPI.removeCardsPack(packId);
         dispatch(actionsForPack.removePack(packId));
         dispatch(actionsForApp.setAppStatus("idle"));
-    } catch(e) {
+    } catch(e: any) {
         handleError(e, dispatch);
     }
 };
@@ -101,7 +101,7 @@ export const createPack = (dataForNewPack: NewCardsPackType, dataForRequest: Req
         let res = await packAPI.getCardsPack(dataForRequest);
         dispatch(actionsForPack.setPackLists(res.data.cardPacks));
         dispatch(actionsForApp.setAppStatus("succeeded"));
-    } catch(e) {
+    } catch(e: any) {
         handleError(e, dispatch);
     }
 };
@@ -113,7 +113,7 @@ export const updatePackTitle = (data: UpdatedPackDataType): ThunkType =>
             await packAPI.updateCardsPackData(data);
             dispatch(actionsForPack.updatePackTitle(data._id, data.name));
             dispatch(actionsForApp.setAppStatus("idle"));
-        } catch(e) {
+        } catch(e: any) {
             handleError(e, dispatch);
         }
     };

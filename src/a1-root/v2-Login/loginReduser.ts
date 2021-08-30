@@ -67,7 +67,7 @@ export const login = (data: LoginType): ThunkType => async (dispatch: ThunkDispa
         dispatch(actionsForLogin.setIsLoggedIn(true));
         dispatch(actionsForApp.setAppStatus("succeeded"));
         dispatch(actionsForLogin.getUser(res.data));
-    } catch (e) {
+    } catch (e: any) {
         dispatch(actionsForApp.setAppStatus("failed"));
         const error = e.response
             ? e.response.data.error
@@ -82,7 +82,7 @@ export const logout = (): ThunkType => async (dispatch: ThunkDispatchType) => {
         dispatch(actionsForApp.setAppStatus("succeeded"));
         dispatch(actionsForLogin.setIsLoggedIn(false));
         dispatch(actionsForApp.setIsInitialized(true));
-    } catch (e) {
+    } catch (e: any) {
         dispatch(actionsForApp.setAppStatus("failed"));
         const error = e.response
             ? e.response.data.error
