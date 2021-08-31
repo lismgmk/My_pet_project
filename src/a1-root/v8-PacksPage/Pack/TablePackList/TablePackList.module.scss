@@ -14,7 +14,6 @@
 
   thead {
     display: block;
-
     background: #ECECF9;
 
     tr {
@@ -36,6 +35,8 @@
   }
 
   tbody tr {
+    display: table;
+    width: 100%;
     &:nth-child(odd) {
       background: #F8F7FD;
     }
@@ -44,6 +45,7 @@
   tr th {
     height: 50px;
   }
+
 }
 
 .btn {
@@ -56,15 +58,15 @@
 }
 
 .col1 {
-  width: 15%;
+  width: 20%;
 }
 
 .col2 {
-  width: 15%;
+  width: 10%;
 }
 
 .col3 {
-  width: 25%;
+  width: 15%;
 }
 
 .col4 {
@@ -72,5 +74,6 @@
 }
 
 .col5 {
-  width: 100%;
+  min-width: 100%;
+  width: 30%;
 }
