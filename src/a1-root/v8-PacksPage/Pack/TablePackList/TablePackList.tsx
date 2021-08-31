@@ -30,7 +30,7 @@ export const TablePackList: React.FC<TablePackListPropsType> = () => {
                   <tr key={t._id}>
                      <th className={s.col1}>{t.name}</th>
                      <th className={s.col2}>{t.cardsCount}</th>
-                     <th className={s.col3}>{t.created}</th>
+                     <th className={s.col3}>{(t.created.slice(0, 10))}</th>
                      <th className={s.col4}>{t.user_name}</th>
                      <th className={`${s.col5} ${s.btn}`}>
                         <Button rounded={false} color='red'>Delete</Button>
