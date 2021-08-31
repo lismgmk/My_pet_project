@@ -1,14 +1,10 @@
 import React from "react";
 
-type CardPropsType = {
-
-}
+type CardPropsType = {}
 
 export const Card: React.FC<CardPropsType> = () => {
 
-   return (
-      <div>
-
-      </div>
-   )
+    return (
+       <></>
+    )
 }
