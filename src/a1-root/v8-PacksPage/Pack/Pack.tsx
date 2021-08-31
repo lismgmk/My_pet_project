@@ -29,8 +29,6 @@ export const Pack: React.FC<PackPropsType> = () => {
       setAddPackModal(false)
    }
 
-
-
    return (
       <div className={s.pack}>
          <h1>Packs list</h1>
