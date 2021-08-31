@@ -1,9 +1,13 @@
 import {actionsForApp, ThunkDispatchType, ThunkType} from "../../app/appReducer";
 import {AppRootStateType, CommonActionTypeForApp, InferActionType} from "../../app/store";
 import {
-    cardAPI, CardType, NewlyCreatedCardType, RequestGetCardType, UpdatedCardDataType
+    cardAPI,
+    CardType,
+    NewlyCreatedCardType,
+    RequestGetCardType,
+    UpdatedCardDataType
 } from "../../api/card-api/cardAPI";
-import {ErrorType, handleError} from "../utills/error-utils/ErrorUtils";
+import {handleError} from "../utills/error-utils/ErrorUtils";
 
 
 const initialState = {} as CardsStateType;
@@ -96,7 +100,7 @@ export const fetchCard = (data: RequestGetCardType): ThunkType => async (dispatc
     try {
         dispatch(actionsForApp.setAppStatus("loading"));
         let res = await cardAPI.getCard(data);
-        dispatch(actionsForCards.setCards(data.cardsPack_id, res.data.cardPacks));
+        dispatch(actionsForCards.setCards(data.cardsPack_id, res.data.cards));
         dispatch(actionsForApp.setAppStatus("succeeded"));
     } catch(e: any) {
         handleError(e, dispatch);
@@ -120,7 +124,7 @@ export const createCard = (dataForNewCard: NewlyCreatedCardType, dataForRequest:
         dispatch(actionsForApp.setAppStatus("loading"));
         await cardAPI.createCard(dataForNewCard);
         let res = await cardAPI.getCard(dataForRequest);
-        dispatch(actionsForCards.setCards(dataForRequest.cardsPack_id, res.data.cardPacks));
+        dispatch(actionsForCards.setCards(dataForRequest.cardsPack_id, res.data.cards));
         dispatch(actionsForApp.setAppStatus("succeeded"));
     } catch(e: any) {
         handleError(e, dispatch);

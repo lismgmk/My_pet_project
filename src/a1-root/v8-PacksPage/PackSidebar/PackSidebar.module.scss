@@ -1,0 +1,47 @@
+.sidebar {
+  width: 250px;
+  background: #ECECF9;
+  height: 100%;
+  text-align: center;
+  
+  h3 {
+    padding-top: 50px;
+  }
+
+  &__btn {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__btnItem {
+    width: 100px;
+    height: 40px;
+    background-color: #fff;
+    border: none;
+    font-size: 14px;
+    line-height: 17px;
+
+    &:first-child {
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+  }
+
+  p {
+    padding-top: 45px;
+    padding-bottom: 50px;
+  }
+}
+
+.active {
+  background-color: #9A91C8;
+  color: white;
+
+}
