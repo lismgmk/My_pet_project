@@ -40,7 +40,6 @@ export const register = (data: RegisterDataType): ThunkType => async (dispatch: 
         dispatch(actionsForRegister.setIsRegistered(true));
         dispatch(actionsForRegister.setIsRegistrationFetching(false))
     } catch (e: any) {
-        debugger
         dispatch(actionsForRegister.setRegistrationError(e.response?.data.error));
         dispatch(actionsForRegister.setIsRegistrationFetching(false));
     }

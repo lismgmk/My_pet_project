@@ -12,24 +12,27 @@ const initialState = {
 
 export const appReducer =
     (state: InitialAppStateType = initialState, action: CommonActionTypeForApp): InitialAppStateType => {
-    switch (action.type) {
-        case "PET-PROJECT/ROOT/APP/SET-STATUS":
-            return {...state, status: action.status};
-        case "PET-PROJECT/ROOT/APP/IS-INITIALIZED":
-            return {...state, isInitialized: action.isInitialized};
-        case "PET-PROJECT/ROOT/APP/SET-ERROR":
-            return {...state, error: action.error};
-        default:
-            return state;
-    }
-};
+        switch (action.type) {
+            case "PET-PROJECT/ROOT/APP/SET-STATUS":
+                return {...state, status: action.status};
+            case "PET-PROJECT/ROOT/APP/IS-INITIALIZED":
+                return {...state, isInitialized: action.isInitialized};
+            case "PET-PROJECT/ROOT/APP/SET-ERROR":
+                return {...state, error: action.error};
+            default:
+                return state;
+        }
+    };
 
 
 // actions
 export const actionsForApp = {
     setAppStatus: (status: StatusType) => ({type: "PET-PROJECT/ROOT/APP/SET-STATUS", status} as const),
     setAppError: (error: string | null) => ({type: "PET-PROJECT/ROOT/APP/SET-ERROR", error} as const),
-    setIsInitialized: (isInitialized: boolean) => ({type: "PET-PROJECT/ROOT/APP/IS-INITIALIZED", isInitialized} as const),
+    setIsInitialized: (isInitialized: boolean) => ({
+        type: "PET-PROJECT/ROOT/APP/IS-INITIALIZED",
+        isInitialized
+    } as const),
 };
 
 
