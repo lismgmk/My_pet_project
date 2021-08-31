@@ -7,11 +7,12 @@ import {AppRootStateType} from "../../app/store";
 import {PATH} from "../../app/App";
 import {login} from "./loginReduser";
 import {StatusType} from "../../app/appReducer";
-import {AuthModal} from "../common/AuthModal/AuthModal";
+import {AuthModal} from "../common/StylizedСomponents/AuthModal/AuthModal";
 import {InputField} from "../common/InputField/InputField";
 import Checkbox from "../common/Checkbox/Checkbox";
 import {Button} from "../common/Button/Button";
 import {Error} from "../common/Error/Error";
+import {Preloader} from "../common/Preloader/Preloader";
 
 
 export const Login: React.FC = React.memo(() => {
@@ -75,6 +76,7 @@ export const Login: React.FC = React.memo(() => {
 
     return (
         <AuthModal subtitle={'Sign In'}>
+            {status === 'loading' && <Preloader/>}
             <form onSubmit={handleSubmit}>
                 <InputField
                     label={'Email'}

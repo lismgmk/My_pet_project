@@ -5,7 +5,7 @@ import {Redirect, useHistory} from "react-router-dom";
 import {actionsForRegister, register} from "./registrationReducer";
 import {PATH} from "../../app/App";
 import {AppRootStateType} from "../../app/store";
-import {AuthModal} from "../common/AuthModal/AuthModal";
+import {AuthModal} from "../common/StylizedСomponents/AuthModal/AuthModal";
 import {InputField} from "../common/InputField/InputField";
 import {Button} from "../common/Button/Button";
 import {Error} from "../common/Error/Error";

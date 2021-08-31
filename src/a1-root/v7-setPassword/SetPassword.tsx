@@ -7,7 +7,7 @@ import {StatusType} from '../../app/appReducer';
 import {AppRootStateType} from '../../app/store';
 import {actionsForSetPassword, getPassword} from "./setPasswordReduser";
 import {Preloader} from "../common/Preloader/Preloader";
-import {AuthModal} from "../common/AuthModal/AuthModal";
+import {AuthModal} from "../common/StylizedСomponents/AuthModal/AuthModal";
 import {InputField} from "../common/InputField/InputField";
 import {Error} from "../common/Error/Error";
 import style from "./SetPassword.module.scss";

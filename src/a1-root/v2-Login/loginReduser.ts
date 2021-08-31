@@ -34,7 +34,7 @@ export const loginReducer =
                     name: action.data.name,
                     avatar: action.data.avatar,
                     email: action.data.email,
-                    _id: '',
+                    _id: action.data._id,
                     isAdmin: action.data.isAdmin,
                     publicCardPacksCount: action.data.publicCardPacksCount,
                     rememberMe: action.data.rememberMe,

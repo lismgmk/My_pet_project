@@ -1,0 +1,78 @@
+.table {
+  -webkit-box-shadow: 0px -1px 10px 2px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px -1px 10px 2px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px -1px 10px 2px rgba(34, 60, 80, 0.2);
+  height: 63vh;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+
+  &__block {
+    border-collapse: collapse;
+    width: 100%;
+    display: block;
+  }
+
+  thead {
+    display: block;
+    background: #ECECF9;
+
+    tr {
+      display: table;
+      width: 100%;
+      visibility: visible;
+    }
+  }
+
+  tbody {
+    position: absolute;
+    overflow-y: scroll;
+    top: 50px;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    tr {
+      display: table;
+      width: 100%;
+      &:nth-child(odd) {
+        background: #F8F7FD;
+      }
+    }
+  }
+
+
+  tr th {
+    height: 50px;
+  }
+
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  a {
+    width: 100%;
+  }
+
+  button {
+    margin-left: 10px;
+  }
+}
+
+.col1 {
+  width: 25%;
+}
+
+.col2 {
+  width: 25%;
+}
+
+.col3 {
+  width: 25%;
+}
+
+.col4 {
+  width: 25%;
+}
