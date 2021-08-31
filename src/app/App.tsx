@@ -43,7 +43,7 @@ function App() {
             <Route exact path={PATH.PET_FORGOT_PASSWORD} render={() => <ForgotPassword/>}/>
             <Route path={PATH.PET_SET_PASSWORD} render={() => <SetPassword/>}/>
             <Route exact path={PATH.PET_CHECK_EMAIL} render={() => <CheckEmail/>}/>
-            <Route exact path={PATH.PET_CARD} render={() => <Card/>}/>
+            <Route path={PATH.PET_CARD} render={() => <Card/>}/>
             <Route exact path={PATH.PET_PACK} render={() => <PacksPage/>}/>
             <Redirect to={PATH.PET_PROFILE}/>
             <Redirect from={'*'} to={PATH.PET_PAGE404}/>
@@ -62,6 +62,6 @@ export const PATH = {
    PET_FORGOT_PASSWORD: '/forgot-password',
    PET_SET_PASSWORD: '/set-password/:token',
    PET_CHECK_EMAIL: '/check-email',
-   PET_CARD: '/My-pet-project/card',
-   PET_PACK: '/My-pet-project/pack'
+   PET_CARD: '/card/:id',
+   PET_PACK: '/pack'
 }

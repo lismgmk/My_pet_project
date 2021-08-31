@@ -1,14 +1,41 @@
-import React from "react";
+import React, {useEffect} from "react";
+import s from "./Card.module.scss";
+import {Link, useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchCard} from "./cardsReduser";
+import {AppRootStateType} from "../../app/store";
+import {StatusType} from "../../app/appReducer";
+import {Preloader} from "../common/Preloader/Preloader";
+import {Wrapper} from "../common/StylizedСomponents/Wrapper/Wrapper";
+import {TableCardList} from "./TableCardList/TableCardList";
+import {PackDomainType} from "../v8-PacksPage/packReduser";
+import {SearchField} from "../common/SearchField/SearchField";
+import {PATH} from "../../app/App";
 
-type CardPropsType = {
-
-}
+type CardPropsType = {}
 
 export const Card: React.FC<CardPropsType> = () => {
 
-   return (
-      <div>
+   const {id} = useParams<{ id: string }>()
+   const dispatch = useDispatch()
+   const status = useSelector<AppRootStateType, StatusType>(state => state.app.status)
+   const pack = useSelector<AppRootStateType, PackDomainType[]>(state => state.pack)
+   const title = pack.filter(t => id === t._id)
 
-      </div>
+   useEffect(() => {
+      dispatch(fetchCard({cardsPack_id: id}))
+   }, [dispatch, id])
+
+
+   return (
+      <Wrapper>
+         {status === 'loading' && <Preloader/>}
+         <div className={s.card}>
+
+            <h1><Link to={PATH.PET_PACK}>&#10229;</Link>{title[0].name}</h1>
+            <SearchField placeholder='Search'/>
+            <TableCardList id={id}/>
+         </div>
+      </Wrapper>
    )
 }

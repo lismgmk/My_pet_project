@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../app/store";
 import {PackDomainType} from "../../packReduser";
 import {Button} from "../../../common/Button/Button";
+import {Link} from "react-router-dom";
 
 type TablePackListPropsType = {}
 
@@ -30,12 +31,12 @@ export const TablePackList: React.FC<TablePackListPropsType> = () => {
                   <tr key={t._id}>
                      <th className={s.col1}>{t.name}</th>
                      <th className={s.col2}>{t.cardsCount}</th>
-                     <th className={s.col3}>{(t.created.slice(0, 10))}</th>
+                     <th className={s.col3}>{(t.updated.slice(0, 10))}</th>
                      <th className={s.col4}>{t.user_name}</th>
                      <th className={`${s.col5} ${s.btn}`}>
                         <Button rounded={false} color='red'>Delete</Button>
                         <Button rounded={false} color='light-blue'>Edit</Button>
-                        <Button rounded={false} color='light-blue'>Learn</Button>
+                        <Link to={`/card/${t._id}`}><Button rounded={false} color='light-blue'>Learn</Button></Link>
                      </th>
                   </tr>
                )

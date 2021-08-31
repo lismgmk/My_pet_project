@@ -12,6 +12,7 @@ import {InputField} from "../common/InputField/InputField";
 import Checkbox from "../common/Checkbox/Checkbox";
 import {Button} from "../common/Button/Button";
 import {Error} from "../common/Error/Error";
+import {Preloader} from "../common/Preloader/Preloader";
 
 
 export const Login: React.FC = React.memo(() => {
@@ -75,6 +76,7 @@ export const Login: React.FC = React.memo(() => {
 
     return (
         <AuthModal subtitle={'Sign In'}>
+            {status === 'loading' && <Preloader/>}
             <form onSubmit={handleSubmit}>
                 <InputField
                     label={'Email'}
