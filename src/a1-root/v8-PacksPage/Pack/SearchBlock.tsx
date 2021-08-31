@@ -4,11 +4,11 @@ import {Button} from "../../common/Button/Button";
 import {SearchField} from "../../common/SearchField/SearchField";
 
 type SearchBlockPropsType = {
-
+   setAddPackModal: (value: boolean) => void
 }
 
 
-export const SearchBlock: React.FC<SearchBlockPropsType> = () => {
+export const SearchBlock: React.FC<SearchBlockPropsType> = ({setAddPackModal}) => {
 
 
    return (
@@ -17,7 +17,7 @@ export const SearchBlock: React.FC<SearchBlockPropsType> = () => {
             placeholder='Search'
          />
          <div className={s.pack__btn}>
-            <Button rounded color='dark-blue'>Add new pack</Button>
+            <Button onClick={() => setAddPackModal(true)} rounded color='dark-blue'>Add new pack</Button>
          </div>
       </div>
    )

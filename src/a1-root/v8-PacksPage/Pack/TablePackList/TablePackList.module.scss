@@ -32,13 +32,14 @@
     width: 100%;
     left: 0;
     right: 0;
-  }
 
-  tbody tr {
-    display: table;
-    width: 100%;
-    &:nth-child(odd) {
-      background: #F8F7FD;
+    tr {
+      display: table;
+      width: 100%;
+
+      &:nth-child(odd) {
+        background: #F8F7FD;
+      }
     }
   }
 
@@ -46,13 +47,25 @@
     height: 50px;
   }
 
+  &__modal {
+    h2 {
+      padding-bottom: 10px;
+    }
+
+    hr {
+      margin-bottom: 20px;
+    }
+  }
 }
 
 .btn {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+
   a {
     width: 100%;
+    max-width: 85px;
   }
 
   button {
@@ -79,4 +92,6 @@
 .col5 {
   min-width: 100%;
   width: 30%;
+  padding-right: 5px;
 }
+
