@@ -13,8 +13,9 @@ import {
     forgotPasswordReduser
 } from "../a1-root/v6-fogotPassword/forgotPasswordReduser";
 import {ActionsForSetPasswordType, setPasswordReduser} from "../a1-root/v7-setPassword/setPasswordReduser";
-import {PackActionType, packReducer} from "../a1-root/v8-Pack/packReduser";
-import {CardsActionType, cardsReducer} from "../a1-root/v8-Pack/cardsReduser";
+import {PackActionType, packReducer} from "../a1-root/v8-PacksPage/packReduser";
+import {CardsActionType, cardsReducer} from "../a1-root/v9-Card/cardsReduser";
+import {PaginationActionType, paginationPackReducer} from "../a1-root/utills/Pagination/paginationPackReduser";
 
 
 const rootReducer = combineReducers({
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
     setPassword: setPasswordReduser,
     pack: packReducer,
     cards: cardsReducer,
+    paginationPack: paginationPackReducer
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));
@@ -36,7 +38,8 @@ export type AppRootStateType = ReturnType<typeof rootReducer>;
 export type CommonActionTypeForApp = LoginActionType | AppActionType
     | ActionsForFogotPasswordType | ActionsForSetPasswordType
     | RegisterActionType | PackActionType
-    | CardsActionType ;
+    | CardsActionType
+    | PaginationActionType;
 
 export type InferActionType<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never;
 

@@ -30,7 +30,7 @@ export const Header: React.FC<HeaderPropsType> = () => {
             <nav className={style.header__nav}>
                 <ul className={style.header__list}>
                     <li>
-                        <NavLink to={PATH.PET_CARD} activeClassName={style.activeLink}><CardSvg/>Packs list</NavLink>
+                        <NavLink to={PATH.PET_PACK} activeClassName={style.activeLink}><CardSvg/>Packs list</NavLink>
                     </li>
                     <li>
                         <NavLink to={PATH.PET_PROFILE} activeClassName={style.activeLink}><UserSvg/>Profile</NavLink>

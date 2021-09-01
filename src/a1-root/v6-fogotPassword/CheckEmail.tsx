@@ -1,6 +1,6 @@
 import React from 'react';
 import {useLocation} from "react-router";
-import {AuthModal} from "../common/AuthModal/AuthModal";
+import {AuthModal} from "../common/StylizedСomponents/AuthModal/AuthModal";
 import {EmailSvg} from "../../assets/icon/EmailSVG";
 import style from "./ForgotPasswoed.module.scss";
 

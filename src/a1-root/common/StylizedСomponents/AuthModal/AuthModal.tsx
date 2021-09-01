@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./AuthModal.module.scss";
-import {H1} from "../Headings/H1";
-import {H2} from "../Headings/H2";
+import {H1} from "../../Headings/H1";
+import {H2} from "../../Headings/H2";
 
 type AuthModalPropsType = {
     subtitle: string

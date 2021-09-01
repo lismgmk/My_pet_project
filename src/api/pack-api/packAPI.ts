@@ -3,14 +3,14 @@ import {instance} from "../login-api/loginAPI";
 
 // api
 export const packAPI = {
-    createNewCardsPack(data: NewCardsPackType) {
-        return instance.post<{}>("cards/pack", {data});
+    createNewCardsPack(cardsPack: NewCardsPackType) {
+        return instance.post<{}>("cards/pack", {cardsPack});
     },
     removeCardsPack(id: string) {
         return instance.delete<{}>("cards/pack", {params: {id}});
     },
-    updateCardsPackData(data: UpdatedPackDataType) {
-        return instance.put<{}>("cards/pack", {_id: data._id, name: data.name});
+    updateCardsPackData(cardsPack: UpdatedPackDataType) {
+        return instance.put<{}>("cards/pack", {cardsPack});
     },
     getCardsPack(data: RequestGetCardsPackType) {
         return instance.get<ResponseCardsPackType>("cards/pack", {
@@ -69,7 +69,7 @@ export type CardsPackType = {
     "more_id": string
     "__v": number
 };
-type ResponseCardsPackType = {
+export type ResponseCardsPackType = {
     cardPacks: CardsPackType[]
     cardPacksTotalCount: number
     maxCardsCount: number
