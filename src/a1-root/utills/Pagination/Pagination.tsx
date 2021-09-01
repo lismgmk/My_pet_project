@@ -10,6 +10,7 @@ type PaginationType = {
     totalCount: number
     pageSize: number
     siblingCount: number
+    setPackPage: (value: number)=>void
 }
 
 export const Pagination = ({
@@ -18,6 +19,7 @@ export const Pagination = ({
                         totalCount,
                         pageSize,
                         siblingCount,
+                               setPackPage
                     }: PaginationType) => {
 
 
@@ -39,11 +41,13 @@ export const Pagination = ({
 
 
         const onNext = () => {
-            dispatch(actionsForPackPagination.setPackPage(currentPage + 1));
+            setPackPage(currentPage + 1)
+            // dispatch(actionsForPackPagination.setPackPage(currentPage + 1));
         };
 
         const onPrevious = () => {
-            dispatch(actionsForPackPagination.setPackPage(currentPage - 1));
+            setPackPage(currentPage - 1)
+            // dispatch(actionsForPackPagination.setPackPage(currentPage - 1));
         };
 
 
@@ -75,7 +79,10 @@ export const Pagination = ({
                     <li
 
                         className={`${classnames.paginationItem} ${pageNumber === currentPage && classnames.selected}`}
-                        onClick={() => dispatch(actionsForPackPagination.setPackPage(+pageNumber))}
+                        onClick={() =>
+                            setPackPage(+pageNumber)
+                            // dispatch(actionsForPackPagination.setPackPage(+pageNumber))
+                        }
                     >
                         {pageNumber}
                     </li>
