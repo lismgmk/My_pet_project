@@ -1,13 +1,14 @@
 import React from 'react';
 import classnames from './Pagination.module.scss';
 import {usePagination, DOTS} from './usePagination';
+import {useDispatch} from "react-redux";
+import {actionsForPackPagination} from "./paginationPackReduser";
 
 type PaginationType = {
     className?: string
     currentPage: number
     totalCount: number
     pageSize: number
-    onPageChange: (value: number) => void
     siblingCount: number
 }
 
@@ -16,7 +17,6 @@ export const Pagination = ({
                         currentPage,
                         totalCount,
                         pageSize,
-                        onPageChange,
                         siblingCount,
                     }: PaginationType) => {
 
@@ -29,7 +29,7 @@ export const Pagination = ({
     });
 
     // If there are less than 2 times in pagination range we shall not render the component
-
+    const dispatch = useDispatch();
 
     if(paginationRange){
         if (currentPage === 0 || paginationRange.length < 2) {
@@ -39,12 +39,13 @@ export const Pagination = ({
 
 
         const onNext = () => {
-            onPageChange(currentPage + 1);
+            dispatch(actionsForPackPagination.setPackPage(currentPage + 1));
         };
 
         const onPrevious = () => {
-            onPageChange(currentPage - 1);
+            dispatch(actionsForPackPagination.setPackPage(currentPage - 1));
         };
+
 
     // @ts-ignore
     let lastPage = paginationRange[paginationRange.length - 1]
@@ -74,7 +75,7 @@ export const Pagination = ({
                     <li
 
                         className={`${classnames.paginationItem} ${pageNumber === currentPage && classnames.selected}`}
-                        onClick={() => onPageChange(+pageNumber)}
+                        onClick={() => dispatch(actionsForPackPagination.setPackPage(+pageNumber))}
                     >
                         {pageNumber}
                     </li>
