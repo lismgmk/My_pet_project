@@ -8,6 +8,7 @@ const initialState = {
     status: "idle",
     isInitialized: false,
     error: null,
+    isWrongPath: false
 } as AppInitialStateType;
 
 export const appReducer =
@@ -19,6 +20,8 @@ export const appReducer =
                 return {...state, isInitialized: action.isInitialized};
             case "PET-PROJECT/ROOT/APP/SET-ERROR":
                 return {...state, error: action.error};
+            case "PET-PROJECT/ROOT/APP/IS-WRONG-PATH":
+                return {...state, isWrongPath: action.isWrongPath}
             default:
                 return state;
         }
@@ -33,6 +36,10 @@ export const actionsForApp = {
         type: "PET-PROJECT/ROOT/APP/IS-INITIALIZED",
         isInitialized
     } as const),
+    setIsWrongPath: (isWrongPath: boolean) => ({
+        type: "PET-PROJECT/ROOT/APP/IS-WRONG-PATH",
+        isWrongPath
+    } as const)
 };
 
 
@@ -62,6 +69,7 @@ export type AppInitialStateType = {
     status: StatusType
     isInitialized: boolean
     error: string | null
+    isWrongPath: boolean
 };
 export type StatusType = "idle" | "loading" | "succeeded" | "failed";
 export type ThunkType = ThunkAction<void, AppRootStateType, unknown, CommonActionTypeForApp>;
