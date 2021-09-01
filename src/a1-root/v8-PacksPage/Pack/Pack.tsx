@@ -6,16 +6,17 @@ import {TablePackList} from "./TablePackList/TablePackList";
 import {Modal} from "../../common/Modal/Modal";
 import {InputField} from "../../common/InputField/InputField";
 import {Button} from "../../common/Button/Button";
-import {useDispatch, useSelector} from "react-redux";
-import {createPack, PackDomainType} from "../packReduser";
-import {Pagination} from "../../utills/Pagination/Pagination";
-import {AppRootStateType} from "../../../app/store";
-import {actionsForPackPagination} from "../../utills/Pagination/paginationPackReduser";
+import {useDispatch} from "react-redux";
+import {createPack} from "../packReduser";
+import {PaginationWrapper} from "../../utills/Pagination/PaginationWrapper";
 
 type PackPropsType = {
     pageCount: number
     currentPage: number
     cardPacksTotalCount: number
+    setPackPageCount: (val: number) => void
+    setPackPage: (val: number) => void
+
 }
 
 
@@ -23,6 +24,8 @@ export const Pack: React.FC<PackPropsType> = ({
                                                   cardPacksTotalCount,
                                                   currentPage,
                                                   pageCount,
+                                                  setPackPage,
+                                                  setPackPageCount,
                                               }) => {
     const [addPackModal, setAddPackModal] = useState(false);
     const [newPackName, setNewPackName] = useState('');
@@ -39,26 +42,22 @@ export const Pack: React.FC<PackPropsType> = ({
     }
 
 
-
     return (
         <div className={s.pack}>
             <h1>Packs list</h1>
             <SearchBlock setAddPackModal={setAddPackModal}/>
-            <TablePackList/>
-            <div style={{height: 70}}/>
-            <Pagination
-                className={''}
+            <PaginationWrapper
+                cardPacksTotalCount={cardPacksTotalCount}
                 currentPage={currentPage}
-                totalCount={cardPacksTotalCount}
-                pageSize={pageCount}
-                siblingCount={1}
+                pageCount={pageCount}
+                setPackPageCount={setPackPageCount}
+                setPackPage={setPackPage}
             />
-            <select onChange={(e)=>{
-                dispatch(actionsForPackPagination.setPackPageCount(+e.currentTarget.value))}}>
-               <option selected={pageCount == 3} value={3}>3</option>
-               <option selected={pageCount == 5} value={5}>5</option>
-               <option selected={pageCount == 10} value={10}>10</option>
-            </select>
+            <TablePackList/>
+
+            <div style={{height: 70}}/>
+
+
             <Modal modalActive={addPackModal} setModalActive={setAddPackModal}>
                 <div className={s.pack__modal}>
                     <h2>Add new pack</h2>

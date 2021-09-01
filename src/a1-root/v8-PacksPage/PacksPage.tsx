@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchPack, PackDomainType} from "./packReduser";
+import {fetchPack} from "./packReduser";
 import {Wrapper} from "../common/StylizedСomponents/Wrapper/Wrapper";
 import {PackSidebar} from "./PackSidebar/PackSidebar";
 import {Pack} from "./Pack/Pack";
@@ -9,7 +9,7 @@ import {StatusType} from "../../app/appReducer";
 import {Preloader} from "../common/Preloader/Preloader";
 import {Redirect} from "react-router-dom";
 import {PATH} from "../../app/App";
-import {InitialPaginationStateType} from "../utills/Pagination/paginationPackReduser";
+import {actionsForPackPagination} from "../utills/Pagination/paginationPackReduser";
 
 type PackPropsType = {
 
@@ -25,6 +25,14 @@ export const PacksPage: React.FC<PackPropsType> = () => {
    const pageCount = useSelector<AppRootStateType, number>(state => state.paginationPack.pageCount);
    const currentPage = useSelector<AppRootStateType, number>(state => state.paginationPack.page);
    const cardPacksTotalCount = useSelector<AppRootStateType, number>(state => state.paginationPack.cardPacksTotalCount);
+
+
+   const setPackPage = (val: number)=>{
+      dispatch(actionsForPackPagination.setPackPage(val))
+       }
+   const setPackPageCount = (val: number)=>{
+          dispatch(actionsForPackPagination.setPackPageCount(val))
+       }
 
    useEffect(() => {
       dispatch(fetchPack({pageCount: pageCount, page: currentPage}))
@@ -43,6 +51,8 @@ export const PacksPage: React.FC<PackPropsType> = () => {
              cardPacksTotalCount={cardPacksTotalCount}
              pageCount={pageCount}
              currentPage={currentPage}
+             setPackPageCount={setPackPageCount}
+             setPackPage={setPackPage}
          />
       </Wrapper>
    )

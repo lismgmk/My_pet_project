@@ -15,7 +15,11 @@ import {
 import {ActionsForSetPasswordType, setPasswordReduser} from "../a1-root/v7-setPassword/setPasswordReduser";
 import {PackActionType, packReducer} from "../a1-root/v8-PacksPage/packReduser";
 import {CardsActionType, cardsReducer} from "../a1-root/v9-Card/cardsReduser";
-import {PaginationActionType, paginationPackReducer} from "../a1-root/utills/Pagination/paginationPackReduser";
+import {
+    PaginationActionPackType,
+    paginationPackReducer
+} from "../a1-root/utills/Pagination/paginationPackReduser";
+import {PaginationActionCardType, paginationCardReduser} from "../a1-root/utills/Pagination/paginationCardReduser";
 
 
 const rootReducer = combineReducers({
@@ -28,7 +32,8 @@ const rootReducer = combineReducers({
     setPassword: setPasswordReduser,
     pack: packReducer,
     cards: cardsReducer,
-    paginationPack: paginationPackReducer
+    paginationPack: paginationPackReducer,
+    paginationCard: paginationCardReduser
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));
@@ -39,7 +44,8 @@ export type CommonActionTypeForApp = LoginActionType | AppActionType
     | ActionsForFogotPasswordType | ActionsForSetPasswordType
     | RegisterActionType | PackActionType
     | CardsActionType
-    | PaginationActionType;
+    | PaginationActionPackType
+    | PaginationActionCardType;
 
 export type InferActionType<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never;
 

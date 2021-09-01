@@ -6,6 +6,7 @@ import {CommonActionTypeForApp, InferActionType} from "../../../app/store";
 const initialState = {
     pageCount: 5,
     page: 1,
+    cardPacksTotalCount: 10
 } as ResponseCardsPackType;
 
 export const paginationPackReducer =
@@ -45,5 +46,5 @@ export const actionsForPackPagination = {
 
 // types
 export type InitialPaginationStateType = typeof initialState;
-export type PaginationActionType = InferActionType<typeof actionsForPackPagination>;
+export type PaginationActionPackType = InferActionType<typeof actionsForPackPagination>;
 

@@ -1,8 +1,6 @@
 import React from 'react';
 import classnames from './Pagination.module.scss';
 import {usePagination, DOTS} from './usePagination';
-import {useDispatch} from "react-redux";
-import {actionsForPackPagination} from "./paginationPackReduser";
 
 type PaginationType = {
     className?: string
@@ -10,17 +8,17 @@ type PaginationType = {
     totalCount: number
     pageSize: number
     siblingCount: number
-    setPackPage: (value: number)=>void
+    setPackPage: (value: number) => void
 }
 
 export const Pagination = ({
-                        className,
-                        currentPage,
-                        totalCount,
-                        pageSize,
-                        siblingCount,
+                               className,
+                               currentPage,
+                               totalCount,
+                               pageSize,
+                               siblingCount,
                                setPackPage
-                    }: PaginationType) => {
+                           }: PaginationType) => {
 
 
     const paginationRange = usePagination({
@@ -31,24 +29,21 @@ export const Pagination = ({
     });
 
     // If there are less than 2 times in pagination range we shall not render the component
-    const dispatch = useDispatch();
 
-    if(paginationRange){
+    if (paginationRange) {
         if (currentPage === 0 || paginationRange.length < 2) {
             return null;
         }
     }
 
 
-        const onNext = () => {
-            setPackPage(currentPage + 1)
-            // dispatch(actionsForPackPagination.setPackPage(currentPage + 1));
-        };
+    const onNext = () => {
+        setPackPage(currentPage + 1)
+    };
 
-        const onPrevious = () => {
-            setPackPage(currentPage - 1)
-            // dispatch(actionsForPackPagination.setPackPage(currentPage - 1));
-        };
+    const onPrevious = () => {
+        setPackPage(currentPage - 1)
+    };
 
 
     // @ts-ignore
@@ -57,7 +52,6 @@ export const Pagination = ({
 
     return (
         <ul
-            // className={classnames('pagination-container', {[className]: className})}
             className={classnames.paginationContainer}
         >
             {/* Left navigation arrow */}
@@ -71,17 +65,18 @@ export const Pagination = ({
 
                 // If the pageItem is a DOT, render the DOTS unicode character
                 if (pageNumber === DOTS) {
-                    return <li className={`${classnames.paginationItem} ${classnames.dots}`}>&#8230;</li>;
+                    return <li
+                        key={+pageNumber*33}
+                        className={`${classnames.paginationItem} ${classnames.dots}`}>&#8230;</li>;
                 }
 
                 // Render our Page Pills
                 return (
                     <li
-
+                        key={+pageNumber}
                         className={`${classnames.paginationItem} ${pageNumber === currentPage && classnames.selected}`}
                         onClick={() =>
                             setPackPage(+pageNumber)
-                            // dispatch(actionsForPackPagination.setPackPage(+pageNumber))
                         }
                     >
                         {pageNumber}

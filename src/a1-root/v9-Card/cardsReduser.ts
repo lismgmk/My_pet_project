@@ -8,6 +8,7 @@ import {
     UpdatedCardDataType
 } from "../../api/card-api/cardAPI";
 import {handleError} from "../utills/error-utils/ErrorUtils";
+import {actionsForCardPagination} from "../utills/Pagination/paginationCardReduser";
 
 
 const initialState = {} as CardsStateType;
@@ -101,6 +102,9 @@ export const fetchCard = (data: RequestGetCardType): ThunkType => async (dispatc
         dispatch(actionsForApp.setAppStatus("loading"));
         let res = await cardAPI.getCard(data);
         dispatch(actionsForCards.setCards(data.cardsPack_id, res.data.cards));
+        dispatch(actionsForCardPagination.setCardTotalCount(res.data.cardsTotalCount));
+        dispatch(actionsForCardPagination.setCardPage(res.data.page));
+        dispatch(actionsForCardPagination.setCardPageCount(res.data.pageCount));
         dispatch(actionsForApp.setAppStatus("succeeded"));
     } catch(e: any) {
         handleError(e, dispatch);

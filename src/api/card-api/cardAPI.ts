@@ -57,8 +57,8 @@ export type RequestGetCardType = {
     min?: string
     max?: string
     sortCards?: string
-    page?: string
-    pageCount?: string
+    page?: number
+    pageCount?: number
 };
 export type CardType = {
     _id: string
@@ -84,7 +84,7 @@ export type CardType = {
     questionVideo: string
 
 };
-type CardResponseType = {
+export type CardResponseType = {
     cards: CardType[]
     cardsTotalCount: number
     maxGrade: number
