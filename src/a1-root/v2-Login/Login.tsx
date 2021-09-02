@@ -1,4 +1,4 @@
-import React, {FormEvent, FocusEvent, useState} from "react";
+import React, {FormEvent, FocusEvent, useState, useEffect} from "react";
 import style from "./Login.module.scss";
 import {useDispatch, useSelector} from "react-redux";
 import {Dispatch} from "redux";
@@ -6,7 +6,7 @@ import {NavLink, Redirect} from "react-router-dom";
 import {AppRootStateType} from "../../app/store";
 import {PATH} from "../../app/App";
 import {login} from "./loginReduser";
-import {StatusType} from "../../app/appReducer";
+import {actionsForApp, StatusType} from "../../app/appReducer";
 import {AuthModal} from "../common/StylizedСomponents/AuthModal/AuthModal";
 import {InputField} from "../common/InputField/InputField";
 import Checkbox from "../common/Checkbox/Checkbox";
@@ -31,6 +31,17 @@ export const Login: React.FC = React.memo(() => {
     const status = useSelector<AppRootStateType, StatusType>(state => state.app.status);
     const error = useSelector<AppRootStateType, string | null>(state => state.app.error);
     const dispatch: Dispatch<any> = useDispatch();
+
+    useEffect(() => {
+        const id = setTimeout(() => {
+            dispatch(actionsForApp.setAppError(""));
+        }, 5000);
+
+        return () => {
+            clearTimeout(id)
+        };
+    });
+
 
     const validate = (e: FocusEvent<HTMLInputElement>) => {
         switch (e.currentTarget.type) {
@@ -103,7 +114,7 @@ export const Login: React.FC = React.memo(() => {
                     >Remember Me</Checkbox>
                     <NavLink to={PATH.PET_FORGOT_PASSWORD}>Forgot Password</NavLink>
                 </div>
-                <Error error={error}/>
+                <Error errorMessage={error}/>
                 <div className={style.button_block}>
                     <Button
                         color='dark-blue'
