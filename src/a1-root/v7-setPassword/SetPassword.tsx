@@ -1,9 +1,9 @@
-import React, {FormEvent, useState} from 'react';
+import React, {FormEvent, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Redirect, useParams} from 'react-router-dom';
 import {Dispatch} from 'redux';
 import {PATH} from '../../app/App';
-import {StatusType} from '../../app/appReducer';
+import {actionsForApp, StatusType} from '../../app/appReducer';
 import {AppRootStateType} from '../../app/store';
 import {actionsForSetPassword, getPassword} from "./setPasswordReduser";
 import {Preloader} from "../common/Preloader/Preloader";
@@ -14,7 +14,6 @@ import style from "./SetPassword.module.scss";
 import {Button} from "../common/Button/Button";
 
 
-
 export const SetPassword: React.FC = React.memo(() => {
 
     const [data, setData] = useState({
@@ -23,9 +22,19 @@ export const SetPassword: React.FC = React.memo(() => {
     });
 
     const status = useSelector<AppRootStateType, StatusType>(state => state.setPassword.status);
-    const error = useSelector<AppRootStateType, string | null>(state => state.setPassword.setPasswordError);
+    const error = useSelector<AppRootStateType, string | null>(state => state.app.error);
 
     const dispatch: Dispatch<any> = useDispatch();
+
+    useEffect(() => {
+        const id = setTimeout(() => {
+            dispatch(actionsForApp.setAppError(""));
+        }, 5000);
+
+        return () => {
+            clearTimeout(id)
+        };
+    });
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -35,7 +44,7 @@ export const SetPassword: React.FC = React.memo(() => {
     const {token} = useParams<{ token: string }>();
 
     if (status === "succeeded") {
-        dispatch(actionsForSetPassword.setPasswordError(''))
+        dispatch(actionsForApp.setAppError(""))
         return <Redirect to={PATH.PET_LOGIN}/>
     }
     if (status === "loading") {
@@ -53,7 +62,7 @@ export const SetPassword: React.FC = React.memo(() => {
                 />
 
                 <p>Create new password and we will send you further instructions to email</p>
-                <Error error={error}/>
+                <Error errorMessage={error}/>
                 <Button
                     type={"submit"}
                     rounded

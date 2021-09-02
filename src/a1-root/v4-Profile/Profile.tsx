@@ -6,7 +6,6 @@ import {UserDataDomainType} from "../v2-Login/loginReduser";
 import {Redirect} from "react-router-dom";
 import {PATH} from "../../app/App";
 
-
 export const Profile: React.FC = React.memo(() => {
 
     const user = useSelector<AppRootStateType, UserDataDomainType>(state => state.login)

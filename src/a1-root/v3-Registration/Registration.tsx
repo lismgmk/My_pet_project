@@ -9,6 +9,7 @@ import {AuthModal} from "../common/StylizedСomponents/AuthModal/AuthModal";
 import {InputField} from "../common/InputField/InputField";
 import {Button} from "../common/Button/Button";
 import {Error} from "../common/Error/Error";
+import {actionsForApp} from "../../app/appReducer";
 
 function Registration() {
     const isRegistered = useSelector<AppRootStateType, boolean>(
@@ -17,17 +18,20 @@ function Registration() {
     const isFetching = useSelector<AppRootStateType, boolean>(
         (state) => state.registration.isFetching
     );
-    const error = useSelector<AppRootStateType, string>(
-        (state) => state.registration.error
+    const error = useSelector<AppRootStateType, string | null>(
+        (state) => state.app.error
     );
     const dispatch = useDispatch();
 
     useEffect(() => {
+        const id = setTimeout(() => {
+            dispatch(actionsForApp.setAppError(""));
+        }, 5000);
+
         return () => {
-            dispatch(actionsForRegister.setRegistrationError(""));
+            clearTimeout(id)
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    });
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -37,15 +41,15 @@ function Registration() {
 
     const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value);
-        dispatch(actionsForRegister.setRegistrationError(""));
+        dispatch(actionsForApp.setAppError(""));
     };
     const onPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
         setPassword(e.currentTarget.value);
-        dispatch(actionsForRegister.setRegistrationError(""));
+        dispatch(actionsForApp.setAppError(""));
     };
     const onConfirmedPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
         setConfirmedPassword(e.currentTarget.value);
-        dispatch(actionsForRegister.setRegistrationError(""));
+        dispatch(actionsForApp.setAppError(""));
     };
     const onCancelBtnClick = () => history.push(PATH.PET_LOGIN);
     const onRegisterBtnClick = () => {
@@ -57,7 +61,7 @@ function Registration() {
         ) {
             dispatch(register({email, password: confirmedPassword}));
         } else {
-            dispatch(actionsForRegister.setRegistrationError("not valid email/password /ᐠ-ꞈ-ᐟ\\"));
+            dispatch(actionsForApp.setAppError("not valid email/password /ᐠ-ꞈ-ᐟ\\"));
         }
         // setEmail("");
         setPassword("");
@@ -88,7 +92,7 @@ function Registration() {
                     disabled={isFetching}
                     onChange={onConfirmedPasswordChange}
                 />
-                <Error error={error}/>
+                <Error errorMessage={error}/>
                 <div className={style.button_block}>
                     <Button
                         rounded

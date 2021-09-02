@@ -10,30 +10,28 @@ import {Preloader} from "../common/Preloader/Preloader";
 import {Redirect} from "react-router-dom";
 import {PATH} from "../../app/App";
 
-type PackPropsType = {
-
-}
+type PackPropsType = {}
 
 
 export const PacksPage: React.FC<PackPropsType> = () => {
-   const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn);
-   const status = useSelector<AppRootStateType, StatusType>(state => state.app.status)
-   const dispatch =  useDispatch()
+    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn);
+    const status = useSelector<AppRootStateType, StatusType>(state => state.app.status)
+    const dispatch = useDispatch()
 
-   useEffect(() => {
-      dispatch(fetchPack({pageCount: 100}))
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [])
+    useEffect(() => {
+        dispatch(fetchPack({pageCount: 100}))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
-   if (!isLoggedIn) {
-      return <Redirect to={PATH.PET_LOGIN}/>
-   }
+    if (!isLoggedIn) {
+        return <Redirect to={PATH.PET_LOGIN}/>
+    }
 
-   return (
-      <Wrapper>
-         {status === 'loading' && <Preloader/>}
-         <PackSidebar/>
-         <Pack/>
-      </Wrapper>
-   )
+    return (
+        <Wrapper>
+            {status === 'loading' && <Preloader/>}
+            <PackSidebar/>
+            <Pack/>
+        </Wrapper>
+    )
 }

@@ -16,26 +16,26 @@ type CardPropsType = {}
 
 export const Card: React.FC<CardPropsType> = () => {
 
-   const {id} = useParams<{ id: string }>()
-   const dispatch = useDispatch()
-   const status = useSelector<AppRootStateType, StatusType>(state => state.app.status)
-   const pack = useSelector<AppRootStateType, PackDomainType[]>(state => state.pack)
-   const title = pack.filter(t => id === t._id)
+    const {id} = useParams<{ id: string }>()
+    const dispatch = useDispatch()
+    const status = useSelector<AppRootStateType, StatusType>(state => state.app.status)
+    const pack = useSelector<AppRootStateType, PackDomainType[]>(state => state.pack)
+    const title = pack.filter(t => id === t._id)
 
-   useEffect(() => {
-      dispatch(fetchCard({cardsPack_id: id}))
-   }, [dispatch, id])
+    useEffect(() => {
+        dispatch(fetchCard({cardsPack_id: id}))
+    }, [dispatch, id])
 
 
-   return (
-      <Wrapper>
-         {status === 'loading' && <Preloader/>}
-         <div className={s.card}>
+    return (
+        <Wrapper>
+            {status === 'loading' && <Preloader/>}
+            <div className={s.card}>
 
-            <h1><Link to={PATH.PET_PACK}>&#10229;</Link>{title[0].name}</h1>
-            <SearchField placeholder='Search'/>
-            <TableCardList id={id}/>
-         </div>
-      </Wrapper>
-   )
+                <h1><Link to={PATH.PET_PACK}>&#10229;</Link>{title[0].name}</h1>
+                <SearchField placeholder='Search'/>
+                <TableCardList id={id}/>
+            </div>
+        </Wrapper>
+    )
 }
