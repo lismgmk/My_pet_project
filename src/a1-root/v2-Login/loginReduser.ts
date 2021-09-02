@@ -3,7 +3,6 @@ import {CommonActionTypeForApp, InferActionType} from "../../app/store";
 import {authAPI, UpdateUserDataType} from "../../api/auth-api/authAPI";
 import {actionsForApp, ThunkDispatchType, ThunkType} from "../../app/appReducer";
 
-
 const initialState = {
     _id: '',
     avatar: '',
