@@ -8,6 +8,7 @@ import {
     UpdatedPackDataType
 } from "../../api/pack-api/packAPI";
 import {handleError} from "../utills/error-utils/ErrorUtils";
+import {actionsForPackPagination} from "../common/Pagination/paginationPackReduser";
 
 
 const initialState = [] as PackDomainType[];
@@ -76,6 +77,7 @@ export const fetchPack = (data: RequestGetCardsPackType): ThunkType => async (di
         dispatch(actionsForApp.setAppStatus("loading"));
         let res = await packAPI.getCardsPack(data);
         dispatch(actionsForPack.setPackLists(res.data.cardPacks));
+        dispatch(actionsForPackPagination.setPackTotalCount(res.data.cardPacksTotalCount))
         dispatch(actionsForApp.setAppStatus("succeeded"));
     } catch(e: any) {
         handleError(e, dispatch);
@@ -126,4 +128,5 @@ export type PackActionType = InferActionType<typeof actionsForPack>;
 export type PackDomainType = CardsPackType & {
     firstProperty: any
     secondProperty: any
+
 };

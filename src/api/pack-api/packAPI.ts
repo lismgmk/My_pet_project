@@ -69,7 +69,7 @@ export type CardsPackType = {
     "more_id": string
     "__v": number
 };
-type ResponseCardsPackType = {
+export type ResponseCardsPackType = {
     cardPacks: CardsPackType[]
     cardPacksTotalCount: number
     maxCardsCount: number
