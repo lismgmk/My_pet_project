@@ -21,10 +21,10 @@ const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
   max,
   onChange
 }) => {
-  // const [minVal, setMinVal] = useState(min);
-  // const [maxVal, setMaxVal] = useState(max);
-    const minVal = min;
-  const maxVal = max;
+  const [minVal, setMinVal] = useState(min);
+  const [maxVal, setMaxVal] = useState(max);
+  //   const minVal = min;
+  // const maxVal = max;
   const minValRef = useRef(min);
   const maxValRef = useRef(max);
   const range = useRef<HTMLDivElement>(null);
@@ -35,7 +35,7 @@ const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
     [min, max]
   );
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
   // Set width of the range to decrease from the left side
   useEffect(() => {
@@ -74,8 +74,8 @@ const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const value = Math.min(Number(event.target.value), maxVal - 1);
 
-            dispatch(actionsForStateOfMyPackSortDate.setMinRange(value))
-          // setMinVal(value);
+            // dispatch(actionsForStateOfMyPackSortDate.setMinRange(value))
+          setMinVal(value);
           minValRef.current = value;
         }}
         className="thumb thumb--left"
@@ -88,8 +88,8 @@ const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
         value={maxVal}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const value = Math.max(Number(event.target.value), minVal + 1);
-            dispatch(actionsForStateOfMyPackSortDate.setMaxRange(value))
-          // setMaxVal(value);
+            // dispatch(actionsForStateOfMyPackSortDate.setMaxRange(value))
+          setMaxVal(value);
           maxValRef.current = value;
         }}
         className="thumb thumb--right"

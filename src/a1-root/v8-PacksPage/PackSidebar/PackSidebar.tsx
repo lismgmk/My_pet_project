@@ -47,8 +47,8 @@ export const PackSidebar: React.FC<PackSidebarPropsType> = () => {
                     min={minRange}
                     max={maxRange}
                     onChange={({ min, max }: { min: number; max: number }) =>{
-                        dispatch(actionsForStateOfMyPackSortDate.setFlagSort(true))
-
+                        // dispatch(actionsForStateOfMyPackSortDate.setFlagSort(true))
+                        console.log(`min = ${min}, max = ${max}`)
                     }
 
                     }
