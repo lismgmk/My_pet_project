@@ -9,6 +9,9 @@ import {Button} from "../../../common/Button/Button";
 import {Link} from "react-router-dom";
 import {Modal} from "../../../common/Modal/Modal";
 import {InputField} from "../../../common/InputField/InputField";
+import {
+   actionsForStateOfMyPackSortDate,
+} from "../../../utills/StateOfMyPackSortDate/StateOfMyPackSortDateReduser";
 
 type TablePackListPropsType = {}
 
@@ -24,6 +27,7 @@ export const TablePackList: React.FC<TablePackListPropsType> = () => {
    const [editModalActive, setEditModalActive] = useState(false);
    const [editPackName, setEditPackName] = useState('');
    const [editOrDeleteValue, setEditOrDeleteValue] = useState({id: '', name: ''});
+
    const dispatch = useDispatch();
 
    const deletePackHandler = () => {
@@ -56,7 +60,18 @@ export const TablePackList: React.FC<TablePackListPropsType> = () => {
             <tr>
                <th className={s.col1}>Name</th>
                <th className={s.col2}>Cards</th>
-               <th className={s.col3}>Last Updated</th>
+               <th className={s.col3}>Last Updated
+                  <button onClick={()=>{
+                     dispatch(actionsForStateOfMyPackSortDate.setSortValue('0updated'))
+                     dispatch(actionsForStateOfMyPackSortDate.setFlagData(true))
+                  }}>{'<='}</button>
+                  <button onClick={()=>{
+                     dispatch(actionsForStateOfMyPackSortDate.setSortValue('1updated'))
+                     dispatch(actionsForStateOfMyPackSortDate.setFlagData(true))
+                  }}>{'=>'}</button>
+
+
+               </th>
                <th className={s.col4}>Created by</th>
                <th className={s.col5}>Actions</th>
             </tr>

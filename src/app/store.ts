@@ -20,6 +20,10 @@ import {
     paginationPackReducer
 } from "../a1-root/utills/Pagination/paginationPackReduser";
 import {PaginationActionCardType, paginationCardReduser} from "../a1-root/utills/Pagination/paginationCardReduser";
+import {
+    StateOfMyPackSortDateActionType,
+    StateOfMyPackSortDateReduser
+} from "../a1-root/utills/StateOfMyPackSortDate/StateOfMyPackSortDateReduser";
 
 
 const rootReducer = combineReducers({
@@ -33,7 +37,8 @@ const rootReducer = combineReducers({
     pack: packReducer,
     cards: cardsReducer,
     paginationPack: paginationPackReducer,
-    paginationCard: paginationCardReduser
+    paginationCard: paginationCardReduser,
+    StateOfMyPackSortDate: StateOfMyPackSortDateReduser
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));
@@ -45,7 +50,8 @@ export type CommonActionTypeForApp = LoginActionType | AppActionType
     | RegisterActionType | PackActionType
     | CardsActionType
     | PaginationActionPackType
-    | PaginationActionCardType;
+    | PaginationActionCardType
+    | StateOfMyPackSortDateActionType;
 
 export type InferActionType<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never;
 
