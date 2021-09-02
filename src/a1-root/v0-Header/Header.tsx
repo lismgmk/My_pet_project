@@ -10,9 +10,7 @@ import {AppInitialStateType} from "../../app/appReducer";
 import {UserSvg} from "../../assets/icon/UserSVG";
 import {CardSvg} from "../../assets/icon/CardSVG";
 
-
 type HeaderPropsType = {}
-
 
 export const Header: React.FC<HeaderPropsType> = () => {
 
@@ -37,7 +35,8 @@ export const Header: React.FC<HeaderPropsType> = () => {
                     </li>
                 </ul>
             </nav>
-            <button className={style.logout} onClick={handleSubmit} disabled={appState.status === "loading"}>Logout</button>
+            <button className={style.logout} onClick={handleSubmit} disabled={appState.status === "loading"}>Logout
+            </button>
         </header>
     )
 }

@@ -1,4 +1,4 @@
-import React, {FormEvent, useState} from 'react';
+import React, {FormEvent, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {NavLink, Redirect} from 'react-router-dom';
 import {Dispatch} from 'redux';
@@ -11,6 +11,7 @@ import {InputField} from "../common/InputField/InputField";
 import style from "./ForgotPasswoed.module.scss";
 import {Button} from "../common/Button/Button";
 import {Error} from "../common/Error/Error";
+import {actionsForApp} from '../../app/appReducer';
 
 
 export const ForgotPassword: React.FC = React.memo(() => {
@@ -25,9 +26,19 @@ export const ForgotPassword: React.FC = React.memo(() => {
     });
 
     const status = useSelector<AppRootStateType, forgotStatusType>(state => state.forgotPassword.status)
-    const error = useSelector<AppRootStateType, string>(state => state.forgotPassword.forgotPasswordError);
+    const error = useSelector<AppRootStateType, string | null>(state => state.app.error);
 
     const dispatch: Dispatch<any> = useDispatch();
+
+    useEffect(() => {
+        const id = setTimeout(() => {
+            dispatch(actionsForApp.setAppError(""));
+        }, 5000);
+
+        return () => {
+            clearTimeout(id)
+        };
+    });
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         dispatch(forgotPassword(data));
@@ -35,7 +46,7 @@ export const ForgotPassword: React.FC = React.memo(() => {
     };
     if (status === "succeeded") {
 
-        dispatch(actionsForPassword.forgotPasswordError(''))
+        dispatch(actionsForApp.setAppError(""))
         return <Redirect to={{
             pathname: PATH.PET_CHECK_EMAIL,
             state: {email: data.email}
@@ -56,7 +67,7 @@ export const ForgotPassword: React.FC = React.memo(() => {
                     onChange={e => setData({...data, email: e.target.value})}
                 />
                 <p>Enter your email address and we will send you further instructions</p>
-                <Error error={error}/>
+                <Error errorMessage={error}/>
                 <Button
                     rounded
                     color='dark-blue'

@@ -3,8 +3,6 @@ import style from "./Preloader.module.scss";
 import preloader from "../../../assets/image/loader.svg";
 
 
-
-
 export const Preloader = React.memo(() => {
 
     return (

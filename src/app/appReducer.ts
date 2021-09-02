@@ -8,28 +8,38 @@ const initialState = {
     status: "idle",
     isInitialized: false,
     error: null,
+    isWrongPath: false
 } as AppInitialStateType;
 
 export const appReducer =
     (state: InitialAppStateType = initialState, action: CommonActionTypeForApp): InitialAppStateType => {
-    switch (action.type) {
-        case "PET-PROJECT/ROOT/APP/SET-STATUS":
-            return {...state, status: action.status};
-        case "PET-PROJECT/ROOT/APP/IS-INITIALIZED":
-            return {...state, isInitialized: action.isInitialized};
-        case "PET-PROJECT/ROOT/APP/SET-ERROR":
-            return {...state, error: action.error};
-        default:
-            return state;
-    }
-};
+        switch (action.type) {
+            case "PET-PROJECT/ROOT/APP/SET-STATUS":
+                return {...state, status: action.status};
+            case "PET-PROJECT/ROOT/APP/IS-INITIALIZED":
+                return {...state, isInitialized: action.isInitialized};
+            case "PET-PROJECT/ROOT/APP/SET-ERROR":
+                return {...state, error: action.error};
+            case "PET-PROJECT/ROOT/APP/IS-WRONG-PATH":
+                return {...state, isWrongPath: action.isWrongPath}
+            default:
+                return state;
+        }
+    };
 
 
 // actions
 export const actionsForApp = {
     setAppStatus: (status: StatusType) => ({type: "PET-PROJECT/ROOT/APP/SET-STATUS", status} as const),
     setAppError: (error: string | null) => ({type: "PET-PROJECT/ROOT/APP/SET-ERROR", error} as const),
-    setIsInitialized: (isInitialized: boolean) => ({type: "PET-PROJECT/ROOT/APP/IS-INITIALIZED", isInitialized} as const),
+    setIsInitialized: (isInitialized: boolean) => ({
+        type: "PET-PROJECT/ROOT/APP/IS-INITIALIZED",
+        isInitialized
+    } as const),
+    setIsWrongPath: (isWrongPath: boolean) => ({
+        type: "PET-PROJECT/ROOT/APP/IS-WRONG-PATH",
+        isWrongPath
+    } as const)
 };
 
 
@@ -59,6 +69,7 @@ export type AppInitialStateType = {
     status: StatusType
     isInitialized: boolean
     error: string | null
+    isWrongPath: boolean
 };
 export type StatusType = "idle" | "loading" | "succeeded" | "failed";
 export type ThunkType = ThunkAction<void, AppRootStateType, unknown, CommonActionTypeForApp>;

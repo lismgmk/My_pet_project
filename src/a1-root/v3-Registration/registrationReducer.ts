@@ -1,12 +1,11 @@
 import {RegisterDataType, registrationAPI} from "../../api/register-api/registrationAPI";
-import {ThunkDispatchType, ThunkType} from "../../app/appReducer";
+import {actionsForApp, ThunkDispatchType, ThunkType} from "../../app/appReducer";
 import {CommonActionTypeForApp, InferActionType} from "../../app/store";
 
 
 const initialState = {
     isRegistered: false,
     isFetching: false,
-    error: "",
 };
 
 export const registrationReducer =
@@ -16,8 +15,6 @@ export const registrationReducer =
                 return {...state, isRegistered: action.isRegistered};
             case "registration/SET-IS-FETCHING":
                 return {...state, isFetching: action.isFetching};
-            case "registration/SET-ERROR":
-                return {...state, error: action.error};
             default:
                 return state;
         }
@@ -28,7 +25,6 @@ export const registrationReducer =
 export const actionsForRegister = {
     setIsRegistered: (isRegistered: boolean) => ({type: "registration/SET-IS-REGISTERED", isRegistered,} as const),
     setIsRegistrationFetching: (isFetching: boolean) => ({type: "registration/SET-IS-FETCHING", isFetching,} as const),
-    setRegistrationError: (error: string) => ({type: "registration/SET-ERROR", error,} as const),
 };
 
 
@@ -40,8 +36,7 @@ export const register = (data: RegisterDataType): ThunkType => async (dispatch: 
         dispatch(actionsForRegister.setIsRegistered(true));
         dispatch(actionsForRegister.setIsRegistrationFetching(false))
     } catch (e: any) {
-        debugger
-        dispatch(actionsForRegister.setRegistrationError(e.response?.data.error));
+        dispatch(actionsForApp.setAppError(e.response?.data.error));
         dispatch(actionsForRegister.setIsRegistrationFetching(false));
     }
 };
