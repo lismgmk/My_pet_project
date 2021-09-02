@@ -11,7 +11,7 @@ import {Modal} from "../../../common/Modal/Modal";
 import {InputField} from "../../../common/InputField/InputField";
 import {
    actionsForStateOfMyPackSortDate,
-} from "../../../utills/StateOfMyPackSortDate/StateOfMyPackSortDateReduser";
+} from "../../../common/StateOfMyPackSortDate/StateOfMyPackSortDateReduser";
 
 type TablePackListPropsType = {}
 

@@ -9,8 +9,8 @@ import {StatusType} from "../../app/appReducer";
 import {Preloader} from "../common/Preloader/Preloader";
 import {Redirect} from "react-router-dom";
 import {PATH} from "../../app/App";
-import {actionsForPackPagination} from "../utills/Pagination/paginationPackReduser";
-import {sortValue} from "../utills/StateOfMyPackSortDate/StateOfMyPackSortDateReduser";
+import {actionsForPackPagination} from "../common/Pagination/paginationPackReduser";
+import {sortValue} from "../common/StateOfMyPackSortDate/StateOfMyPackSortDateReduser";
 
 type PackPropsType = {}
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from './Pagination.module.scss';
-import {usePagination, DOTS} from './usePagination';
+import {usePagination, DOTS} from '../../../hook/usePagination';
 
 type PaginationType = {
     className?: string

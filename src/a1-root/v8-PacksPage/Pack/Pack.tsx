@@ -8,7 +8,7 @@ import {InputField} from "../../common/InputField/InputField";
 import {Button} from "../../common/Button/Button";
 import {useDispatch} from "react-redux";
 import {createPack} from "../packReduser";
-import {PaginationWrapper} from "../../utills/Pagination/PaginationWrapper";
+import {PaginationWrapper} from "../../common/Pagination/PaginationWrapper";
 
 type PackPropsType = {
     pageCount: number

@@ -18,12 +18,12 @@ import {CardsActionType, cardsReducer} from "../a1-root/v9-Card/cardsReduser";
 import {
     PaginationActionPackType,
     paginationPackReducer
-} from "../a1-root/utills/Pagination/paginationPackReduser";
-import {PaginationActionCardType, paginationCardReduser} from "../a1-root/utills/Pagination/paginationCardReduser";
+} from "../a1-root/common/Pagination/paginationPackReduser";
+import {PaginationActionCardType, paginationCardReduser} from "../a1-root/common/Pagination/paginationCardReduser";
 import {
     StateOfMyPackSortDateActionType,
     StateOfMyPackSortDateReduser
-} from "../a1-root/utills/StateOfMyPackSortDate/StateOfMyPackSortDateReduser";
+} from "../a1-root/common/StateOfMyPackSortDate/StateOfMyPackSortDateReduser";
 
 
 const rootReducer = combineReducers({

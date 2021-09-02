@@ -11,8 +11,8 @@ import {TableCardList} from "./TableCardList/TableCardList";
 import {PackDomainType} from "../v8-PacksPage/packReduser";
 import {SearchField} from "../common/SearchField/SearchField";
 import {PATH} from "../../app/App";
-import {PaginationWrapper} from "../utills/Pagination/PaginationWrapper";
-import {actionsForCardPagination} from "../utills/Pagination/paginationCardReduser";
+import {PaginationWrapper} from "../common/Pagination/PaginationWrapper";
+import {actionsForCardPagination} from "../common/Pagination/paginationCardReduser";
 
 type CardPropsType = {}
 

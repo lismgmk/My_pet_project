@@ -8,7 +8,7 @@ import {
     UpdatedCardDataType
 } from "../../api/card-api/cardAPI";
 import {handleError} from "../utills/error-utils/ErrorUtils";
-import {actionsForCardPagination} from "../utills/Pagination/paginationCardReduser";
+import {actionsForCardPagination} from "../common/Pagination/paginationCardReduser";
 
 
 const initialState = {} as CardsStateType;

@@ -8,7 +8,7 @@ import {
     UpdatedPackDataType
 } from "../../api/pack-api/packAPI";
 import {handleError} from "../utills/error-utils/ErrorUtils";
-import {actionsForPackPagination} from "../utills/Pagination/paginationPackReduser";
+import {actionsForPackPagination} from "../common/Pagination/paginationPackReduser";
 
 
 const initialState = [] as PackDomainType[];

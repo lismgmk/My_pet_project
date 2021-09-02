@@ -4,8 +4,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {
     actionsForStateOfMyPackSortDate,
     sortValue
-} from "../../utills/StateOfMyPackSortDate/StateOfMyPackSortDateReduser";
-import MultiRangeSlider from "../../utills/MultiRangeSlider/MultiRangeSlider";
+} from "../../common/StateOfMyPackSortDate/StateOfMyPackSortDateReduser";
+import MultiRangeSlider from "../../common/MultiRangeSlider/MultiRangeSlider";
 import {AppRootStateType} from "../../../app/store";
 import {PackDomainType} from "../packReduser";
 
