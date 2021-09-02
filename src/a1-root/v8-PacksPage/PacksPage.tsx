@@ -29,6 +29,9 @@ export const PacksPage: React.FC<PackPropsType> = () => {
     const flagSortData = useSelector<AppRootStateType, boolean>(state => state.StateOfMyPackSortDate.dateState);
     const flagSortValueData = useSelector<AppRootStateType, typeof sortValue>(state => state.StateOfMyPackSortDate.sortValue);
 
+    const maxRange = useSelector<AppRootStateType, number>(state => state.StateOfMyPackSortDate.maxRange);
+    const minRange = useSelector<AppRootStateType, number>(state => state.StateOfMyPackSortDate.minRange);
+    const sortFlag = useSelector<AppRootStateType, boolean>(state => state.StateOfMyPackSortDate.sortState);
 
     const setPackPage = (val: number) => {
         dispatch(actionsForPackPagination.setPackPage(val))
@@ -42,10 +45,12 @@ export const PacksPage: React.FC<PackPropsType> = () => {
             pageCount: pageCount,
             page: currentPage,
             user_id: flagForMyPack ? userId : undefined,
-            sortPacks: flagSortData ? flagSortValueData : undefined
+            sortPacks: flagSortData ? flagSortValueData : undefined,
+            min: sortFlag ? minRange : undefined,
+            max: sortFlag ? maxRange : undefined
         }))
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentPage, pageCount, flagForMyPack, flagSortData, flagSortValueData])
+    }, [currentPage, pageCount, flagForMyPack, flagSortData, flagSortValueData, sortFlag, minRange, maxRange])
 
     if (!isLoggedIn) {
         return <Redirect to={PATH.PET_LOGIN}/>

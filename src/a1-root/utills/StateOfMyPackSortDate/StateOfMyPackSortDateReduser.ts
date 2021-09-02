@@ -8,7 +8,7 @@ const initialState = {
     sortState: false,
     dateState: false,
     minRange: 1,
-    maxRange: 5,
+    maxRange: 200,
     sortValue: '0updated'
 } as initialStateType;
 
