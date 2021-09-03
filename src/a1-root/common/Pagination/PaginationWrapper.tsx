@@ -39,9 +39,9 @@ export const PaginationWrapper: React.FC<PackPropsType> = ({
                     onChange={(e) =>
                     setPackPageCount(+e.currentTarget.value)
                 }>
-                    <option  selected={pageCount === 3} value={3}>3</option>
-                    <option  selected={pageCount === 5} value={5}>5</option>
-                    <option  selected={pageCount === 10} value={10}>10</option>
+                    <option  value={3}>3</option>
+                    <option   value={5}>5</option>
+                    <option   value={10}>10</option>
                 </select>
                 <span className={style.paginationSpan}>Cards per Page</span>
             </div>
