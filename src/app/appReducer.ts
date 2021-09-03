@@ -47,7 +47,6 @@ export const actionsForApp = {
 export const initializeApp = (): ThunkType => async (dispatch: ThunkDispatchType) => {
     try {
         await authAPI.me();
-        dispatch(actionsForLogin.setIsLoggedIn(true));
         dispatch(actionsForApp.setIsInitialized(true));
     } catch (e: any) {
         dispatch(actionsForApp.setIsInitialized(true));
