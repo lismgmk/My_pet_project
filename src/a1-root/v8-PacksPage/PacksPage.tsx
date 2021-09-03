@@ -55,7 +55,6 @@ export const PacksPage: React.FC<PackPropsType> = () => {
     if (!isLoggedIn) {
         return <Redirect to={PATH.PET_LOGIN}/>
     }
-
     return (
         <Wrapper>
             {status === 'loading' && <Preloader/>}

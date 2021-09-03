@@ -66,14 +66,13 @@ export const Pagination = ({
                 // If the pageItem is a DOT, render the DOTS unicode character
                 if (pageNumber === DOTS) {
                     return <li
-                        key={+pageNumber*33}
                         className={`${classnames.paginationItem} ${classnames.dots}`}>&#8230;</li>;
                 }
 
                 // Render our Page Pills
                 return (
                     <li
-                        key={+pageNumber}
+                        // key={+pageNumber}
                         className={`${classnames.paginationItem} ${pageNumber === currentPage && classnames.selected}`}
                         onClick={() =>
                             setPackPage(+pageNumber)

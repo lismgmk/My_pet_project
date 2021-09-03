@@ -7,7 +7,7 @@ type usePaginationType = {
     siblingCount: number
 }
 
-export const DOTS = '...'
+export const DOTS = ''
 
 const range = (start: number, end: number) => {
     let length = end - start + 1;
