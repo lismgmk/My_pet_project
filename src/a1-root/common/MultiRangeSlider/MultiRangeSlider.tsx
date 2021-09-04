@@ -1,108 +1,124 @@
-import React, {
-  ChangeEvent,
-  FC,
-  useCallback,
-  useEffect,
-  useState,
-  useRef
-} from "react";
-import "./multiRangeSlider.css";
-import {actionsForStateOfMyPackSortDate} from "../StateOfMyPackSortDate/StateOfMyPackSortDateReduser";
+import * as React from 'react';
+import {Range, getTrackBackground} from "react-range";
 import {useDispatch} from "react-redux";
+import {actionsForStateOfMyPackSortDate} from "../StateOfMyPackSortDate/StateOfMyPackSortDateReduser";
+import useDebounceForRange from "../../../hook/useDebounceForRange";
+import {useEffect} from "react";
 
-interface MultiRangeSliderProps {
-  min: number;
-  max: number;
-  onChange: Function;
-}
 
-const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
-  min,
-  max,
-  onChange
-}) => {
-  const [minVal, setMinVal] = useState(min);
-  const [maxVal, setMaxVal] = useState(max);
-  //   const minVal = min;
-  // const maxVal = max;
-  const minValRef = useRef(min);
-  const maxValRef = useRef(max);
-  const range = useRef<HTMLDivElement>(null);
+const MultiRangeSlider: React.FC<{ rtl: boolean }> = ({rtl}) => {
 
-  // Convert to percentage
-  const getPercent = useCallback(
-    (value: number) => Math.round(((value - min) / (max - min)) * 100),
-    [min, max]
-  );
+    const dispatch = useDispatch()
 
-    // const dispatch = useDispatch()
+    const STEP = 1;
+    const MIN = 0;
+    const MAX = 30;
 
-  // Set width of the range to decrease from the left side
-  useEffect(() => {
-    const minPercent = getPercent(minVal);
-    const maxPercent = getPercent(maxValRef.current);
+    const [values, setValues] = React.useState([0, 10]);
 
-    if (range.current) {
-      range.current.style.left = `${minPercent}%`;
-      range.current.style.width = `${maxPercent - minPercent}%`;
-    }
-  }, [minVal, getPercent]);
+    const debouncedRangeMax = useDebounceForRange(values, 1500);
 
-  // Set width of the range to decrease from the right side
-  useEffect(() => {
-    const minPercent = getPercent(minValRef.current);
-    const maxPercent = getPercent(maxVal);
+    useEffect(() => {
+        dispatch(actionsForStateOfMyPackSortDate.valueRange(values))
+    },[debouncedRangeMax])
 
-    if (range.current) {
-      range.current.style.width = `${maxPercent - minPercent}%`;
-    }
-  }, [maxVal, getPercent]);
 
-  // Get min and max values when their state changes
-  useEffect(() => {
-    onChange({ min: minVal, max: maxVal });
-  }, [minVal, maxVal, onChange]);
+    return (
+        <div
+            style={{
+                display: 'flex',
+                justifyContent: 'center',
+                flexWrap: 'wrap'
+            }}
+        >
+            <Range
+                values={values}
+                step={STEP}
+                min={MIN}
+                max={MAX}
+                rtl={rtl}
+                onChange={(values) => {
+                    setValues(values);
+                    dispatch(actionsForStateOfMyPackSortDate.setFlagSort(true))
+                }}
+                renderTrack={({props, children}) => (
+                    <div
+                        onMouseDown={props.onMouseDown}
+                        onTouchStart={props.onTouchStart}
+                        style={{
+                            ...props.style,
+                            height: '36px',
+                            display: 'flex',
+                            width: '100%'
+                        }}
+                    >
+                        <div
+                            ref={props.ref}
+                            style={{
+                                height: '5px',
+                                width: '185px',
+                                borderRadius: '4px',
+                                background: getTrackBackground({
+                                    values,
+                                    colors: ['#9A91C8', '#21268F', '#9A91C8'],
+                                    min: MIN,
+                                    max: MAX,
+                                    rtl
+                                }),
+                                alignSelf: 'center'
+                            }}
+                        >
+                            {children}
+                        </div>
+                    </div>
+                )}
+                renderThumb={({index, props, isDragged}) => (
+                    <div
+                        {...props}
+                        style={{
+                            ...props.style,
+                            height: 16,
+                            width: 16,
+                            borderRadius: '50%',
+                            backgroundColor: '#FFF',
+                            border: '4px solid #21268F',
+                            boxSizing: 'border-box',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            boxShadow: '0px 2px 6px #AAA',
+                        }}
+                    >
+                        <div
+                            style={{
+                                height: '8px',
+                                width: '8px',
+                                borderRadius: '50%',
+                                backgroundColor: isDragged ? '#548BF4' : '#FFF',
 
-  return (
-    <div className="container">
+                            }}
+                        />
+                        <div
+                            style={{
+                                position: 'absolute',
+                                top: '-28px',
+                                color: '#fff',
+                                fontSize: '14px',
+                                fontFamily: 'Arial, Helvetica Neue, Helvetica, sans-serif',
+                                padding: '4px',
+                                borderRadius: '4px',
+                                backgroundColor: '#21268F'
+                            }}
+                        >
+                            {values[index].toFixed(0)}
 
-      <input
-        type="range"
-        min={min}
-        max={max}
-        value={minVal}
-        onChange={(event: ChangeEvent<HTMLInputElement>) => {
-          const value = Math.min(Number(event.target.value), maxVal - 1);
+                        </div>
+                    </div>
 
-            // dispatch(actionsForStateOfMyPackSortDate.setMinRange(value))
-          setMinVal(value);
-          minValRef.current = value;
-        }}
-        className="thumb thumb--left"
-        // style={{ zIndex: minVal > max - 100 && 5 }}
-      />
-      <input
-        type="range"
-        min={min}
-        max={max}
-        value={maxVal}
-        onChange={(event: ChangeEvent<HTMLInputElement>) => {
-          const value = Math.max(Number(event.target.value), minVal + 1);
-            // dispatch(actionsForStateOfMyPackSortDate.setMaxRange(value))
-          setMaxVal(value);
-          maxValRef.current = value;
-        }}
-        className="thumb thumb--right"
-      />
-
-      <div className="slider">
-        <div className="slider__track"></div>
-        <div ref={range} className="slider__range"></div>
-        <div className="slider__left-value">{minVal}</div>
-        <div className="slider__right-value">{maxVal}</div>
-      </div>
-    </div>
-  );
+                )}
+            />
+        </div>
+    );
 };
 
 export default MultiRangeSlider;

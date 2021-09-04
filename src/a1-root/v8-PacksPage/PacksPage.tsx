@@ -29,8 +29,8 @@ export const PacksPage: React.FC<PackPropsType> = () => {
     const flagSortData = useSelector<AppRootStateType, boolean>(state => state.StateOfMyPackSortDate.dateState);
     const flagSortValueData = useSelector<AppRootStateType, typeof sortValue>(state => state.StateOfMyPackSortDate.sortValue);
 
-    const maxRange = useSelector<AppRootStateType, number>(state => state.StateOfMyPackSortDate.maxRange);
-    const minRange = useSelector<AppRootStateType, number>(state => state.StateOfMyPackSortDate.minRange);
+    const maxRange = useSelector<AppRootStateType, number>(state => state.StateOfMyPackSortDate.valueRange[1]);
+    const minRange = useSelector<AppRootStateType, number>(state => state.StateOfMyPackSortDate.valueRange[0]);
     const sortFlag = useSelector<AppRootStateType, boolean>(state => state.StateOfMyPackSortDate.sortState);
 
     const setPackPage = (val: number) => {
@@ -39,6 +39,7 @@ export const PacksPage: React.FC<PackPropsType> = () => {
     const setPackPageCount = (val: number) => {
         dispatch(actionsForPackPagination.setPackPageCount(val))
     }
+
 
     useEffect(() => {
         dispatch(fetchPack({
