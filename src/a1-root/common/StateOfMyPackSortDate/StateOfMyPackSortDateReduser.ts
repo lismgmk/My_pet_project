@@ -7,9 +7,10 @@ const initialState = {
     myPackState: false,
     sortState: false,
     dateState: false,
-    minRange: 1,
-    maxRange: 200,
-    sortValue: '0updated'
+    valueRange: [1, 7],
+    sortValue: '0updated',
+    searchFlag: false,
+    nameSearch: ''
 } as initialStateType;
 
 export const StateOfMyPackSortDateReduser =
@@ -21,12 +22,14 @@ export const StateOfMyPackSortDateReduser =
                 return {...state, sortState : action.flag}
                 case "PET-PROJECT/ROOT/UTILLS/STATE-OF-MYPACK-SORT-DATA/DATA":
                 return {...state, dateState : action.flag}
+                case "PET-PROJECT/ROOT/UTILLS/STATE-OF-MYPACK-SORT-DATA/NAME":
+                return {...state, searchFlag : action.flag}
                 case "PET-PROJECT/ROOT/UTILLS/STATE-OF-MYPACK-SORT-DATA/SORT-VALUE":
                 return {...state, sortValue : action.value}
-                case "PET-PROJECT/ROOT/UTILLS/STATE-OF-MYPACK-SORT-DATA/MIN-RANGE":
-                return {...state, minRange : action.value}
-                case "PET-PROJECT/ROOT/UTILLS/STATE-OF-MYPACK-SORT-DATA/MAX-RANGE":
-                return {...state, maxRange : action.value}
+                case "PET-PROJECT/ROOT/UTILLS/STATE-OF-MYPACK-SORT-DATA/VAL-RANGE":
+                return {...state, valueRange : action.arr}
+                case "PET-PROJECT/ROOT/UTILLS/STATE-OF-MYPACK-SORT-DATA/VAL-NAME":
+                return {...state, nameSearch : action.value}
             default:
                 return state;
         }
@@ -48,21 +51,22 @@ export const actionsForStateOfMyPackSortDate = {
         type: "PET-PROJECT/ROOT/UTILLS/STATE-OF-MYPACK-SORT-DATA/DATA",
         flag
     } as const),
+    setFlagName: (flag: boolean) => ({
+        type: "PET-PROJECT/ROOT/UTILLS/STATE-OF-MYPACK-SORT-DATA/NAME",
+        flag
+    } as const),
     setSortValue: (value: typeof sortValue) => ({
         type: "PET-PROJECT/ROOT/UTILLS/STATE-OF-MYPACK-SORT-DATA/SORT-VALUE",
         value
     } as const),
-    setMinRange: (value: number) => ({
-        type: "PET-PROJECT/ROOT/UTILLS/STATE-OF-MYPACK-SORT-DATA/MIN-RANGE",
-        value
+    valueRange: (value: Array<number>) => ({
+        type: "PET-PROJECT/ROOT/UTILLS/STATE-OF-MYPACK-SORT-DATA/VAL-RANGE",
+        arr: value
     } as const),
-    setMaxRange: (value: number) => ({
-        type: "PET-PROJECT/ROOT/UTILLS/STATE-OF-MYPACK-SORT-DATA/MAX-RANGE",
+    valueName: (value: string) => ({
+        type: "PET-PROJECT/ROOT/UTILLS/STATE-OF-MYPACK-SORT-DATA/VAL-NAME",
         value
-    } as const),
-
-
-
+    } as const)
 };
 
 
@@ -72,9 +76,10 @@ type initialStateType = {
     myPackState: boolean
     sortState: boolean
     dateState: boolean
-    minRange: number
-    maxRange: number
+    valueRange: Array<number>
     sortValue: typeof sortValue
+    searchFlag: boolean
+    nameSearch: string
 }
 export type StateOfMyPackSortDateType = initialStateType;
 export type StateOfMyPackSortDateActionType = InferActionType<typeof actionsForStateOfMyPackSortDate>;

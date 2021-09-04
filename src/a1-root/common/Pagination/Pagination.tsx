@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from './Pagination.module.scss';
 import {usePagination, DOTS} from '../../../hook/usePagination';
+import { nanoid } from 'nanoid'
 
 type PaginationType = {
     className?: string
@@ -12,7 +13,6 @@ type PaginationType = {
 }
 
 export const Pagination = ({
-                               className,
                                currentPage,
                                totalCount,
                                pageSize,
@@ -66,13 +66,14 @@ export const Pagination = ({
                 // If the pageItem is a DOT, render the DOTS unicode character
                 if (pageNumber === DOTS) {
                     return <li
+                        key={nanoid()}
                         className={`${classnames.paginationItem} ${classnames.dots}`}>&#8230;</li>;
                 }
 
                 // Render our Page Pills
                 return (
                     <li
-                        // key={+pageNumber}
+                        key={nanoid()}
                         className={`${classnames.paginationItem} ${pageNumber === currentPage && classnames.selected}`}
                         onClick={() =>
                             setPackPage(+pageNumber)

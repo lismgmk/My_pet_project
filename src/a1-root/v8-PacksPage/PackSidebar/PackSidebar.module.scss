@@ -3,7 +3,7 @@
   background: #ECECF9;
   height: 100%;
   text-align: center;
-  
+
   h3 {
     padding-top: 50px;
   }
@@ -37,6 +37,10 @@
   p {
     padding-top: 45px;
     padding-bottom: 50px;
+  }
+  .sidebarRange{
+    display: flex;
+    justify-content: center;
   }
 }
 

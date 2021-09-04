@@ -1,13 +1,10 @@
 import React, {useState} from "react";
 import s from "./PackSidebar.module.scss";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {
     actionsForStateOfMyPackSortDate,
-    sortValue
 } from "../../common/StateOfMyPackSortDate/StateOfMyPackSortDateReduser";
 import MultiRangeSlider from "../../common/MultiRangeSlider/MultiRangeSlider";
-import {AppRootStateType} from "../../../app/store";
-import {PackDomainType} from "../packReduser";
 
 type PackSidebarPropsType = {}
 
@@ -20,9 +17,6 @@ export const PackSidebar: React.FC<PackSidebarPropsType> = () => {
 
     const btnMyClassName = active ? `${s.sidebar__btnItem} ${s.active}` : s.sidebar__btnItem
     const btnAllClassName = !active ? `${s.sidebar__btnItem} ${s.active}` : s.sidebar__btnItem
-
-    const maxRange = useSelector<AppRootStateType, number>(state => state.StateOfMyPackSortDate.maxRange);
-    const minRange = useSelector<AppRootStateType, number>(state => state.StateOfMyPackSortDate.minRange);
 
 
     return (
@@ -42,16 +36,10 @@ export const PackSidebar: React.FC<PackSidebarPropsType> = () => {
                 </button>
             </div>
             <p>Number of cards</p>
-            <div>
-                <MultiRangeSlider
-                    min={minRange}
-                    max={maxRange}
-                    onChange={({ min, max }: { min: number; max: number }) =>{
-                        // dispatch(actionsForStateOfMyPackSortDate.setFlagSort(true))
-                        console.log(`min = ${min}, max = ${max}`)
-                    }
 
-                    }
+            <div className={s.sidebarRange}>
+                <MultiRangeSlider
+                    rtl={false}
                 />
             </div>
 
