@@ -62,14 +62,14 @@ export const TablePackList: React.FC<TablePackListPropsType> = () => {
                <th className={s.col2}>Cards</th>
                <th className={s.col3}>Last Updated
                   <div className={s.containerArrows}>
-                     <div className={`${s.arrows} ${s.arrowsUp}`} onClick={()=>{
+                     <div className={`${s.arrows} ${s.arrowsUp}`} onClick={() => {
                         dispatch(actionsForStateOfMyPackSortDate.setSortValue('0updated'))
                         dispatch(actionsForStateOfMyPackSortDate.setFlagData(true))
-                     }}></div>
-                     <div className={`${s.arrows} ${s.arrowsDown}`} onClick={()=>{
+                     }}/>
+                     <div className={`${s.arrows} ${s.arrowsDown}`} onClick={() => {
                         dispatch(actionsForStateOfMyPackSortDate.setSortValue('1updated'))
                         dispatch(actionsForStateOfMyPackSortDate.setFlagData(true))
-                     }}></div>
+                     }}/>
                   </div>
                </th>
                <th className={s.col4}>Created by</th>

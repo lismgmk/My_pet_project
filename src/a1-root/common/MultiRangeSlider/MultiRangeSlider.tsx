@@ -1,9 +1,8 @@
 import * as React from 'react';
-import {Range, getTrackBackground} from "react-range";
+import {getTrackBackground, Range} from "react-range";
 import {useDispatch} from "react-redux";
 import {actionsForStateOfMyPackSortDate} from "../StateOfMyPackSortDate/StateOfMyPackSortDateReduser";
-import useDebounceForRange from "../../../hook/useDebounceForRange";
-import {useEffect} from "react";
+import {useDebounce} from "../../../hook/useDebounce";
 
 
 const MultiRangeSlider: React.FC<{ rtl: boolean }> = ({rtl}) => {
@@ -16,13 +15,12 @@ const MultiRangeSlider: React.FC<{ rtl: boolean }> = ({rtl}) => {
 
     const [values, setValues] = React.useState([0, 10]);
 
-    const debouncedRangeMax = useDebounceForRange(values, 1500);
+    const filterRangeHandler = () => {
+       dispatch(actionsForStateOfMyPackSortDate.setFlagSort(true))
+       dispatch(actionsForStateOfMyPackSortDate.valueRange(values))
+    }
 
-    useEffect(() => {
-        dispatch(actionsForStateOfMyPackSortDate.setFlagSort(true))
-        dispatch(actionsForStateOfMyPackSortDate.valueRange(values))
-    },[debouncedRangeMax])
-
+    const debouncedRangeMax = useDebounce(filterRangeHandler, 1000);
 
     return (
         <div
@@ -40,7 +38,7 @@ const MultiRangeSlider: React.FC<{ rtl: boolean }> = ({rtl}) => {
                 rtl={rtl}
                 onChange={(values) => {
                     setValues(values);
-
+                    debouncedRangeMax(values);
                 }}
                 renderTrack={({props, children}) => (
                     <div

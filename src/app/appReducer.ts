@@ -1,6 +1,5 @@
 import {AppRootStateType, CommonActionTypeForApp, InferActionType} from "./store";
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
-import {actionsForLogin} from "../a1-root/v2-Login/loginReduser";
 import {authAPI} from "../api/auth-api/authAPI";
 
 

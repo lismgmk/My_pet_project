@@ -5,7 +5,7 @@ import {Dispatch} from 'redux';
 import {PATH} from '../../app/App';
 import {actionsForApp, StatusType} from '../../app/appReducer';
 import {AppRootStateType} from '../../app/store';
-import {actionsForSetPassword, getPassword} from "./setPasswordReduser";
+import {getPassword} from "./setPasswordReduser";
 import {Preloader} from "../common/Preloader/Preloader";
 import {AuthModal} from "../common/StylizedСomponents/AuthModal/AuthModal";
 import {InputField} from "../common/InputField/InputField";

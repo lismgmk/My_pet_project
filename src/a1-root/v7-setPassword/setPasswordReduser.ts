@@ -27,7 +27,7 @@ export const actionsForSetPassword = {
 export const getPassword = (data: SetType): ThunkType => async (dispatch: ThunkDispatchType) => {
     try {
         dispatch(actionsForSetPassword.setStatus("loading"));
-        let res = await forgotAPI.setNewPassword(data);
+        await forgotAPI.setNewPassword(data);
         dispatch(actionsForSetPassword.setStatus("succeeded"));
     } catch (e: any) {
         dispatch(actionsForSetPassword.setStatus("failed"));
