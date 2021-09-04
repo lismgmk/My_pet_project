@@ -19,6 +19,7 @@ const MultiRangeSlider: React.FC<{ rtl: boolean }> = ({rtl}) => {
     const debouncedRangeMax = useDebounceForRange(values, 1500);
 
     useEffect(() => {
+        dispatch(actionsForStateOfMyPackSortDate.setFlagSort(true))
         dispatch(actionsForStateOfMyPackSortDate.valueRange(values))
     },[debouncedRangeMax])
 
@@ -39,7 +40,7 @@ const MultiRangeSlider: React.FC<{ rtl: boolean }> = ({rtl}) => {
                 rtl={rtl}
                 onChange={(values) => {
                     setValues(values);
-                    dispatch(actionsForStateOfMyPackSortDate.setFlagSort(true))
+
                 }}
                 renderTrack={({props, children}) => (
                     <div

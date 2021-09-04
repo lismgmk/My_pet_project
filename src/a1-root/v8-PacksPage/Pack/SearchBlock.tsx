@@ -2,9 +2,9 @@ import React, {ChangeEvent, useState} from "react";
 import s from "./Pack.module.scss";
 import {Button} from "../../common/Button/Button";
 import {SearchField} from "../../common/SearchField/SearchField";
-import {fetchPack} from "../packReduser";
 import {useDispatch} from "react-redux";
 import {useDebounce} from "../../../hook/useDebounce";
+import {actionsForStateOfMyPackSortDate} from "../../common/StateOfMyPackSortDate/StateOfMyPackSortDateReduser";
 
 type SearchBlockPropsType = {
    setAddPackModal: (value: boolean) => void
@@ -16,7 +16,8 @@ export const SearchBlock: React.FC<SearchBlockPropsType> = ({setAddPackModal}) =
    const dispatch =  useDispatch()
 
    const searchByName = (name: string) => {
-      dispatch(fetchPack({packName: name, pageCount: 100}))
+      dispatch(actionsForStateOfMyPackSortDate.setFlagName( true))
+      dispatch(actionsForStateOfMyPackSortDate.valueName( name))
    }
    const debouncedSearch = useDebounce(searchByName, 700)
 
