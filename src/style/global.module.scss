@@ -13,6 +13,7 @@
   height: 100%;
   max-height: 90vh;
   display: flex;
+  overflow-y: auto;
 }
 
 .modal__btn {
