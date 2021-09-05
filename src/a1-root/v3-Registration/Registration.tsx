@@ -2,7 +2,7 @@ import React, {ChangeEvent, useEffect, useState} from "react";
 import style from "./Registration.module.scss";
 import {useDispatch, useSelector} from "react-redux";
 import {Redirect, useHistory} from "react-router-dom";
-import {actionsForRegister, register} from "./registrationReducer";
+import {register} from "./registrationReducer";
 import {PATH} from "../../app/App";
 import {AppRootStateType} from "../../app/store";
 import {AuthModal} from "../common/StylizedСomponents/AuthModal/AuthModal";

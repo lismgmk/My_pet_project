@@ -62,14 +62,14 @@ export const TablePackList: React.FC<TablePackListPropsType> = () => {
                <th className={s.col2}>Cards</th>
                <th className={s.col3}>Last Updated
                   <div className={s.containerArrows}>
-                     <div className={`${s.arrows} ${s.arrowsUp}`} onClick={()=>{
+                     <div className={`${s.arrows} ${s.arrowsUp}`} onClick={() => {
                         dispatch(actionsForStateOfMyPackSortDate.setSortValue('0updated'))
                         dispatch(actionsForStateOfMyPackSortDate.setFlagData(true))
-                     }}></div>
-                     <div className={`${s.arrows} ${s.arrowsDown}`} onClick={()=>{
+                     }}/>
+                     <div className={`${s.arrows} ${s.arrowsDown}`} onClick={() => {
                         dispatch(actionsForStateOfMyPackSortDate.setSortValue('1updated'))
                         dispatch(actionsForStateOfMyPackSortDate.setFlagData(true))
-                     }}></div>
+                     }}/>
                   </div>
                </th>
                <th className={s.col4}>Created by</th>
@@ -80,7 +80,7 @@ export const TablePackList: React.FC<TablePackListPropsType> = () => {
             {
                pack.map(t =>
                   <tr key={t._id}>
-                     <th className={s.col1}>{t.name}</th>
+                     <th className={s.col1}><Link to={`/card/${t._id}`}>{t.name}</Link></th>
                      <th className={s.col2}>{t.cardsCount}</th>
                      <th className={s.col3}>{(t.updated.slice(0, 10))}</th>
                      <th className={s.col4}>{t.user_name}</th>
@@ -98,7 +98,7 @@ export const TablePackList: React.FC<TablePackListPropsType> = () => {
                            >Edit</Button>
                         </>
                         }
-                        <Link to={`/card/${t._id}`}><Button rounded={false} color='light-blue'>Learn</Button></Link>
+                        <Button rounded={false} color='light-blue'>Learn</Button>
                      </th>
                      <th>
                      </th>

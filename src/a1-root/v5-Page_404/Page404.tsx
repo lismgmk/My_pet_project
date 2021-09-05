@@ -18,6 +18,7 @@ function Page404() {
         return () => {
             dispatch(actionsForApp.setIsWrongPath(false))
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

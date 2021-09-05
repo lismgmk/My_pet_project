@@ -2,12 +2,13 @@
   -webkit-box-shadow: 0px -1px 10px 2px rgba(34, 60, 80, 0.2);
   -moz-box-shadow: 0px -1px 10px 2px rgba(34, 60, 80, 0.2);
   box-shadow: 0px -1px 10px 2px rgba(34, 60, 80, 0.2);
-  height: 63vh;
   position: relative;
   overflow: hidden;
   width: 100%;
 
   &__block {
+    max-height: 63vh;
+    min-height: 60vh;
     border-collapse: collapse;
     width: 100%;
     display: block;

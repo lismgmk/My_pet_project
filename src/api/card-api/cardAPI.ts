@@ -3,8 +3,8 @@ import {instance} from "../login-api/loginAPI";
 
 // api
 export const cardAPI = {
-    createCard(data: NewlyCreatedCardType) {
-        return instance.post<{}>("cards/card", {data});
+    createCard(card: NewlyCreatedCardType) {
+        return instance.post<{}>("cards/card", {card});
     },
     removeCard(id: string) {
         return instance.delete<{}>("cards/card", {params: {id}});

@@ -4,7 +4,7 @@ import {NavLink, Redirect} from 'react-router-dom';
 import {Dispatch} from 'redux';
 import {PATH} from '../../app/App';
 import {AppRootStateType} from '../../app/store';
-import {actionsForPassword, forgotPassword, forgotStatusType} from "./forgotPasswordReduser";
+import {forgotPassword, forgotStatusType} from "./forgotPasswordReduser";
 import {Preloader} from "../common/Preloader/Preloader";
 import {AuthModal} from "../common/StylizedСomponents/AuthModal/AuthModal";
 import {InputField} from "../common/InputField/InputField";
