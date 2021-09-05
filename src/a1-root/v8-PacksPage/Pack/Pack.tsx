@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import s from "./Pack.module.scss";
 import global from "../../../style/global.module.scss"
-import {SearchBlock} from "./SearchBlock";
+import {SearchBlock} from "../../common/StylizedСomponents/SearchBlock/SearchBlock";
 import {TablePackList} from "./TablePackList/TablePackList";
 import {Modal} from "../../common/Modal/Modal";
 import {InputField} from "../../common/InputField/InputField";
@@ -9,6 +9,7 @@ import {Button} from "../../common/Button/Button";
 import {useDispatch} from "react-redux";
 import {createPack} from "../packReduser";
 import {PaginationWrapper} from "../../common/Pagination/PaginationWrapper";
+import {actionsForStateOfMyPackSortDate} from "../../common/StateOfMyPackSortDate/StateOfMyPackSortDateReduser";
 
 type PackPropsType = {
    pageCount: number
@@ -31,6 +32,11 @@ export const Pack: React.FC<PackPropsType> = ({
    const [newPackName, setNewPackName] = useState('');
    const dispatch = useDispatch();
 
+   const searchByName = (name: string) => {
+      dispatch(actionsForStateOfMyPackSortDate.setFlagName(true))
+      dispatch(actionsForStateOfMyPackSortDate.valueName(name))
+   }
+
    const cancelHandler = () => {
       setAddPackModal(false)
    }
@@ -45,7 +51,11 @@ export const Pack: React.FC<PackPropsType> = ({
    return (
       <div className={s.pack}>
          <h1>Packs list</h1>
-         <SearchBlock setAddPackModal={setAddPackModal}/>
+         <SearchBlock
+            buttonName='Add new pack'
+            debounceCallback={searchByName}
+            isModalOpen={setAddPackModal}
+         />
 
          <TablePackList/>
          <PaginationWrapper

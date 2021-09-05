@@ -41,6 +41,13 @@
       &:nth-child(odd) {
         background: #F8F7FD;
       }
+
+      a {
+        color: black;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 
@@ -64,8 +71,7 @@
   align-items: center;
   justify-content: flex-end;
 
-  a {
-    width: 100%;
+  button {
     max-width: calc(33.333% - 10px);
   }
 
@@ -86,33 +92,36 @@
   width: 15%;
   position: relative;
 }
-.containerArrows{
+
+.containerArrows {
   position: absolute;
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
   margin: 5px;
   top: 20%;
-  .arrows{
+
+  .arrows {
     margin: 2px;
     cursor: pointer;
     content: '';
-    width:0;
+    width: 0;
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     top: 100px;
     left: 100px;
   }
-  .arrowsUp{
+
+  .arrowsUp {
     border-bottom: 8px solid #2D2E46;
   }
-  .arrowsDown{
+
+  .arrowsDown {
     border-top: 8px solid #2D2E46;
   }
 
 }
-
 
 
 .col4 {

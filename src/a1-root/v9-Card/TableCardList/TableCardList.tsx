@@ -24,7 +24,7 @@ export const TableCardList: React.FC<TablePackListPropsType> = ({id}) => {
             </thead>
             <tbody>
             {
-               card.map(c =>
+               card?.map(c =>
                   <tr key={c._id}>
                      <th className={s.col1}>{c.question}</th>
                      <th className={s.col2}>{c.answer}</th>

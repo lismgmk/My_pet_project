@@ -80,7 +80,7 @@ export const TablePackList: React.FC<TablePackListPropsType> = () => {
             {
                pack.map(t =>
                   <tr key={t._id}>
-                     <th className={s.col1}>{t.name}</th>
+                     <th className={s.col1}><Link to={`/card/${t._id}`}>{t.name}</Link></th>
                      <th className={s.col2}>{t.cardsCount}</th>
                      <th className={s.col3}>{(t.updated.slice(0, 10))}</th>
                      <th className={s.col4}>{t.user_name}</th>
@@ -98,7 +98,7 @@ export const TablePackList: React.FC<TablePackListPropsType> = () => {
                            >Edit</Button>
                         </>
                         }
-                        <Link to={`/card/${t._id}`}><Button rounded={false} color='light-blue'>Learn</Button></Link>
+                        <Button rounded={false} color='light-blue'>Learn</Button>
                      </th>
                      <th>
                      </th>
