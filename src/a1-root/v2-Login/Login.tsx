@@ -33,6 +33,7 @@ export const Login: React.FC = React.memo(() => {
     const dispatch: Dispatch<any> = useDispatch();
 
     useEffect(() => {
+
         const id = setTimeout(() => {
             dispatch(actionsForApp.setAppError(""));
         }, 5000);
@@ -40,7 +41,7 @@ export const Login: React.FC = React.memo(() => {
         return () => {
             clearTimeout(id)
         };
-    });
+    }, [error]);
 
 
     const validate = (e: FocusEvent<HTMLInputElement>) => {
