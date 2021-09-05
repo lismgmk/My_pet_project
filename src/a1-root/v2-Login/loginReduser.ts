@@ -3,22 +3,24 @@ import {CommonActionTypeForApp, InferActionType} from "../../app/store";
 import {authAPI, UpdateUserDataType} from "../../api/auth-api/authAPI";
 import {actionsForApp, ThunkDispatchType, ThunkType} from "../../app/appReducer";
 
-const initialState = {
-    _id: '',
-    avatar: '',
-    email: '',
-    isAdmin: false,
-    name: '',
-    publicCardPacksCount: 0,
-    rememberMe: false,
-    verified: false,
-    updated: {},
-    created: {},
-    isLoggedIn: false,
-    token: '',
-    tokenDeathTime: {},
-    __v: 0,
-} as UserDataDomainType;
+// const initialState = {
+//     _id: '',
+//     avatar: '',
+//     email: '',
+//     isAdmin: false,
+//     name: '',
+//     publicCardPacksCount: 0,
+//     rememberMe: false,
+//     verified: false,
+//     updated: {},
+//     created: {},
+//     isLoggedIn: false,
+//     token: '',
+//     tokenDeathTime: {},
+//     __v: 0,
+// } as UserDataDomainType;
+
+const initialState = {} as UserDataDomainType;
 
 export const loginReducer =
     (state: InitialAuthStateType = initialState, action: CommonActionTypeForApp): InitialAuthStateType => {
@@ -63,7 +65,7 @@ export const login = (data: LoginType): ThunkType => async (dispatch: ThunkDispa
     try {
         dispatch(actionsForApp.setAppStatus("loading"));
         let res = await loginAPI.login(data);
-        dispatch(actionsForLogin.setIsLoggedIn(true));
+        // dispatch(actionsForLogin.setIsLoggedIn(true));
         dispatch(actionsForApp.setAppStatus("succeeded"));
         dispatch(actionsForLogin.getUser(res.data));
     } catch (e: any) {

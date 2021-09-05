@@ -34,7 +34,7 @@ export const SetPassword: React.FC = React.memo(() => {
         return () => {
             clearTimeout(id)
         };
-    });
+    }, [error]);
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();

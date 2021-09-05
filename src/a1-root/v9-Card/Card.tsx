@@ -68,9 +68,9 @@ export const Card: React.FC<CardPropsType> = React.memo(() => {
       setNewCardQuestion('');
    }
 
-   useEffect(() => {
-      dispatch(fetchCard(fetchCardParams()));
-   }, [currentPageCard, pageCountCard, id, dispatch, fetchCardParams])
+   // useEffect(() => {
+   //    dispatch(fetchCard(fetchCardParams()));
+   // }, [currentPageCard, pageCountCard, id, dispatch, fetchCardParams])
 
 
    return (

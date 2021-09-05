@@ -7,7 +7,7 @@ import {Profile} from "../a1-root/v4-Profile/Profile";
 import Registration from "../a1-root/v3-Registration/Registration";
 import Page404 from "../a1-root/v5-Page_404/Page404";
 import {useDispatch, useSelector} from "react-redux";
-import {initializeApp} from "./appReducer";
+import {actionsForApp, initializeApp, StatusType} from "./appReducer";
 import {AppRootStateType} from "./store";
 import {Preloader} from "../a1-root/common/Preloader/Preloader";
 import {Header} from "../a1-root/v0-Header/Header";
@@ -16,6 +16,7 @@ import {ForgotPassword} from "../a1-root/v6-fogotPassword/ForgotPassword";
 import {CheckEmail} from "../a1-root/v6-fogotPassword/CheckEmail";
 import {SetPassword} from "../a1-root/v7-setPassword/SetPassword";
 import {PacksPage} from "../a1-root/v8-PacksPage/PacksPage";
+import {UserDataDomainType} from "../a1-root/v2-Login/loginReduser";
 
 
 function App() {
@@ -25,19 +26,46 @@ function App() {
     const isWrongPath = useSelector<AppRootStateType, boolean>(state => state.app.isWrongPath);
     const dispatch: Dispatch<any> = useDispatch();
 
+//то что я предлагаю
+    function isEmpty(obj: {}) {
+        for (let key in obj) {
+            // если тело цикла начнет выполняться - значит в объекте есть свойства
+            return true;
+        }
+        return false;
+    }
+
+    const logObj = useSelector<AppRootStateType, UserDataDomainType>(state => state.login);
+    const status = useSelector<AppRootStateType, StatusType>(state => state.app.status);
+
 
     useEffect(() => {
-        dispatch(initializeApp())
+        dispatch(actionsForApp.setAppStatus('loading'))
+        if (isEmpty(logObj)) {
+            dispatch(actionsForApp.setIsInitialized(true))
+            dispatch(actionsForApp.setAppStatus('succeeded'))
+        } else {
+            dispatch(actionsForApp.setIsInitialized(false))
+            dispatch(actionsForApp.setAppStatus('failed'))
+        }
+
+        // dispatch(initializeApp())
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-
+    }, [isInitialized, status]);
+//----
+    if (status === 'loading') {
+        return <Preloader/>
+    }
     return (
         <div className={style.wrapper}>
-            {!isInitialized && <Preloader/>}
+            {/*то что я предлагаю*/}
             {isLoggedIn && !isWrongPath && <Header/>}
+
+
+            {/*{!isInitialized && <Preloader/>}*/}
+            {/*{isLoggedIn && !isWrongPath && <Header/>}*/}
             <Switch>
-                <Route exact path={"/"} render={() => <Login/>}/>
+                <Route exact path={"/"} render={() => <Profile/>}/>
                 <Route exact path={PATH.PET_LOGIN} render={() => <Login/>}/>
                 <Route exact path={PATH.PET_REGISTRATION} render={() => <Registration/>}/>
                 <Route exact path={PATH.PET_PROFILE} render={() => <Profile/>}/>

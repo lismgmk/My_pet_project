@@ -38,7 +38,7 @@ export const ForgotPassword: React.FC = React.memo(() => {
         return () => {
             clearTimeout(id)
         };
-    });
+    }, [error]);
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         dispatch(forgotPassword(data));

@@ -31,7 +31,7 @@ function Registration() {
         return () => {
             clearTimeout(id)
         };
-    });
+    }, [error]);
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

@@ -12,7 +12,9 @@ export const Profile: React.FC = React.memo(() => {
 
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn);
 
-    if (!isLoggedIn) {
+    const isInitialized = useSelector<AppRootStateType, boolean>(state => state.app.isInitialized);
+
+    if (!isInitialized) {
         return <Redirect to={PATH.PET_LOGIN}/>
     }
 

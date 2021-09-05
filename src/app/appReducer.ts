@@ -4,7 +4,7 @@ import {authAPI} from "../api/auth-api/authAPI";
 
 
 const initialState = {
-    status: "idle",
+    status: "loading",
     isInitialized: false,
     error: null,
     isWrongPath: false
