@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {Redirect, Route, Switch} from "react-router-dom";
 import {Dispatch} from "redux";
 import style from "./App.module.scss";
@@ -26,18 +26,16 @@ function App() {
     const dispatch: Dispatch<any> = useDispatch();
 
 
-    useEffect(() => {
-        dispatch(initializeApp())
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+
+
 
 
     return (
         <div className={style.wrapper}>
-            {!isInitialized && <Preloader/>}
+            {/*{!isInitialized && <Preloader/>}*/}
             {isLoggedIn && !isWrongPath && <Header/>}
             <Switch>
-                <Route exact path={"/"} render={() => <Login/>}/>
+                <Route exact path={"/"} render={() => <Profile/>}/>
                 <Route exact path={PATH.PET_LOGIN} render={() => <Login/>}/>
                 <Route exact path={PATH.PET_REGISTRATION} render={() => <Registration/>}/>
                 <Route exact path={PATH.PET_PROFILE} render={() => <Profile/>}/>

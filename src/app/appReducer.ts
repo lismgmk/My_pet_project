@@ -46,8 +46,14 @@ export const actionsForApp = {
 // thunks
 export const initializeApp = (): ThunkType => async (dispatch: ThunkDispatchType) => {
     try {
-        await authAPI.me();
+        const res = await authAPI.me();
         dispatch(actionsForApp.setIsInitialized(true));
+        if (res.data._id.length) {
+            dispatch(actionsForLogin.setIsLoggedIn(true));
+            dispatch(actionsForLogin.getUser(res.data));
+        } else {
+            dispatch(actionsForLogin.setIsLoggedIn(false));
+        }
     } catch (e: any) {
         dispatch(actionsForApp.setIsInitialized(true));
         dispatch(actionsForApp.setAppStatus("failed"));

@@ -35,6 +35,8 @@ export const PacksPage: React.FC<PackPropsType> = () => {
     const searchFlag = useSelector<AppRootStateType, boolean>(state => state.StateOfMyPackSortDate.searchFlag);
     const nameSearch = useSelector<AppRootStateType, string>(state => state.StateOfMyPackSortDate.nameSearch);
 
+    const isInitialized = useSelector<AppRootStateType, boolean>(state => state.app.isInitialized);
+
     const setPackPage = (val: number) => {
         dispatch(actionsForPackPagination.setPackPage(val))
     }
@@ -44,20 +46,23 @@ export const PacksPage: React.FC<PackPropsType> = () => {
 
 
     useEffect(() => {
-        dispatch(fetchPack({
-            pageCount: pageCount,
-            page: currentPage,
-            user_id: flagForMyPack ? userId : undefined,
-            sortPacks: flagSortData ? flagSortValueData : undefined,
-            min: sortFlag ? minRange : undefined,
-            max: sortFlag ? maxRange : undefined,
-            packName: searchFlag ? nameSearch : undefined
-        }))
+        if (isInitialized) {
+            dispatch(fetchPack({
+                pageCount: pageCount,
+                page: currentPage,
+                user_id: flagForMyPack ? userId : undefined,
+                sortPacks: flagSortData ? flagSortValueData : undefined,
+                min: sortFlag ? minRange : undefined,
+                max: sortFlag ? maxRange : undefined,
+                packName: searchFlag ? nameSearch : undefined
+            }))
+        }
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage, pageCount, flagForMyPack, flagSortData, flagSortValueData, sortFlag, minRange, maxRange, searchFlag, nameSearch])
 
     if (!isLoggedIn) {
-        return <Redirect to={PATH.PET_LOGIN}/>
+        return <Redirect to={PATH.PET_PROFILE}/>
     }
     return (
         <Wrapper>

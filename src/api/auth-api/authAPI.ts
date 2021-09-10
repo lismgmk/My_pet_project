@@ -4,6 +4,7 @@ import {instance, LoginResponseType, UserDataType} from "../login-api/loginAPI";
 // api
 export const authAPI = {
     me() {
+        debugger
         return instance.post<LoginResponseType>("auth/me", {});
     },
     logout() {
