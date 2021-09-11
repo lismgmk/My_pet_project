@@ -16,7 +16,7 @@ type PackPropsType = {}
 
 
 export const PacksPage: React.FC<PackPropsType> = () => {
-    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn);
+    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.app.isLogedIn);
     const status = useSelector<AppRootStateType, StatusType>(state => state.app.status)
     const dispatch = useDispatch()
 

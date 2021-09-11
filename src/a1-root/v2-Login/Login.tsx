@@ -6,7 +6,7 @@ import {NavLink, Redirect} from "react-router-dom";
 import {AppRootStateType} from "../../app/store";
 import {PATH} from "../../app/App";
 import {login} from "./loginReduser";
-import {actionsForApp, StatusType} from "../../app/appReducer";
+import {StatusType} from "../../app/appReducer";
 import {AuthModal} from "../common/StylizedСomponents/AuthModal/AuthModal";
 import {InputField} from "../common/InputField/InputField";
 import Checkbox from "../common/Checkbox/Checkbox";
@@ -27,21 +27,11 @@ export const Login: React.FC = React.memo(() => {
         },
     });
 
-    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn);
-    const status = useSelector<AppRootStateType, StatusType>(state => state.app.status);
-    const error = useSelector<AppRootStateType, string | null>(state => state.app.error);
+    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.app.isLogedIn);
+    const status = useSelector<AppRootStateType, StatusType>(state => state.login.status);
+    const error = useSelector<AppRootStateType, string | null>(state => state.login.error);
     const dispatch: Dispatch<any> = useDispatch();
 
-    useEffect(() => {
-
-        const id = setTimeout(() => {
-            dispatch(actionsForApp.setAppError(""));
-        }, 5000);
-
-        return () => {
-            clearTimeout(id)
-        };
-    }, [error]);
 
 
     const validate = (e: FocusEvent<HTMLInputElement>) => {
@@ -78,17 +68,20 @@ export const Login: React.FC = React.memo(() => {
     };
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        dispatch(login(data));
-        e.preventDefault();
-    };
+        e.preventDefault()
+        dispatch(login(data))
+    }
 
     if (isLoggedIn) {
         return <Redirect to={PATH.PET_PROFILE}/>
     }
 
+    if (status === 'loading') {
+        return <Preloader/>
+    }
+
     return (
         <AuthModal subtitle={'Sign In'}>
-            {status === 'loading' && <Preloader/>}
             <form onSubmit={handleSubmit}>
                 <InputField
                     label={'Email'}
@@ -121,7 +114,6 @@ export const Login: React.FC = React.memo(() => {
                         color='dark-blue'
                         rounded
                         type={"submit"}
-                        disabled={status === "loading"}
                     >Login</Button>
                 </div>
             </form>

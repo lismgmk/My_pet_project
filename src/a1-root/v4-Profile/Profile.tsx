@@ -9,12 +9,10 @@ import {PATH} from "../../app/App";
 export const Profile: React.FC = React.memo(() => {
 
     const user = useSelector<AppRootStateType, UserDataDomainType>(state => state.login)
+    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.app.isLogedIn);
 
-    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn);
 
-    const isInitialized = useSelector<AppRootStateType, boolean>(state => state.app.isInitialized);
-
-    if (!isInitialized) {
+    if (!isLoggedIn) {
         return <Redirect to={PATH.PET_LOGIN}/>
     }
 

@@ -1,47 +1,56 @@
 import {RegisterDataType, registrationAPI} from "../../api/register-api/registrationAPI";
-import {actionsForApp, ThunkDispatchType, ThunkType} from "../../app/appReducer";
-import {CommonActionTypeForApp, InferActionType} from "../../app/store";
+import {actionsForApp, StatusType} from "../../app/appReducer";
+import {AppRootStateType, InferActionType} from "../../app/store";
+import {ThunkAction, ThunkDispatch} from "redux-thunk";
+import {Dispatch} from "redux";
 
 
 const initialState = {
-    isRegistered: false,
-    isFetching: false,
-};
+    status: "idle",
+    error: null
+} as const;
+
 
 export const registrationReducer =
-    (state: InitialRegisterStateType = initialState, action: CommonActionTypeForApp): InitialRegisterStateType => {
+    (state: RegistrationInitialStateType = initialState, action: RegisrtationActionType): RegistrationInitialStateType => {
         switch (action.type) {
-            case "registration/SET-IS-REGISTERED":
-                return {...state, isRegistered: action.isRegistered};
-            case "registration/SET-IS-FETCHING":
-                return {...state, isFetching: action.isFetching};
+            case "PET-PROJECT/ROOT/REGISTRATION/SET-STATUS":
+                return {...state, status: action.status};
+            case "PET-PROJECT/ROOT/REGISTRATION/SET-ERROR":
+                return {...state, error: action.error};
             default:
                 return state;
         }
-    };
+    }
 
 
-//actions
-export const actionsForRegister = {
-    setIsRegistered: (isRegistered: boolean) => ({type: "registration/SET-IS-REGISTERED", isRegistered,} as const),
-    setIsRegistrationFetching: (isFetching: boolean) => ({type: "registration/SET-IS-FETCHING", isFetching,} as const),
+// actions
+export const actionsForRegistration = {
+    setRegistrationStatus: (status: StatusType) => ({type: "PET-PROJECT/ROOT/REGISTRATION/SET-STATUS", status} as const),
+    setRegistrationError: (error: string | null) => ({type: "PET-PROJECT/ROOT/REGISTRATION/SET-ERROR", error} as const),
 };
 
 
+
 //thunk
-export const register = (data: RegisterDataType): ThunkType => async (dispatch: ThunkDispatchType) => {
+export const register = (data: RegisterDataType): ThunkType => async (dispatch: Dispatch) => {
     try {
-        dispatch(actionsForRegister.setIsRegistrationFetching(true));
+        dispatch(actionsForRegistration.setRegistrationStatus('loading'));
         await registrationAPI.register(data)
-        dispatch(actionsForRegister.setIsRegistered(true));
-        dispatch(actionsForRegister.setIsRegistrationFetching(false))
+        dispatch(actionsForApp.setIsLoggedIn(true));
+        dispatch(actionsForRegistration.setRegistrationStatus('succeeded'));
     } catch (e: any) {
-        dispatch(actionsForApp.setAppError(e.response?.data.error));
-        dispatch(actionsForRegister.setIsRegistrationFetching(false));
+        dispatch(actionsForRegistration.setRegistrationError(e.response?.data.error));
+        dispatch(actionsForRegistration.setRegistrationStatus('succeeded'));
     }
 };
 
 
 //types
-export type InitialRegisterStateType = typeof initialState;
-export type RegisterActionType = InferActionType<typeof actionsForRegister>;
+export type RegisrtationActionType = InferActionType<typeof actionsForRegistration>;
+export type RegistrationInitialStateType = {
+    status: StatusType
+    error: string | null
+};
+export type ThunkType = ThunkAction<void, AppRootStateType, unknown, RegisrtationActionType>;
+

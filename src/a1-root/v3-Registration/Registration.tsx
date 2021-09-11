@@ -9,29 +9,17 @@ import {AuthModal} from "../common/StylizedСomponents/AuthModal/AuthModal";
 import {InputField} from "../common/InputField/InputField";
 import {Button} from "../common/Button/Button";
 import {Error} from "../common/Error/Error";
-import {actionsForApp} from "../../app/appReducer";
+import {actionsForApp, StatusType} from "../../app/appReducer";
+import {Preloader} from "../common/Preloader/Preloader";
 
 function Registration() {
-    const isRegistered = useSelector<AppRootStateType, boolean>(
-        (state) => state.registration.isRegistered
-    );
-    const isFetching = useSelector<AppRootStateType, boolean>(
-        (state) => state.registration.isFetching
-    );
-    const error = useSelector<AppRootStateType, string | null>(
-        (state) => state.app.error
-    );
+
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        const id = setTimeout(() => {
-            dispatch(actionsForApp.setAppError(""));
-        }, 5000);
 
-        return () => {
-            clearTimeout(id)
-        };
-    }, [error]);
+    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.app.isLogedIn);
+    const error = useSelector<AppRootStateType, string | null>(state => state.registration.error);
+    const status = useSelector<AppRootStateType, StatusType>(state => state.registration.status);
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -60,36 +48,36 @@ function Registration() {
             password === confirmedPassword
         ) {
             dispatch(register({email, password: confirmedPassword}));
-        } else {
-            dispatch(actionsForApp.setAppError("not valid email/password /ᐠ-ꞈ-ᐟ\\"));
         }
-        // setEmail("");
+        setEmail("");
         setPassword("");
         setConfirmedPassword("");
-    };
+    }
 
-    if (!isRegistered) {
+    if (!isLoggedIn) {
+        return <Redirect to={PATH.PET_LOGIN}/>;
+    }
+    if (status === 'loading') {
+        return <Preloader/>
+    }
         return (
             <AuthModal subtitle='Sign Up'>
                 <InputField
                     label='Email'
                     type='email'
                     value={email}
-                    disabled={isFetching}
                     onChange={onEmailChange}
                 />
                 <InputField
                     label='Password'
                     type='password'
                     value={password}
-                    disabled={isFetching}
                     onChange={onPasswordChange}
                 />
                 <InputField
                     label='Confirm password'
                     type='password'
                     value={confirmedPassword}
-                    disabled={isFetching}
                     onChange={onConfirmedPasswordChange}
                 />
                 <Error errorMessage={error}/>
@@ -98,22 +86,18 @@ function Registration() {
                         rounded
                         color='light-blue'
                         onClick={onCancelBtnClick}
-                        disabled={isFetching}
                         width={125}
                     >Cancel</Button>
                     <Button
                         rounded
                         color='dark-blue'
                         onClick={onRegisterBtnClick}
-                        disabled={isFetching}
                         width={190}
                     >Register</Button>
                 </div>
             </AuthModal>
         );
-    } else {
-        return <Redirect to={PATH.PET_LOGIN}/>;
-    }
+
 }
 
 export default Registration;

@@ -1,6 +1,6 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunk from "redux-thunk";
-import {profileReduser} from "../a1-root/v4-Profile/profileReduser";
+import {ProfileActionType, profileReduser} from "../a1-root/v4-Profile/profileReduser";
 import {page404Reduser} from "../a1-root/v5-Page_404/pag404Reduser";
 import {
     RegisterActionType,
@@ -51,7 +51,8 @@ export type CommonActionTypeForApp = LoginActionType | AppActionType
     | CardsActionType
     | PaginationActionPackType
     | PaginationActionCardType
-    | StateOfMyPackSortDateActionType;
+    | StateOfMyPackSortDateActionType
+    | ProfileActionType
 
 export type InferActionType<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never;
 

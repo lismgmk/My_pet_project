@@ -7,7 +7,7 @@ import {Profile} from "../a1-root/v4-Profile/Profile";
 import Registration from "../a1-root/v3-Registration/Registration";
 import Page404 from "../a1-root/v5-Page_404/Page404";
 import {useDispatch, useSelector} from "react-redux";
-import {actionsForApp, initializeApp, StatusType} from "./appReducer";
+import {initializeApp, StatusType} from "./appReducer";
 import {AppRootStateType} from "./store";
 import {Preloader} from "../a1-root/common/Preloader/Preloader";
 import {Header} from "../a1-root/v0-Header/Header";
@@ -16,54 +16,31 @@ import {ForgotPassword} from "../a1-root/v6-fogotPassword/ForgotPassword";
 import {CheckEmail} from "../a1-root/v6-fogotPassword/CheckEmail";
 import {SetPassword} from "../a1-root/v7-setPassword/SetPassword";
 import {PacksPage} from "../a1-root/v8-PacksPage/PacksPage";
-import {UserDataDomainType} from "../a1-root/v2-Login/loginReduser";
 
 
 function App() {
 
-    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn);
-    const isInitialized = useSelector<AppRootStateType, boolean>(state => state.app.isInitialized);
-    const isWrongPath = useSelector<AppRootStateType, boolean>(state => state.app.isWrongPath);
+    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.app.isLogedIn);
+    const status = useSelector<AppRootStateType, StatusType>(state => state.app.status);
     const dispatch: Dispatch<any> = useDispatch();
 
-//то что я предлагаю
-    function isEmpty(obj: {}) {
-        for (let key in obj) {
-            // если тело цикла начнет выполняться - значит в объекте есть свойства
-            return true;
-        }
-        return false;
-    }
-
-    const logObj = useSelector<AppRootStateType, UserDataDomainType>(state => state.login);
-    const status = useSelector<AppRootStateType, StatusType>(state => state.app.status);
-
-
+//если не зареганы то проходим инициализацию
     useEffect(() => {
-        dispatch(actionsForApp.setAppStatus('loading'))
-        if (isEmpty(logObj)) {
-            dispatch(actionsForApp.setIsInitialized(true))
-            dispatch(actionsForApp.setAppStatus('succeeded'))
-        } else {
-            dispatch(actionsForApp.setIsInitialized(false))
-            dispatch(actionsForApp.setAppStatus('failed'))
-        }
+            if (!isLoggedIn) {
+                dispatch(initializeApp())
+            }
 
-        // dispatch(initializeApp())
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isInitialized, status]);
-//----
+        }
+        , [isLoggedIn]);
+
+
     if (status === 'loading') {
         return <Preloader/>
     }
     return (
         <div className={style.wrapper}>
-            {/*то что я предлагаю*/}
-            {isLoggedIn && !isWrongPath && <Header/>}
+            {isLoggedIn && <Header/>}
 
-
-            {/*{!isInitialized && <Preloader/>}*/}
-            {/*{isLoggedIn && !isWrongPath && <Header/>}*/}
             <Switch>
                 <Route exact path={"/"} render={() => <Profile/>}/>
                 <Route exact path={PATH.PET_LOGIN} render={() => <Login/>}/>
