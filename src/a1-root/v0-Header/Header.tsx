@@ -6,7 +6,7 @@ import {logout} from "../v2-Login/loginReduser";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../app/store";
 import {Dispatch} from "redux";
-import {AppInitialStateType} from "../../app/appReducer";
+import {AppInitialStateType, StatusType} from "../../app/appReducer";
 import {UserSvg} from "../../assets/icon/UserSVG";
 import {CardSvg} from "../../assets/icon/CardSVG";
 
@@ -14,7 +14,7 @@ type HeaderPropsType = {}
 
 export const Header: React.FC<HeaderPropsType> = () => {
 
-    const appState = useSelector<AppRootStateType, AppInitialStateType>(state => state.app);
+    const status = useSelector<AppRootStateType, StatusType>(state => state.login.status);
     const dispatch: Dispatch<any> = useDispatch();
 
     const handleSubmit = () => {
@@ -35,7 +35,7 @@ export const Header: React.FC<HeaderPropsType> = () => {
                     </li>
                 </ul>
             </nav>
-            <button className={style.logout} onClick={handleSubmit} disabled={appState.status === "loading"}>Logout
+            <button className={style.logout} onClick={handleSubmit} disabled={status === "loading"}>Logout
             </button>
         </header>
     )

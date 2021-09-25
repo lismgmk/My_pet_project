@@ -33,7 +33,7 @@ export const forgotPassword = (data: ForgotType): ThunkType => async (dispatch: 
         await forgotAPI.forgot(data);
         dispatch(actionsForPassword.forgotStatus("succeeded"));
     } catch (e: any) {
-        dispatch(actionsForPassword.forgotStatus("failed"));
+        dispatch(actionsForPassword.forgotStatus("succeeded"));
         const error = e.response
             ? e.response.data.error
             : (e.message + ', more details in the console');
@@ -46,4 +46,4 @@ export type forgotPasswordType = {
     status: forgotStatusType
 }
 export type ActionsForFogotPasswordType = InferActionType<typeof actionsForPassword>;
-export type forgotStatusType = "idle" | "loading" | "succeeded" | "failed";
+export type forgotStatusType = "idle" | "loading" | "succeeded";

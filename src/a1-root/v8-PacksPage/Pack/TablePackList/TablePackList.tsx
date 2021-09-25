@@ -18,8 +18,8 @@ type TablePackListPropsType = {}
 
 export const TablePackList: React.FC<TablePackListPropsType> = () => {
 
-   const me = useSelector<AppRootStateType, string>(state => state.login._id);
-   const pack = useSelector<AppRootStateType, PackDomainType[]>(state => state.pack);
+   const me = useSelector<AppRootStateType, string | null | undefined>(state => state.login.user?._id);
+   const pack = useSelector<AppRootStateType, PackDomainType[]>(state => state.pack.pack);
 
    const [deleteModalActive, setDeleteModalActive] = useState(false);
    const [deletePackId, setDeletePackId] = useState({id: '', name: ''});

@@ -40,10 +40,8 @@ export const initializeApp = (): ThunkType => async (dispatch: ThunkDispatchType
     try {
         dispatch(actionsForApp.setAppStatus('loading'))
         await authAPI.me();
-        dispatch(actionsForApp.setIsLoggedIn(true));
         dispatch(actionsForApp.setAppStatus('succeeded'))
     } catch (e: any) {
-        dispatch(actionsForApp.setIsLoggedIn(true));
         dispatch(actionsForApp.setAppStatus("succeeded"));
         const error = e.response.data.error === 'you are not authorized /ᐠ-ꞈ-ᐟ\\'
             ? null

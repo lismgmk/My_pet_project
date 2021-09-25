@@ -8,7 +8,7 @@ const initialState = {
     status: "idle",
     error: null,
     user: null
-} as const
+} as InitialLoginStateType
 
 
 export const loginReducer =

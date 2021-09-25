@@ -7,7 +7,7 @@ import {
     RequestGetCardType,
     UpdatedCardDataType
 } from "../../api/card-api/cardAPI";
-import {handleError} from "../utills/error-utils/ErrorUtils";
+// import {handleError} from "../utills/error-utils/ErrorUtils";
 import {actionsForCardPagination} from "../common/Pagination/paginationCardReduser";
 
 
@@ -25,7 +25,7 @@ export const cardsReducer =
                         .map(c => c._id === action.cardId ? {...c, ...action.model} : c)
                 };
             case "PET-PROJECT/ROOT/CARD/SET-CARDS":
-                return {...state, [action.packId]: action.cards.map(c => ({...c, firstProperty: 1, secondProperty: 2}))};
+                return {...state, [action.packId]: action.cards.map((c: any) => ({...c, firstProperty: 1, secondProperty: 2}))};
             case "PET-PROJECT/ROOT/PACK/CREATE-PACK":
                 return {...state, [action.pack._id]: []};
             case "PET-PROJECT/ROOT/PACK/REMOVE-PACK":
@@ -34,7 +34,7 @@ export const cardsReducer =
                 return stateCopy;
             case "PET-PROJECT/ROOT/PACK/SET-PACK-LISTS": {
                 const copyState = {...state};
-                action.pack.forEach((p) => {
+                action.pack.forEach((p: { _id: string | number }) => {
                     copyState[p._id] = [];
                 });
                 return copyState;
@@ -107,7 +107,7 @@ export const fetchCard = (data: RequestGetCardType): ThunkType => async (dispatc
         dispatch(actionsForCardPagination.setCardPageCount(res.data.pageCount));
         dispatch(actionsForApp.setAppStatus("succeeded"));
     } catch(e: any) {
-        handleError(e, dispatch);
+        // handleError(e, dispatch);
     }
 };
 
@@ -116,9 +116,9 @@ export const removeCard = (packId: string, cardId: string): ThunkType => async (
         dispatch(actionsForApp.setAppStatus("loading"));
         await cardAPI.removeCard(cardId);
         dispatch(actionsForCards.removeCard(packId, cardId));
-        dispatch(actionsForApp.setAppStatus("idle"));
+        dispatch(actionsForApp.setAppStatus("succeeded"));
     } catch(e: any) {
-        handleError(e, dispatch);
+        // handleError(e, dispatch);
     }
 };
 
@@ -131,7 +131,7 @@ export const createCard = (dataForNewCard: NewlyCreatedCardType, dataForRequest:
         dispatch(actionsForCards.setCards(dataForRequest.cardsPack_id, res.data.cards));
         dispatch(actionsForApp.setAppStatus("succeeded"));
     } catch(e: any) {
-        handleError(e, dispatch);
+        // handleError(e, dispatch);
     }
 };
 
@@ -142,7 +142,7 @@ export const updateCard = (packId: string, cardId: string, domainModel: UpdateCa
             const card = getState().cards[packId].find(c => c._id === cardId);
             if (!card) {
                 console.warn("task not found in the state");
-                dispatch(actionsForApp.setAppStatus("failed"));
+                dispatch(actionsForApp.setAppStatus("succeeded"));
                 return;
             }
             const apiModel: UpdatedCardDataType = {
@@ -155,7 +155,7 @@ export const updateCard = (packId: string, cardId: string, domainModel: UpdateCa
             dispatch(actionsForCards.updateCard(packId, cardId, apiModel));
             dispatch(actionsForApp.setAppStatus("idle"));
         } catch(e: any) {
-            handleError(e, dispatch);
+            // handleError(e, dispatch);
         }
     };
 

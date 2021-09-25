@@ -1,8 +1,8 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useCallback, useState} from "react";
 import s from "./Card.module.scss";
 import {Link, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {CardDomainType, createCard, fetchCard} from "./cardsReduser";
+import {CardDomainType, createCard} from "./cardsReduser";
 import {AppRootStateType} from "../../app/store";
 import {StatusType} from "../../app/appReducer";
 import {Preloader} from "../common/Preloader/Preloader";
@@ -25,8 +25,10 @@ export const Card: React.FC<CardPropsType> = React.memo(() => {
    const {id} = useParams<{ id: string }>();
    const dispatch = useDispatch();
    const status = useSelector<AppRootStateType, StatusType>(state => state.app.status);
-   const pack = useSelector<AppRootStateType, PackDomainType[]>(state => state.pack);
-   const me = useSelector<AppRootStateType, string>(state => state.login._id);
+
+   const pack = useSelector<AppRootStateType, PackDomainType[]>(state => state.pack.pack);
+   const me = useSelector<AppRootStateType, string | undefined | null>(state => state.login.user?._id);
+
    const card = useSelector<AppRootStateType, CardDomainType[]>(state => state.cards[id]);
    const [addCardModal, setAddCardModal] = useState(false);
    const [newCardQuestion, setNewCardQuestion] = useState('');

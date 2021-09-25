@@ -18,20 +18,24 @@ export const PackSidebar: React.FC<PackSidebarPropsType> = () => {
     const btnMyClassName = active ? `${s.sidebar__btnItem} ${s.active}` : s.sidebar__btnItem
     const btnAllClassName = !active ? `${s.sidebar__btnItem} ${s.active}` : s.sidebar__btnItem
 
-
     return (
         <div className={s.sidebar}>
+
             <h3>Show packs cards</h3>
             <div className={s.sidebar__btn}>
                 <button className={btnMyClassName} onClick={() => {
-                    dispatch(actionsForStateOfMyPackSortDate.setFlagMyPack(true))
+                    console.log(active)
                     setActive(true)
+                    dispatch(actionsForStateOfMyPackSortDate.setFlagMyPack(true))
+
 
                 }}>My
                 </button>
                 <button className={btnAllClassName} onClick={() => {
-                    dispatch(actionsForStateOfMyPackSortDate.setFlagMyPack(false))
+                    console.log(active)
                     setActive(false)
+                    dispatch(actionsForStateOfMyPackSortDate.setFlagMyPack(false))
+
                 }}>All
                 </button>
             </div>

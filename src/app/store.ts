@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import {ProfileActionType, profileReduser} from "../a1-root/v4-Profile/profileReduser";
 import {page404Reduser} from "../a1-root/v5-Page_404/pag404Reduser";
 import {
-    RegisterActionType,
+    RegisrtationActionType,
     registrationReducer
 } from "../a1-root/v3-Registration/registrationReducer";
 import {LoginActionType, loginReducer} from "../a1-root/v2-Login/loginReduser";
@@ -46,8 +46,10 @@ export const store = createStore(rootReducer, applyMiddleware(thunk));
 export type AppRootStateType = ReturnType<typeof rootReducer>;
 
 export type CommonActionTypeForApp = LoginActionType | AppActionType
-    | ActionsForFogotPasswordType | ActionsForSetPasswordType
-    | RegisterActionType | PackActionType
+    | ActionsForFogotPasswordType
+    | ActionsForSetPasswordType
+    | RegisrtationActionType
+    | PackActionType
     | CardsActionType
     | PaginationActionPackType
     | PaginationActionCardType

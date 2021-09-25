@@ -15,25 +15,37 @@ const initialState = {
     status: "idle",
     error: null,
     pack: []
-} as const
+} as InitialPackStateType
 
 
 export const packReducer =
     (state: InitialPackStateType = initialState, action: PackActionType): InitialPackStateType => {
         switch (action.type) {
             case "PET-PROJECT/ROOT/PACK/REMOVE-PACK":
-                return {...state,
-                    pack: state.pack.filter(p => p._id !== action.id)}
+                    return {...state,
+                        pack: state.pack.filter(p => p._id !== action.id)
+                    }
+
             case "PET-PROJECT/ROOT/PACK/CREATE-PACK":
-                return [{...action.pack, firstProperty: 1, secondProperty: 2}, ...state];
+                return {
+                    ...state,
+                    pack: [...state.pack, {...action.pack, firstProperty: 1, secondProperty: 2}]
+                }
             case "PET-PROJECT/ROOT/PACK/UPDATE-PACK-TITLE":
-                return state.map(p => p._id === action.id ? {...p, title: action.title} : p);
+                return { ...state,
+                    pack: state.pack.map(p => p._id === action.id ? {...p, title: action.title} : p)
+                }
             case "PET-PROJECT/ROOT/PACK/SET-PACK-LISTS":
-                return action.pack.map((p) => ({...p, firstProperty: 1, secondProperty: 2}));
+                return { ...state,
+                    pack: action.pack.map((p) => ({...p, firstProperty: 1, secondProperty: 2}))}
             case "PET-PROJECT/ROOT/PACK/UPDATE-PACK-FIRST-PROPERTY":
-                return state.map(p => p._id === action.id ? {...p, firstProperty: action.first} : p);
+                return {...state,
+                 pack: state.pack.map(p => p._id === action.id ? {...p, firstProperty: action.first} : p)
+                }
             case "PET-PROJECT/ROOT/PACK/UPDATE-PACK-SECOND-PROPERTY":
-                return state.map(p => p._id === action.id ? {...p, filter: action.second} : p);
+                return {...state,
+                    pack: state.pack.map(p => p._id === action.id ? {...p, secondProperty: action.second} : p)
+                }
             case "PET-PROJECT/ROOT/PACK/CLEAR-DATA":
                 return initialState;
             case "PET-PROJECT/ROOT/PACK/STATUS":
@@ -91,49 +103,70 @@ export const actionsForPack = {
 // thunks
 export const fetchPack = (data: RequestGetCardsPackType) => async (dispatch: Dispatch) => {
     try {
-        dispatch(actionsForApp.setAppStatus("loading"));
+        dispatch(actionsForPack.packStatus("loading"));
         let res = await packAPI.getCardsPack(data);
         dispatch(actionsForPack.setPackLists(res.data.cardPacks));
         dispatch(actionsForPackPagination.setPackTotalCount(res.data.cardPacksTotalCount))
-        dispatch(actionsForApp.setAppStatus("succeeded"));
+        dispatch(actionsForPack.packStatus("succeeded"));
     } catch (e: any) {
-        // handleError(e, dispatch);
+        dispatch(actionsForPack.packStatus("succeeded"));
+        const error = e.response.data.error === 'you are not authorized /ᐠ-ꞈ-ᐟ\\'
+            ? null
+            : e.response.data.error
+                ? e.response.data.error
+                : (e.message + ', more details in the console');
+        dispatch(actionsForPack.packError(error));
     }
 };
 
 export const removePack = (packId: string) => async (dispatch: Dispatch) => {
     try {
-        dispatch(actionsForApp.setAppStatus("loading"));
+        dispatch(actionsForPack.packStatus("loading"));
         await packAPI.removeCardsPack(packId);
         dispatch(actionsForPack.removePack(packId));
-        dispatch(actionsForApp.setAppStatus("idle"));
+        dispatch(actionsForPack.packStatus("succeeded"));
     } catch (e: any) {
-        // handleError(e, dispatch);
+        const error = e.response.data.error === 'you are not authorized /ᐠ-ꞈ-ᐟ\\'
+            ? null
+            : e.response.data.error
+                ? e.response.data.error
+                : (e.message + ', more details in the console');
+        dispatch(actionsForPack.packError(error));
     }
 };
 
 export const createPack = (dataForNewPack: NewCardsPackType, dataForRequest: RequestGetCardsPackType) =>
     async (dispatch: Dispatch) => {
     try {
-        dispatch(actionsForApp.setAppStatus("loading"));
+        dispatch(actionsForPack.packStatus("loading"));
         await packAPI.createNewCardsPack(dataForNewPack);
         let res = await packAPI.getCardsPack(dataForRequest);
         dispatch(actionsForPack.setPackLists(res.data.cardPacks));
-        dispatch(actionsForApp.setAppStatus("succeeded"));
+        dispatch(actionsForPack.packStatus("succeeded"));
     } catch (e: any) {
-        // handleError(e, dispatch);
+        const error = e.response.data.error === 'you are not authorized /ᐠ-ꞈ-ᐟ\\'
+            ? null
+            : e.response.data.error
+                ? e.response.data.error
+                : (e.message + ', more details in the console');
+        dispatch(actionsForPack.packError(error));
     }
 };
 
 export const updatePackTitle = (data: UpdatedPackDataType): ThunkType =>
     async (dispatch: ThunkDispatchType) => {
         try {
-            dispatch(actionsForApp.setAppStatus("loading"));
+            dispatch(actionsForPack.packStatus("loading"));
             await packAPI.updateCardsPackData(data);
             dispatch(actionsForPack.updatePackTitle(data._id, data.name));
-            dispatch(actionsForApp.setAppStatus("idle"));
+            dispatch(actionsForPack.packStatus("succeeded"));
         } catch (e: any) {
-            // handleError(e, dispatch);
+            const error = e.response.data.error === 'you are not authorized /ᐠ-ꞈ-ᐟ\\'
+                ? null
+                : e.response.data.error
+                    ? e.response.data.error
+                    : (e.message + ', more details in the console');
+            dispatch(actionsForPack.packError(error));
         }
     };
 
@@ -144,7 +177,7 @@ export type PackActionType = InferActionType<typeof actionsForPack>;
 export type InitialPackStateType = {
     status: StatusType
     error: string | null
-    pack: PackDomainType[] | []
+    pack:  Array<PackDomainType>
 };
 
 export type PackDomainType = CardsPackType & {

@@ -25,18 +25,18 @@ function App() {
     const dispatch: Dispatch<any> = useDispatch();
 
 //если не зареганы то проходим инициализацию
-    useEffect(() => {
-            if (!isLoggedIn) {
-                dispatch(initializeApp())
-            }
+//     useEffect(() => {
+//             if (!isLoggedIn) {
+//                 dispatch(initializeApp())
+//             }
+//
+//         }
+//         , [isLoggedIn]);
 
-        }
-        , [isLoggedIn]);
-
-
-    if (status === 'loading') {
-        return <Preloader/>
-    }
+    //
+    // if (status === 'loading') {
+    //     return <Preloader/>
+    // }
     return (
         <div className={style.wrapper}>
             {isLoggedIn && <Header/>}
